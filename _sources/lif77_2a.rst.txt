@@ -1,0 +1,47 @@
+.. data title
+
+A. Lifshitz, K. Scheller, A. Burcat, G. B. Skinner, Combust. Flame 16 (1971), 311-321.: Set 2a
+********************************************************************************************** 
+
+.. data source
+
+A. Lifshitz, K. Scheller, A. Burcat, G. B. Skinner, Combust. Flame 16 (1971), 311-321.: Set 2a 
+
+Composition
+-----------
+.. composition table
+
+=========  ======
+Comp       Frac %
+=========  ======
+CH4         2.1 %
+O2          2.1 %
+AR         95.8 %
+=========  ====== 
+
+Data Table
+----------
+
+.. data table
+
+========  ==========
+Temp (K)  Pres (kPa)
+========  ==========
+  1681      911.9   
+  1701      911.9   
+  1776      911.9   
+  1808      911.9   
+  1842      911.9   
+  1842      911.9   
+  1876      911.9   
+  1905      911.9   
+  1972      911.9   
+  2028      911.9   
+========  ========== 
+
+Plot
+----
+
+.. image:: lif77_2a_plot.png
+
+    

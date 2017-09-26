@@ -1,0 +1,48 @@
+.. data title
+
+A. Lifshitz, K. Scheller, A. Burcat, G. B. Skinner, Combust. Flame 16 (1971), 311-321.: Set 4b
+********************************************************************************************** 
+
+.. data source
+
+A. Lifshitz, K. Scheller, A. Burcat, G. B. Skinner, Combust. Flame 16 (1971), 311-321.: Set 4b 
+
+Composition
+-----------
+.. composition table
+
+=========  ======
+Comp       Frac %
+=========  ======
+CH4         3.5 %
+H2          0.2 %
+O2          7.0 %
+AR         89.3 %
+=========  ====== 
+
+Data Table
+----------
+
+.. data table
+
+========  ==========
+Temp (K)  Pres (kPa)
+========  ==========
+  1736      1013.2  
+  1739      1013.2  
+  1736      1013.2  
+  1709      1013.2  
+  1706      1013.2  
+  1664      1013.2  
+  1669      1013.2  
+  1672      1013.2  
+  1637      1013.2  
+  1605      1013.2  
+========  ========== 
+
+Plot
+----
+
+.. image:: lif77_4b_plot.png
+
+    

@@ -1,0 +1,43 @@
+.. data title
+
+D. C. Horning, D. F. Davidson, R. K. Hanson, J. Propul. Power 18 (2002), 363-371.: Set F
+**************************************************************************************** 
+
+.. data source
+
+D. C. Horning, D. F. Davidson, R. K. Hanson, J. Propul. Power 18 (2002), 363-371.: Set F 
+
+Composition
+-----------
+.. composition table
+
+=========  ======
+Comp       Frac %
+=========  ======
+C4H10       1.0 %
+O2          3.2 %
+AR         95.8 %
+=========  ====== 
+
+Data Table
+----------
+
+.. data table
+
+========  ==========
+Temp (K)  Pres (kPa)
+========  ==========
+  1541      121.6   
+  1577      121.6   
+  1629      121.6   
+  1618      121.6   
+  1667      121.6   
+  1733      121.6   
+========  ========== 
+
+Plot
+----
+
+.. image:: hdh02_f_plot.png
+
+    

@@ -1,0 +1,50 @@
+.. data title
+
+A. Burcat, A. Lifshitz, K. Scheller, G. B. Skinner, Proc. Combust. Inst. 13 (1971), 745-755.: Set I
+*************************************************************************************************** 
+
+.. data source
+
+A. Burcat, A. Lifshitz, K. Scheller, G. B. Skinner, Proc. Combust. Inst. 13 (1971), 745-755.: Set I 
+
+Composition
+-----------
+.. composition table
+
+=========  ======
+Comp       Frac %
+=========  ======
+C3H8        0.4 %
+O2         16.4 %
+AR         83.2 %
+=========  ====== 
+
+Data Table
+----------
+
+.. data table
+
+========  ==========
+Temp (K)  Pres (kPa)
+========  ==========
+  1424      903.4   
+  1406      884.3   
+  1376      853.8   
+  1377      855.0   
+  1362      839.3   
+  1349      825.8   
+  1349      825.2   
+  1302      777.0   
+  1291      766.1   
+  1287      761.5   
+  1278      752.4   
+  1269      742.9   
+  1261      734.5   
+========  ========== 
+
+Plot
+----
+
+.. image:: blss70_i_plot.png
+
+    

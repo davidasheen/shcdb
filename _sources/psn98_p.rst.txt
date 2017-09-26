@@ -1,0 +1,40 @@
+.. data title
+
+Petersen,E.L thesis: Set P
+************************** 
+
+.. data source
+
+Petersen,E.L thesis: Set P 
+
+Composition
+-----------
+.. composition table
+
+=========  ======
+Comp       Frac %
+=========  ======
+CH4        27.3 %
+O2         18.2 %
+N2         54.5 %
+=========  ====== 
+
+Data Table
+----------
+
+.. data table
+
+========  ==========
+Temp (K)  Pres (kPa)
+========  ==========
+  1215      7224.5  
+  1283      6515.2  
+  1346      6120.0  
+========  ========== 
+
+Plot
+----
+
+.. image:: psn98_p_plot.png
+
+    

@@ -1,0 +1,13 @@
+.. data header title
+
+Y. Hidaka, W. C. Gardiner, C. S. Eubank, J. Mol. Sci. 2 (1982), 141-153.
+************************************************************************
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   Set A <hge82_a>
+   Set B <hge82_b>
+

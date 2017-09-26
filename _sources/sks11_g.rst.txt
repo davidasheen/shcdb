@@ -1,0 +1,43 @@
+.. data title
+
+S. Saxena, M. S. P. Kahandawala, S. S. Sidhu, Combust. Flame 158 (2011), 1019-1031.: Set G
+****************************************************************************************** 
+
+.. data source
+
+S. Saxena, M. S. P. Kahandawala, S. S. Sidhu, Combust. Flame 158 (2011), 1019-1031.: Set G 
+
+Composition
+-----------
+.. composition table
+
+=========  ======
+Comp       Frac %
+=========  ======
+C2H4        1.0 %
+O2          3.0 %
+AR         96.0 %
+=========  ====== 
+
+Data Table
+----------
+
+.. data table
+
+========  ==========
+Temp (K)  Pres (kPa)
+========  ==========
+  1197      1003.1  
+  1311      1003.1  
+  1397      1023.4  
+  1473      1013.2  
+  1561      993.0   
+  1641      952.5   
+========  ========== 
+
+Plot
+----
+
+.. image:: sks11_g_plot.png
+
+    

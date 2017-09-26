@@ -1,0 +1,41 @@
+.. Small Hydrocarbons Combustion Properties Database documentation master file, created by
+   sphinx-quickstart on Mon Jul 31 10:49:40 2017.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Small Hydrocarbons Combustion Properties Database
+=================================================
+
+*David A. Sheen*
+
+*National Institute of Standards and Technology*
+
+*Last Revision* |today|
+
+`Download this data set from GitHub <https://github.com/davidasheen/shcdb>`_
+
+Welcome to the home page for the Small Hydrocarbons Combustion Properties Database. This is a database of laminar flame speeds and ignition delay times for a range of small hydrocarbon fuels, along with a model for simulating these experiments. The model is based on `JetSurF 2.0 <https://web.stanford.edu/group/haiwanglab/JetSurF/JetSurF2.0/howtocite.html>`_, with the hydrogen oxidation submodel reset to its nominal values. See `Sheen & Wang <http://dx.doi.org/10.1016/j.combustflame.2010.12.016>`_ for more details on the base JetSurF model.
+
+
+Legal
++++++
+
+This data is subject to the `NIST Data License <https://www.nist.gov/director/licensing>`_ (revised as of July 2017). This license can be found in the GitHub repo in the file named LICENSE. 
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+   
+   ign
+   fls
+   flame_plotter
+   ignition_plotter
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

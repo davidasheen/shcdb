@@ -1,0 +1,52 @@
+.. data title
+
+Y. Hidaka, T. Nishimori, K. Sato, Y. Henmi, R. Okuda, K. Inami, T. Higashihara, Combust. Flame 117 (1999), 755-776.: Set C
+************************************************************************************************************************** 
+
+.. data source
+
+Y. Hidaka, T. Nishimori, K. Sato, Y. Henmi, R. Okuda, K. Inami, T. Higashihara, Combust. Flame 117 (1999), 755-776.: Set C 
+
+Composition
+-----------
+.. composition table
+
+=========  ======
+Comp       Frac %
+=========  ======
+C2H4        0.5 %
+O2          1.5 %
+AR         98.0 %
+=========  ====== 
+
+Data Table
+----------
+
+.. data table
+
+========  ==========
+Temp (K)  Pres (kPa)
+========  ==========
+  1643      233.1   
+  1628      229.8   
+  1549      213.4   
+  1522      207.6   
+  1508      204.7   
+  1476      198.0   
+  1456      193.9   
+  1443      191.0   
+  1403      182.8   
+  1370      175.7   
+  1367      175.2   
+  1348      171.3   
+  1317      164.7   
+  1294      159.9   
+  1267      154.3   
+========  ========== 
+
+Plot
+----
+
+.. image:: hnh99_c_plot.png
+
+    

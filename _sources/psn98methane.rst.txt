@@ -1,0 +1,36 @@
+.. data header title
+
+Petersen,E.L thesis
+*******************
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   Set A <psn98_a>
+   Set B <psn98_b>
+   Set C <psn98_c>
+   Set D <psn98_d>
+   Set E <psn98_e>
+   Set F <psn98_f>
+   Set G <psn98_g>
+   Set H <psn98_h>
+   Set I <psn98_i>
+   Set J <psn98_j>
+   Set K <psn98_k>
+   Set L <psn98_l>
+   Set M <psn98_m>
+   Set N <psn98_n>
+   Set O <psn98_o>
+   Set P <psn98_p>
+   Set Q <psn98_q>
+   Set R <psn98_r>
+   Set S <psn98_s>
+   Set T <psn98_t>
+   Set U <psn98_u>
+   Set V <psn98_v>
+   Set W <psn98_w>
+   Set X <psn98_x>
+   Set Y <psn98_y>
+

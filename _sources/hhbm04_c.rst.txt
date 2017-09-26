@@ -1,0 +1,43 @@
+.. data title
+
+Huang,J.; Hill,P.G.; Bushe,W.K.; Munshi,S.R.; Combust.Flame 25-42 (2004): Set C
+******************************************************************************* 
+
+.. data source
+
+Huang,J.; Hill,P.G.; Bushe,W.K.; Munshi,S.R.; Combust.Flame 25-42 (2004): Set C 
+
+Composition
+-----------
+.. composition table
+
+=========  ======
+Comp       Frac %
+=========  ======
+CH4        12.0 %
+O2         18.5 %
+AR         69.5 %
+=========  ====== 
+
+Data Table
+----------
+
+.. data table
+
+========  ==========
+Temp (K)  Pres (kPa)
+========  ==========
+  1068      3992.2  
+  1128      3820.0  
+  1193      3971.9  
+  1229      3911.1  
+  1266      3647.7  
+  1290      3890.9  
+========  ========== 
+
+Plot
+----
+
+.. image:: hhbm04_c_plot.png
+
+    

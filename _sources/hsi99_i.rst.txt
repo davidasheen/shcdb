@@ -1,0 +1,44 @@
+.. data title
+
+Y. Hidaka, K. Sato, Y. Henmi, H. Tanaka, K. Inami, Combust. Flame 118 (1999), 340-358.: Set I
+********************************************************************************************* 
+
+.. data source
+
+Y. Hidaka, K. Sato, Y. Henmi, H. Tanaka, K. Inami, Combust. Flame 118 (1999), 340-358.: Set I 
+
+Composition
+-----------
+.. composition table
+
+=========  ======
+Comp       Frac %
+=========  ======
+CH4         0.1 %
+H2          1.0 %
+O2          1.0 %
+AR         97.9 %
+=========  ====== 
+
+Data Table
+----------
+
+.. data table
+
+========  ==========
+Temp (K)  Pres (kPa)
+========  ==========
+  1339      173.3   
+  1443      195.5   
+  1531      214.3   
+  1567      222.0   
+  1672      244.3   
+  1770      265.1   
+========  ========== 
+
+Plot
+----
+
+.. image:: hsi99_i_plot.png
+
+    

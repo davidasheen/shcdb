@@ -1,0 +1,44 @@
+.. data title
+
+O. G. Penyazkov, K. L. Sevrouk, V. Tangirala, N. Joshi, Proc. Combust. Inst. 32 (2009), 2421-2428.: Set D
+********************************************************************************************************* 
+
+.. data source
+
+O. G. Penyazkov, K. L. Sevrouk, V. Tangirala, N. Joshi, Proc. Combust. Inst. 32 (2009), 2421-2428.: Set D 
+
+Composition
+-----------
+.. composition table
+
+=========  ======
+Comp       Frac %
+=========  ======
+C2H4        6.5 %
+O2         19.6 %
+N2         73.8 %
+=========  ====== 
+
+Data Table
+----------
+
+.. data table
+
+========  ==========
+Temp (K)  Pres (kPa)
+========  ==========
+  1372      1540.1  
+  1322      1513.8  
+  1283      1476.3  
+  1249      1409.4  
+  1202      1347.6  
+  1148      1323.3  
+  1130      1327.4  
+========  ========== 
+
+Plot
+----
+
+.. image:: pyk09_d_plot.png
+
+    

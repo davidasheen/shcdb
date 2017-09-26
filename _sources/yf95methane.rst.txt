@@ -1,0 +1,15 @@
+.. data header title
+
+Yu, C.L.; Wang, C.; and Frenklach, M.; J.Phys.Chem. 99, 14377-14387 (1995)
+**************************************************************************
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   Set A <yf95_a>
+   Set B <yf95_b>
+   Set C <yf95_c>
+   Set D <yf95_d>
+

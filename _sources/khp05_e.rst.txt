@@ -1,0 +1,43 @@
+.. data title
+
+D. M. Kalitan, J. M. Hall, E. L. Petersen, J. Propul. Power 21 (2005), 1045-1056.: Set E
+**************************************************************************************** 
+
+.. data source
+
+D. M. Kalitan, J. M. Hall, E. L. Petersen, J. Propul. Power 21 (2005), 1045-1056.: Set E 
+
+Composition
+-----------
+.. composition table
+
+=========  ======
+Comp       Frac %
+=========  ======
+C2H4        1.7 %
+O2          1.7 %
+AR         96.6 %
+=========  ====== 
+
+Data Table
+----------
+
+.. data table
+
+========  ==========
+Temp (K)  Pres (kPa)
+========  ==========
+  1343      131.7   
+  1461      113.5   
+  1525      101.3   
+  1404      124.6   
+  1314      117.5   
+  1330      129.7   
+========  ========== 
+
+Plot
+----
+
+.. image:: khp05_e_plot.png
+
+    

@@ -1,0 +1,42 @@
+.. data title
+
+J. A. Baker, G. B. Skinner, Combust. Flame 19 (1972), 347-350.: Set B
+********************************************************************* 
+
+.. data source
+
+J. A. Baker, G. B. Skinner, Combust. Flame 19 (1972), 347-350.: Set B 
+
+Composition
+-----------
+.. composition table
+
+=========  ======
+Comp       Frac %
+=========  ======
+C2H4        5.0 %
+O2          3.0 %
+AR         92.0 %
+=========  ====== 
+
+Data Table
+----------
+
+.. data table
+
+========  ==========
+Temp (K)  Pres (kPa)
+========  ==========
+  1118      304.0   
+  1218      304.0   
+  1318      304.0   
+  1418      304.0   
+  1430      304.0   
+========  ========== 
+
+Plot
+----
+
+.. image:: bs72_b_plot.png
+
+    

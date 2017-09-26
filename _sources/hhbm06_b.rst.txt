@@ -1,0 +1,43 @@
+.. data title
+
+Huang,J.; Hill,P.G.; Bushe,W.K.; Munshi,S.R.; Combust.Flame 74-88 (2006): Set B
+******************************************************************************* 
+
+.. data source
+
+Huang,J.; Hill,P.G.; Bushe,W.K.; Munshi,S.R.; Combust.Flame 74-88 (2006): Set B 
+
+Composition
+-----------
+.. composition table
+
+=========  ======
+Comp       Frac %
+=========  ======
+CH4         8.4 %
+C2H6        0.6 %
+O2         19.1 %
+AR         71.8 %
+=========  ====== 
+
+Data Table
+----------
+
+.. data table
+
+========  ==========
+Temp (K)  Pres (kPa)
+========  ==========
+  920       4053.0  
+  950       4053.0  
+  988       3961.8  
+  1025      3850.3  
+  1100      4053.0  
+========  ========== 
+
+Plot
+----
+
+.. image:: hhbm06_b_plot.png
+
+    

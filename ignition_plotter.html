@@ -1,0 +1,3437 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Ignition delay time documentation creator &#8212; Small Hydrocarbons Combustion Properties Database 0.1.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Laminar flame speed documentation creator" href="flame_plotter.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput,
+div.nbinput > div,
+div.nbinput div[class^=highlight],
+div.nbinput div[class^=highlight] pre,
+div.nboutput,
+div.nboutput > div,
+div.nboutput div[class^=highlight],
+div.nboutput div[class^=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput div[class^=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput,
+div.nboutput {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+}
+
+/* input container */
+div.nbinput {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput > :first-child pre {
+    color: #303F9F;
+}
+
+/* output prompt */
+div.nboutput > :first-child pre {
+    color: #D84315;
+}
+
+/* all prompts */
+div.nbinput > :first-child[class^=highlight],
+div.nboutput > :first-child[class^=highlight],
+div.nboutput > :first-child {
+    min-width: 9ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+
+/* input/output area */
+div.nbinput > :nth-child(2)[class^=highlight],
+div.nboutput > :nth-child(2),
+div.nboutput > :nth-child(2)[class^=highlight] {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+
+/* input area */
+div.nbinput > :nth-child(2)[class^=highlight] {
+    border: 1px solid #cfcfcf;
+    border-radius: 2px;
+    background: #f7f7f7;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.pngmath center alignment in output cells */
+div.nboutput div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput  > :nth-child(2).stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="section" id="Ignition-delay-time-documentation-creator">
+<h1>Ignition delay time documentation creator<a class="headerlink" href="#Ignition-delay-time-documentation-creator" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [1]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">mumpce_py</span>
+<span class="kn">import</span> <span class="nn">data_parser</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [2]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [3]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;flame&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">f</span> <span class="ow">and</span> <span class="s1">&#39;xls&#39;</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<div class="highlight"><pre>
+[&#39;methane_py.xlsx&#39;, &#39;butane_py.xlsx&#39;, &#39;ethylene_py.xlsx&#39;, &#39;propane_py.xlsx&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [4]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">alldata</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+    <span class="n">set_name</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">df_dict</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="n">sheetname</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+
+    <span class="n">df_this</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">df_dict</span><span class="p">,</span><span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="n">alldata</span><span class="p">[</span><span class="n">set_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_this</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [5]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="n">fuels</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;methane&#39;</span><span class="p">,</span><span class="s1">&#39;CH4&#39;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;ethylene&#39;</span><span class="p">,</span><span class="s1">&#39;C2H4&#39;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;propane&#39;</span><span class="p">,</span><span class="s1">&#39;C3H8&#39;</span><span class="p">),</span>
+         <span class="p">(</span><span class="s1">&#39;butane&#39;</span><span class="p">,</span><span class="s1">&#39;C4H10&#39;</span><span class="p">),</span>
+        <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [6]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">primary_fuel_name</span><span class="p">,</span><span class="n">primary_fuel</span> <span class="ow">in</span> <span class="n">fuels</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">alldata</span><span class="p">[</span><span class="n">primary_fuel_name</span><span class="p">]</span>
+    <span class="n">sources</span><span class="p">,</span><span class="n">sets</span> <span class="o">=</span> <span class="n">data_parser</span><span class="o">.</span><span class="n">find_data_sets</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">project_list</span> <span class="o">=</span> <span class="n">data_parser</span><span class="o">.</span><span class="n">load_projects</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">project</span> <span class="ow">in</span> <span class="n">project_list</span><span class="p">:</span>
+        <span class="n">data_parser</span><span class="o">.</span><span class="n">run_project</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
+    <span class="n">data_parser</span><span class="o">.</span><span class="n">make_ign_docs</span><span class="p">(</span><span class="n">primary_fuel_name</span><span class="p">,</span><span class="n">sources</span><span class="p">,</span><span class="n">project_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<div class="highlight"><pre>
+ign_hhbm04_a01 6.59168899068
+ign_hhbm04_a02 2.36720991793
+ign_hhbm04_a03 5.61302580044
+ign_hhbm04_a04 4.79994477989
+ign_hhbm04_a05 5.62941553906
+ign_hhbm04_a06 2.76768053282
+ign_hhbm04_a07 5.29564235941
+ign_hhbm04_a08 2.30186003772
+ign_hhbm04_a09 4.35878655704
+ign_hhbm04_a10 7.2848234557
+ign_hhbm04_a11 4.17146199372
+ign_hhbm04_a12 6.18621625327
+ign_hhbm04_a13 4.54304330529
+ign_hhbm04_a14 3.71683620827
+ign_hhbm04_a15 5.49307670201
+ign_hhbm04_a16 3.81919351083
+ign_hhbm04_a17 3.90805211919
+ign_hhbm04_a18 3.40055478022
+ign_hhbm04_a19 2.31512967586
+ign_hhbm04_a20 6.39234848369
+ign_hhbm04_a21 6.32533922813
+ign_hhbm04_a22 6.31579420289
+ign_hhbm04_a23 2.33435057584
+ign_hhbm04_a24 4.652369119
+ign_hhbm04_a25 5.91691120085
+ign_hhbm04_a26 4.11829703579
+ign_hhbm04_a27 5.49708167169
+ign_hhbm04_a28 4.32995946047
+ign_hhbm04_a29 4.61312718396
+ign_hhbm04_a30 4.37972334021
+ign_hhbm04_a31 4.79994477989
+ign_hhbm04_a32 4.06082624841
+ign_hhbm04_a33 2.35508714446
+ign_hhbm04_a34 3.834188475
+ign_hhbm04_a35 3.79297673632
+ign_hhbm04_a36 4.39953264735
+ign_hhbm04_a37 3.88009252396
+ign_hhbm04_a38 3.41374196452
+ign_hhbm04_a39 3.46311511237
+ign_hhbm04_a40 6.2041262619
+hhbm04_a  Value has been calculated
+Project hhbm04_a saved successfully
+ign_hhbm04_b01 2.7881952548
+ign_hhbm04_b02 4.12281198793
+ign_hhbm04_b03 6.87935961915
+ign_hhbm04_b04 4.72704031706
+ign_hhbm04_b05 3.98711309577
+ign_hhbm04_b06 5.74090951647
+ign_hhbm04_b07 5.47509398412
+ign_hhbm04_b08 5.50279480391
+ign_hhbm04_b09 5.05150670146
+ign_hhbm04_b10 4.79994477989
+ign_hhbm04_b11 2.34506879206
+ign_hhbm04_b12 4.12239145384
+ign_hhbm04_b13 4.51227287961
+ign_hhbm04_b14 7.2848234557
+ign_hhbm04_b15 5.49307670201
+ign_hhbm04_b16 2.31403057334
+ign_hhbm04_b17 3.70999213241
+ign_hhbm04_b18 2.30223102641
+ign_hhbm04_b19 6.78118088372
+ign_hhbm04_b20 5.31074599004
+ign_hhbm04_b21 3.16696813536
+ign_hhbm04_b22 5.70298320513
+ign_hhbm04_b23 5.27521643167
+hhbm04_b  Value has been calculated
+Project hhbm04_b saved successfully
+ign_hhbm04_c01 4.68384256103
+ign_hhbm04_c02 4.16480333873
+ign_hhbm04_c03 6.67172113468
+ign_hhbm04_c04 3.2260600395
+ign_hhbm04_c05 6.00389011886
+ign_hhbm04_c06 2.30235465873
+hhbm04_c  Value has been calculated
+Project hhbm04_c saved successfully
+ign_hhbm06_a01 8.14982156243
+ign_hhbm06_a02 2.83760450307
+ign_hhbm06_a03 6.59167881826
+ign_hhbm06_a04 6.59167881826
+ign_hhbm06_a05 5.20539971573
+ign_hhbm06_a06 4.79994477989
+ign_hhbm06_a07 4.23148852033
+ign_hhbm06_a08 3.77144571305
+ign_hhbm06_a09 2.30235465873
+ign_hhbm06_a10 7.69029110693
+ign_hhbm06_a11 6.87935961915
+ign_hhbm06_a12 3.97330544163
+ign_hhbm06_a13 5.31074599004
+ign_hhbm06_a14 2.30974476503
+ign_hhbm06_a15 6.31786524388
+hhbm06_a  Value has been calculated
+Project hhbm06_a saved successfully
+ign_hhbm06_b01 3.12642599129
+ign_hhbm06_b02 7.60327649324
+ign_hhbm06_b03 6.18621625327
+ign_hhbm06_b04 6.91013116222
+ign_hhbm06_b05 5.64721648281
+hhbm06_b  Value has been calculated
+Project hhbm06_b saved successfully
+ign_hhbm06_c01 7.84443815372
+ign_hhbm06_c02 6.87935961915
+ign_hhbm06_c03 6.87935961915
+ign_hhbm06_c04 6.81482135233
+ign_hhbm06_c05 5.49307670201
+ign_hhbm06_c06 5.0876039646
+ign_hhbm06_c07 4.39446441335
+ign_hhbm06_c08 4.42523560963
+ign_hhbm06_c09 4.18784215946
+ign_hhbm06_c10 2.30037470511
+ign_hhbm06_c11 6.59467520453
+ign_hhbm06_c12 6.59167881826
+ign_hhbm06_c13 6.99714901259
+ign_hhbm06_c14 7.32564534849
+ign_hhbm06_c15 5.49307670201
+ign_hhbm06_c16 5.71621720161
+ign_hhbm06_c17 4.14047398062
+hhbm06_c  Value has been calculated
+Project hhbm06_c saved successfully
+ign_hhbm06_d01 2.4080736217
+ign_hhbm06_d02 4.51227287961
+ign_hhbm06_d03 5.74675172272
+ign_hhbm06_d04 2.30186003772
+ign_hhbm06_d05 5.49307670201
+ign_hhbm06_d06 3.34895116371
+ign_hhbm06_d07 5.42857174914
+ign_hhbm06_d08 5.49307670201
+ign_hhbm06_d09 4.84441113728
+ign_hhbm06_d10 4.10682811551
+ign_hhbm06_d11 4.5950504896
+ign_hhbm06_d12 3.92446993919
+hhbm06_d  Value has been calculated
+Project hhbm06_d saved successfully
+ign_hhbm06_e01 2.43766157888
+ign_hhbm06_e02 5.5601135493
+ign_hhbm06_e03 5.20539971573
+ign_hhbm06_e04 4.80256577371
+ign_hhbm06_e05 5.49741596232
+ign_hhbm06_e06 5.49749192188
+ign_hhbm06_e07 2.30235465873
+ign_hhbm06_e08 6.3040120044
+ign_hhbm06_e09 6.18621625327
+ign_hhbm06_e10 4.83696940599
+ign_hhbm06_e11 5.49600206177
+ign_hhbm06_e12 4.10678742707
+hhbm06_e  Value has been calculated
+Project hhbm06_e saved successfully
+ign_hn09_a01 9.70135891104
+ign_hn09_a02 9.62494631433
+ign_hn09_a03 9.29247627126
+ign_hn09_a04 8.93966116216
+ign_hn09_a05 8.5153084819
+ign_hn09_a06 8.26394950026
+ign_hn09_a07 8.05576499253
+ign_hn09_a08 7.60736787229
+ign_hn09_a09 7.52194332063
+ign_hn09_a10 7.35159466182
+ign_hn09_a11 7.24616633486
+ign_hn09_a12 7.17725637379
+hn09_a  Value has been calculated
+Project hn09_a saved successfully
+ign_hn09_b01 11.3212475971
+ign_hn09_b02 10.8212246561
+ign_hn09_b03 10.0793713476
+ign_hn09_b04 9.82288837369
+ign_hn09_b05 9.80748801011
+ign_hn09_b06 9.3541854058
+ign_hn09_b07 8.8159297741
+ign_hn09_b08 7.54798825219
+hn09_b  Value has been calculated
+Project hn09_b saved successfully
+ign_hn09_c01 9.27946464352
+ign_hn09_c02 9.3779876011
+ign_hn09_c03 8.56763894351
+ign_hn09_c04 8.26184445215
+ign_hn09_c05 8.21577173802
+ign_hn09_c06 8.24354868567
+ign_hn09_c07 7.67529687443
+ign_hn09_c08 7.22575169674
+ign_hn09_c09 7.04783428853
+ign_hn09_c10 6.6767558625
+hn09_c  Value has been calculated
+Project hn09_c saved successfully
+ign_hn09_d01 9.41950483358
+ign_hn09_d02 8.91520075144
+ign_hn09_d03 8.3366360683
+ign_hn09_d04 7.48393701788
+ign_hn09_d05 7.38614241896
+ign_hn09_d06 5.80769809931
+ign_hn09_d07 5.04112874172
+ign_hn09_d08 4.48639441683
+ign_hn09_d09 3.78059535542
+hn09_d  Value has been calculated
+Project hn09_d saved successfully
+ign_hn09_e01 10.8080339604
+ign_hn09_e02 10.7657391711
+ign_hn09_e03 10.4084765197
+ign_hn09_e04 9.52044782397
+ign_hn09_e05 9.24817950421
+ign_hn09_e06 8.70663023197
+ign_hn09_e07 8.5683132576
+ign_hn09_e08 8.3803103813
+ign_hn09_e09 6.7213630091
+ign_hn09_e10 6.45984131586
+ign_hn09_e11 5.89462988281
+ign_hn09_e12 4.98605068247
+ign_hn09_e13 4.53314751086
+hn09_e  Value has been calculated
+Project hn09_e saved successfully
+ign_hn09_f01 9.74722753801
+ign_hn09_f02 8.2159066263
+ign_hn09_f03 7.65405799441
+ign_hn09_f04 7.56000321442
+ign_hn09_f05 6.80303559663
+ign_hn09_f06 6.37994820944
+ign_hn09_f07 5.98570112904
+ign_hn09_f08 5.77351691953
+ign_hn09_f09 5.48765365053
+ign_hn09_f10 5.22067084883
+ign_hn09_f11 4.67900989445
+ign_hn09_f12 4.49762188119
+ign_hn09_f13 4.51910108065
+ign_hn09_f14 3.46329151146
+ign_hn09_f15 3.42972536355
+hn09_f  Value has been calculated
+Project hn09_f saved successfully
+ign_hn09_g01 9.43214208104
+ign_hn09_g02 9.41905884715
+ign_hn09_g03 8.94801225493
+ign_hn09_g04 8.07417232856
+ign_hn09_g05 7.61983825138
+ign_hn09_g06 6.40962240137
+ign_hn09_g07 5.2512865524
+hn09_g  Value has been calculated
+Project hn09_g saved successfully
+ign_hn09_h01 10.9412201457
+ign_hn09_h02 10.4333479918
+ign_hn09_h03 10.2529730023
+ign_hn09_h04 9.94481059339
+ign_hn09_h05 9.95167830265
+ign_hn09_h06 9.36246690988
+ign_hn09_h07 8.22197547295
+ign_hn09_h08 7.71729699913
+ign_hn09_h09 7.12816058766
+ign_hn09_h10 6.70897529175
+ign_hn09_h11 6.10412789141
+ign_hn09_h12 5.5352779849
+hn09_h  Value has been calculated
+Project hn09_h saved successfully
+ign_hn09_i01 8.87625511579
+ign_hn09_i02 8.24856668419
+ign_hn09_i03 8.16219487199
+ign_hn09_i04 7.46889055923
+ign_hn09_i05 7.29382783195
+ign_hn09_i06 6.79956959574
+ign_hn09_i07 5.86255415761
+ign_hn09_i08 5.9140834959
+ign_hn09_i09 5.74767202504
+ign_hn09_i10 5.73490129528
+hn09_i  Value has been calculated
+Project hn09_i saved successfully
+ign_hn09_j01 9.27446758417
+ign_hn09_j02 8.53194348808
+ign_hn09_j03 8.32854895416
+ign_hn09_j04 7.46314619488
+ign_hn09_j05 6.87746594874
+ign_hn09_j06 6.28395377225
+ign_hn09_j07 5.99944046722
+ign_hn09_j08 5.9373113643
+ign_hn09_j09 5.46801687477
+hn09_j  Value has been calculated
+Project hn09_j saved successfully
+ign_hn09_k01 9.35517973444
+ign_hn09_k02 8.64976220704
+ign_hn09_k03 8.11941392551
+ign_hn09_k04 7.39037431086
+ign_hn09_k05 6.82790216922
+ign_hn09_k06 6.37471200472
+ign_hn09_k07 5.97714126551
+ign_hn09_k08 5.8993487228
+ign_hn09_k09 5.59161717485
+ign_hn09_k10 5.38139033411
+ign_hn09_k11 5.12399594969
+hn09_k  Value has been calculated
+Project hn09_k saved successfully
+ign_hn09_l01 8.17592327044
+ign_hn09_l02 7.40374730583
+ign_hn09_l03 6.66660387552
+ign_hn09_l04 6.68433092653
+ign_hn09_l05 6.55470100464
+ign_hn09_l06 6.33632436101
+ign_hn09_l07 5.81072270504
+ign_hn09_l08 5.47779866621
+ign_hn09_l09 5.15015660517
+hn09_l  Value has been calculated
+Project hn09_l saved successfully
+ign_hn09_m01 8.75733164452
+ign_hn09_m02 8.59187610202
+ign_hn09_m03 8.18591581215
+ign_hn09_m04 8.04402538174
+ign_hn09_m05 7.1509465256
+ign_hn09_m06 7.13483638046
+ign_hn09_m07 6.27555435968
+ign_hn09_m08 5.89814670501
+ign_hn09_m09 5.10553478944
+hn09_m  Value has been calculated
+Project hn09_m saved successfully
+ign_hn09_n01 8.88843384079
+ign_hn09_n02 8.31080042011
+ign_hn09_n03 8.23327356334
+ign_hn09_n04 7.89152324867
+ign_hn09_n05 7.38768113834
+ign_hn09_n06 7.32787385129
+ign_hn09_n07 6.64391036567
+ign_hn09_n08 6.01771457577
+ign_hn09_n09 5.93195850778
+ign_hn09_n10 5.63367509073
+hn09_n  Value has been calculated
+Project hn09_n saved successfully
+ign_hn09_o01 8.38559352556
+ign_hn09_o02 8.25162124266
+ign_hn09_o03 7.78211968771
+ign_hn09_o04 7.39743014423
+ign_hn09_o05 7.28794848484
+ign_hn09_o06 7.2695126529
+ign_hn09_o07 7.0706085642
+ign_hn09_o08 6.73244485327
+ign_hn09_o09 6.66117016325
+ign_hn09_o10 6.53140518462
+ign_hn09_o11 5.93007698097
+ign_hn09_o12 5.78939202794
+ign_hn09_o13 5.51010765023
+hn09_o  Value has been calculated
+Project hn09_o saved successfully
+ign_hn09_p01 9.02292259955
+ign_hn09_p02 8.85051060679
+ign_hn09_p03 8.22044179639
+ign_hn09_p04 8.10108756682
+ign_hn09_p05 7.96292812931
+ign_hn09_p06 7.60834463789
+ign_hn09_p07 7.38321427649
+ign_hn09_p08 7.00085882452
+ign_hn09_p09 6.96096290046
+ign_hn09_p10 6.66449340724
+ign_hn09_p11 6.63599717674
+ign_hn09_p12 6.34048760926
+ign_hn09_p13 6.33825066953
+ign_hn09_p14 5.7687862806
+ign_hn09_p15 5.37857226625
+ign_hn09_p16 4.9570371423
+ign_hn09_p17 4.91476353492
+hn09_p  Value has been calculated
+Project hn09_p saved successfully
+ign_hn09_q01 8.53443744969
+ign_hn09_q02 8.02447453389
+ign_hn09_q03 7.66934484588
+ign_hn09_q04 7.24622224634
+ign_hn09_q05 6.7336645265
+ign_hn09_q06 6.26351916302
+ign_hn09_q07 5.76677580388
+ign_hn09_q08 5.34244565682
+ign_hn09_q09 5.23424504532
+ign_hn09_q10 4.9425433751
+hn09_q  Value has been calculated
+Project hn09_q saved successfully
+ign_hn09_r01 8.18367976898
+ign_hn09_r02 8.15768394725
+ign_hn09_r03 8.03117033519
+ign_hn09_r04 7.61981130039
+ign_hn09_r05 7.36273108774
+ign_hn09_r06 7.31529038672
+ign_hn09_r07 7.32716887698
+ign_hn09_r08 7.05027194731
+ign_hn09_r09 6.60558893123
+ign_hn09_r10 6.56602633011
+ign_hn09_r11 6.57549027451
+ign_hn09_r12 6.49010502657
+ign_hn09_r13 6.23764692906
+ign_hn09_r14 5.65535265815
+ign_hn09_r15 5.31599467092
+ign_hn09_r16 4.86181840033
+ign_hn09_r17 4.65807610152
+ign_hn09_r18 4.40828651033
+hn09_r  Value has been calculated
+Project hn09_r saved successfully
+ign_hn09_s01 8.81386307255
+ign_hn09_s02 8.61913086364
+ign_hn09_s03 8.59199164692
+ign_hn09_s04 7.97240655755
+ign_hn09_s05 7.67144442353
+ign_hn09_s06 7.57539605079
+ign_hn09_s07 7.0551110752
+ign_hn09_s08 7.03495026317
+ign_hn09_s09 6.62272918151
+ign_hn09_s10 5.8279227558
+ign_hn09_s11 5.68627838168
+hn09_s  Value has been calculated
+Project hn09_s saved successfully
+ign_hn09_t01 8.39280306504
+ign_hn09_t02 8.04719981602
+ign_hn09_t03 7.75439875922
+ign_hn09_t04 7.27202490636
+ign_hn09_t05 6.73286514707
+ign_hn09_t06 6.33687326182
+ign_hn09_t07 6.29793183215
+ign_hn09_t08 6.0724774777
+ign_hn09_t09 5.75045985151
+ign_hn09_t10 5.52394196837
+ign_hn09_t11 5.29423264994
+hn09_t  Value has been calculated
+Project hn09_t saved successfully
+ign_hn09_u01 8.3158347663
+ign_hn09_u02 8.22626488886
+ign_hn09_u03 8.22188691359
+ign_hn09_u04 7.79013204161
+ign_hn09_u05 7.6294062194
+ign_hn09_u06 7.50793633206
+ign_hn09_u07 7.54722273643
+ign_hn09_u08 7.39317952006
+ign_hn09_u09 7.22392479816
+ign_hn09_u10 7.06830113287
+ign_hn09_u11 6.96458854299
+ign_hn09_u12 6.40330501082
+ign_hn09_u13 6.34025132918
+ign_hn09_u14 5.84761926704
+ign_hn09_u15 5.73358598015
+ign_hn09_u16 5.69188489086
+ign_hn09_u17 5.70384605092
+ign_hn09_u18 4.92127741623
+hn09_u  Value has been calculated
+Project hn09_u saved successfully
+ign_hn09_v01 8.58531320486
+ign_hn09_v02 7.86787714525
+ign_hn09_v03 7.18994362028
+ign_hn09_v04 6.73192178439
+ign_hn09_v05 6.24470037153
+ign_hn09_v06 5.70868124302
+ign_hn09_v07 5.26289983692
+hn09_v  Value has been calculated
+Project hn09_v saved successfully
+ign_hn09_w01 9.00602293241
+ign_hn09_w02 8.85520450881
+ign_hn09_w03 8.35414922177
+ign_hn09_w04 8.2717703614
+ign_hn09_w05 7.87174799482
+ign_hn09_w06 7.39446335823
+ign_hn09_w07 7.21085401912
+ign_hn09_w08 6.82985031715
+ign_hn09_w09 6.61629042606
+ign_hn09_w10 6.47277231781
+ign_hn09_w11 5.96134553701
+ign_hn09_w12 5.37925219795
+hn09_w  Value has been calculated
+Project hn09_w saved successfully
+ign_hn09_x01 8.16895035314
+ign_hn09_x02 8.0068908072
+ign_hn09_x03 7.96227240413
+ign_hn09_x04 7.91852909978
+ign_hn09_x05 7.76010301548
+ign_hn09_x06 7.75537199722
+ign_hn09_x07 7.76359093796
+ign_hn09_x08 7.66391178739
+ign_hn09_x09 7.13739986947
+ign_hn09_x10 7.12531564634
+ign_hn09_x11 6.691479721
+ign_hn09_x12 6.21213739739
+ign_hn09_x13 6.09286175965
+ign_hn09_x14 5.97923877937
+ign_hn09_x15 5.63135867106
+hn09_x  Value has been calculated
+Project hn09_x saved successfully
+ign_hsi99_d01 5.43638580874
+ign_hsi99_d02 5.20708915331
+ign_hsi99_d03 4.47710825331
+ign_hsi99_d04 4.20271042972
+ign_hsi99_d05 3.80196090285
+ign_hsi99_d06 3.65022257734
+ign_hsi99_d07 4.57692074497
+ign_hsi99_d08 3.80196090285
+ign_hsi99_d09 3.92755754006
+ign_hsi99_d10 4.25265071962
+ign_hsi99_d11 6.03422657749
+ign_hsi99_d12 5.87631236797
+hsi99_d  Value has been calculated
+Project hsi99_d saved successfully
+ign_hsi99_e01 6.74677000954
+ign_hsi99_e02 5.78687397804
+ign_hsi99_e03 5.03933894232
+ign_hsi99_e04 4.71641087097
+ign_hsi99_e05 4.4237795922
+ign_hsi99_e06 3.60513422184
+ign_hsi99_e07 5.71240546788
+hsi99_e  Value has been calculated
+Project hsi99_e saved successfully
+ign_hsi99_f01 5.9743788007
+ign_hsi99_f02 5.95120184535
+ign_hsi99_f03 5.47085939432
+ign_hsi99_f04 5.49348859819
+ign_hsi99_f05 5.2459213783
+ign_hsi99_f06 4.69283499782
+ign_hsi99_f07 4.45323384957
+ign_hsi99_f08 3.76832078471
+ign_hsi99_f09 3.89536184359
+hsi99_f  Value has been calculated
+Project hsi99_f saved successfully
+ign_hsi99_g01 6.13037505157
+ign_hsi99_g02 6.42570335872
+ign_hsi99_g03 6.37123030473
+ign_hsi99_g04 5.6780133742
+ign_hsi99_g05 6.02352632226
+ign_hsi99_g06 5.75653077233
+ign_hsi99_g07 5.25350320103
+ign_hsi99_g08 5.3857575952
+ign_hsi99_g09 4.9325335269
+ign_hsi99_g10 4.62859559095
+ign_hsi99_g11 4.51003854859
+ign_hsi99_g12 3.724399454
+ign_hsi99_g13 4.14498586493
+ign_hsi99_g14 3.58633403363
+hsi99_g  Value has been calculated
+Project hsi99_g saved successfully
+ign_hsi99_h01 6.23160267018
+ign_hsi99_h02 6.11329911762
+ign_hsi99_h03 5.74474484018
+ign_hsi99_h04 5.54058941805
+ign_hsi99_h05 5.18432596169
+ign_hsi99_h06 5.0309072434
+ign_hsi99_h07 4.85773611963
+ign_hsi99_h08 4.64410182068
+ign_hsi99_h09 4.55956506107
+ign_hsi99_h10 4.10337955124
+ign_hsi99_h11 4.0624840255
+ign_hsi99_h12 4.02190325992
+ign_hsi99_h13 6.27877400681
+hsi99_h  Value has been calculated
+Project hsi99_h saved successfully
+ign_hsi99_i01 5.82639999673
+ign_hsi99_i02 5.26973943304
+ign_hsi99_i03 4.85185906473
+ign_hsi99_i04 4.69258210226
+ign_hsi99_i05 4.25883652722
+ign_hsi99_i06 3.88785481433
+hsi99_i  Value has been calculated
+Project hsi99_i saved successfully
+ign_hsi99_j01 6.47183054653
+ign_hsi99_j02 5.81771410904
+ign_hsi99_j03 5.42968146669
+ign_hsi99_j04 4.87800507175
+ign_hsi99_j05 4.64063650704
+ign_hsi99_j06 4.25967885318
+hsi99_j  Value has been calculated
+Project hsi99_j saved successfully
+ign_lif77_1a01 3.19523929505
+ign_lif77_1a02 3.35195148622
+ign_lif77_1a03 3.88428057322
+ign_lif77_1a04 4.07629165449
+ign_lif77_1a05 4.07626368794
+ign_lif77_1a06 4.10054250881
+ign_lif77_1a07 4.32161350353
+ign_lif77_1a08 4.3964003748
+ign_lif77_1a09 5.03997393074
+ign_lif77_1a10 5.3337578412
+lif77_1a  Value has been calculated
+Project lif77_1a saved successfully
+ign_lif77_1b01 2.80752981062
+ign_lif77_1b02 3.5023181177
+ign_lif77_1b03 3.98120238296
+ign_lif77_1b04 4.32979126877
+ign_lif77_1b05 4.88145824682
+ign_lif77_1b06 5.03430616251
+ign_lif77_1b07 5.66501449104
+ign_lif77_1b08 5.94450126351
+ign_lif77_1b09 6.15725706421
+lif77_1b  Value has been calculated
+Project lif77_1b saved successfully
+ign_lif77_1c01 3.09994711364
+ign_lif77_1c02 3.37292675084
+ign_lif77_1c03 3.53474899198
+ign_lif77_1c04 3.53474899198
+ign_lif77_1c05 3.95904245521
+ign_lif77_1c06 4.10279871519
+ign_lif77_1c07 4.34457044659
+ign_lif77_1c08 4.41755160468
+ign_lif77_1c09 4.68660727863
+ign_lif77_1c10 4.80942429156
+ign_lif77_1c11 4.98179378215
+ign_lif77_1c12 5.40056965549
+ign_lif77_1c13 6.01117550527
+lif77_1c  Value has been calculated
+Project lif77_1c saved successfully
+ign_lif77_2a01 6.07419864879
+ign_lif77_2a02 5.87609045473
+ign_lif77_2a03 5.17752233976
+ign_lif77_2a04 4.90456346595
+ign_lif77_2a05 4.63551783787
+ign_lif77_2a06 4.63551783787
+ign_lif77_2a07 4.37155000225
+ign_lif77_2a08 4.16430406842
+ign_lif77_2a09 3.70993498523
+ign_lif77_2a10 3.3671605964
+lif77_2a  Value has been calculated
+Project lif77_2a saved successfully
+ign_lif77_2b01 4.88674788734
+ign_lif77_2b02 4.79647002439
+ign_lif77_2b03 4.57230774395
+ign_lif77_2b04 4.39467292521
+ign_lif77_2b05 4.39467292521
+ign_lif77_2b06 4.13136441588
+ign_lif77_2b07 3.87204942105
+ign_lif77_2b08 3.87204942105
+ign_lif77_2b09 3.72258204954
+ign_lif77_2b10 3.44850852991
+ign_lif77_2b11 2.9945467261
+lif77_2b  Value has been calculated
+Project lif77_2b saved successfully
+ign_lif77_2c01 5.28827257933
+ign_lif77_2c02 4.87470356202
+ign_lif77_2c03 4.6953529129
+ign_lif77_2c04 4.36281595708
+ign_lif77_2c05 3.98234738752
+ign_lif77_2c06 3.78145735573
+ign_lif77_2c07 3.6569752025
+ign_lif77_2c08 3.60736786803
+ign_lif77_2c09 3.60736786803
+ign_lif77_2c10 3.09576221593
+ign_lif77_2c11 2.85847341381
+lif77_2c  Value has been calculated
+Project lif77_2c saved successfully
+ign_lif77_3a01 2.60792498078
+ign_lif77_3a02 3.07190208785
+ign_lif77_3a03 3.19984082279
+ign_lif77_3a04 3.30850249238
+ign_lif77_3a05 3.50842276504
+ign_lif77_3a06 3.64461377944
+ign_lif77_3a07 3.66753861893
+ign_lif77_3a08 3.69049824509
+ign_lif77_3a09 4.23170401048
+ign_lif77_3a10 4.69207234223
+ign_lif77_3a11 4.81428265497
+ign_lif77_3a12 5.04994726238
+lif77_3a  Value has been calculated
+Project lif77_3a saved successfully
+ign_lif77_3b01 2.69440776006
+ign_lif77_3b02 3.25758288919
+ign_lif77_3b03 3.52314653169
+ign_lif77_3b04 3.36722689998
+ign_lif77_3b05 3.52314653169
+ign_lif77_3b06 3.98159956884
+ign_lif77_3b07 4.19273296839
+ign_lif77_3b08 4.2163848802
+ign_lif77_3b09 4.59758180505
+ign_lif77_3b10 5.66524573164
+ign_lif77_3b11 6.61696229355
+lif77_3b  Value has been calculated
+Project lif77_3b saved successfully
+ign_lif77_4a01 3.44877482697
+ign_lif77_4a02 3.58620469017
+ign_lif77_4a03 3.77130345137
+ign_lif77_4a04 4.07622872865
+ign_lif77_4a05 4.24225984762
+ign_lif77_4a06 4.69761287735
+ign_lif77_4a07 4.81822899922
+lif77_4a  Value has been calculated
+Project lif77_4a saved successfully
+ign_lif77_4b01 3.99775991951
+ign_lif77_4b02 3.97499350633
+ign_lif77_4b03 3.99775991951
+ign_lif77_4b04 4.20382294584
+ign_lif77_4b05 4.22680812799
+ign_lif77_4b06 4.5741410498
+ign_lif77_4b07 4.5276384376
+ign_lif77_4b08 4.50438901287
+ign_lif77_4b09 4.80744066424
+ign_lif77_4b10 5.0882395406
+lif77_4b  Value has been calculated
+Project lif77_4b saved successfully
+ign_psn98_a01 6.92348896142
+ign_psn98_a02 6.58553445532
+ign_psn98_a03 6.18267251269
+ign_psn98_a04 6.07015691487
+ign_psn98_a05 5.60931969877
+ign_psn98_a06 5.20241137482
+psn98_a  Value has been calculated
+Project psn98_a saved successfully
+ign_psn98_b01 7.12936206658
+ign_psn98_b02 6.7530916426
+ign_psn98_b03 6.42667561936
+ign_psn98_b04 6.33324745678
+psn98_b  Value has been calculated
+Project psn98_b saved successfully
+ign_psn98_c01 5.31158791554
+ign_psn98_c02 5.13869010105
+ign_psn98_c03 4.61235031023
+psn98_c  Value has been calculated
+Project psn98_c saved successfully
+ign_psn98_d01 5.97415561202
+ign_psn98_d02 5.43056077493
+psn98_d  Value has been calculated
+Project psn98_d saved successfully
+ign_psn98_e01 6.52146595918
+ign_psn98_e02 6.12765530237
+ign_psn98_e03 5.9494374553
+ign_psn98_e04 5.56136370097
+psn98_e  Value has been calculated
+Project psn98_e saved successfully
+ign_psn98_f01 4.50269247395
+ign_psn98_f02 7.17392538128
+ign_psn98_f03 7.13988478801
+ign_psn98_f04 7.0366872375
+ign_psn98_f05 5.29329117607
+ign_psn98_f06 4.74268763085
+psn98_f  Value has been calculated
+Project psn98_f saved successfully
+ign_psn98_g01 7.07520037817
+ign_psn98_g02 6.80783085817
+ign_psn98_g03 7.07420570341
+ign_psn98_g04 7.25887969093
+ign_psn98_g05 6.28386590063
+ign_psn98_g06 4.84861852193
+psn98_g  Value has been calculated
+Project psn98_g saved successfully
+ign_psn98_h01 6.19149282851
+ign_psn98_h02 5.80024860231
+ign_psn98_h03 4.59846148411
+psn98_h  Value has been calculated
+Project psn98_h saved successfully
+ign_psn98_i01 6.16449789682
+ign_psn98_i02 5.45467064468
+ign_psn98_i03 4.83063769498
+psn98_i  Value has been calculated
+Project psn98_i saved successfully
+ign_psn98_j01 7.30580883399
+ign_psn98_j02 6.27407306947
+ign_psn98_j03 5.6105204127
+psn98_j  Value has been calculated
+Project psn98_j saved successfully
+ign_psn98_k01 6.70365595247
+ign_psn98_k02 6.07241352124
+ign_psn98_k03 5.4810864779
+psn98_k  Value has been calculated
+Project psn98_k saved successfully
+ign_psn98_l01 7.59530469847
+ign_psn98_l02 6.76186931754
+psn98_l  Value has been calculated
+Project psn98_l saved successfully
+ign_psn98_m01 6.28498624045
+ign_psn98_m02 5.89463648082
+ign_psn98_m03 4.70045095751
+psn98_m  Value has been calculated
+Project psn98_m saved successfully
+ign_psn98_n01 6.26160815684
+ign_psn98_n02 5.55328440243
+ign_psn98_n03 4.92943530082
+psn98_n  Value has been calculated
+Project psn98_n saved successfully
+ign_psn98_o01 7.37248036612
+ign_psn98_o02 6.35499816062
+ign_psn98_o03 5.7004786833
+psn98_o  Value has been calculated
+Project psn98_o saved successfully
+ign_psn98_p01 6.77177918035
+ign_psn98_p02 6.14714577589
+ign_psn98_p03 5.56402358403
+psn98_p  Value has been calculated
+Project psn98_p saved successfully
+ign_psn98_q01 7.65631805306
+ign_psn98_q02 6.82683695155
+psn98_q  Value has been calculated
+Project psn98_q saved successfully
+ign_psn98_r01 4.77712901535
+ign_psn98_r02 7.43523420644
+ign_psn98_r03 6.41849401746
+ign_psn98_r04 6.05097551912
+ign_psn98_r05 5.53737830027
+ign_psn98_r06 6.75618863711
+ign_psn98_r07 6.46548090088
+ign_psn98_r08 5.59107539787
+ign_psn98_r09 5.44885695047
+psn98_r  Value has been calculated
+Project psn98_r saved successfully
+ign_psn98_s01 7.24203039938
+ign_psn98_s02 6.58582782049
+ign_psn98_s03 5.32636626113
+ign_psn98_s04 6.27442937604
+ign_psn98_s05 6.00329485077
+psn98_s  Value has been calculated
+Project psn98_s saved successfully
+ign_psn98_t01 8.25549009657
+ign_psn98_t02 6.94881215314
+ign_psn98_t03 6.40094631214
+ign_psn98_t04 5.83216948926
+ign_psn98_t05 5.73786275181
+ign_psn98_t06 5.14919704302
+ign_psn98_t07 4.96562458462
+ign_psn98_t08 6.57194980306
+ign_psn98_t09 5.59179144409
+ign_psn98_t10 5.50851721791
+ign_psn98_t11 5.29187476724
+psn98_t  Value has been calculated
+Project psn98_t saved successfully
+ign_psn98_u01 5.81839030868
+ign_psn98_u02 5.45599051735
+ign_psn98_u03 5.18433288764
+ign_psn98_u04 5.36533187245
+ign_psn98_u05 5.09948069685
+ign_psn98_u06 4.70743921221
+psn98_u  Value has been calculated
+Project psn98_u saved successfully
+ign_psn98_v01 4.84176437444
+ign_psn98_v02 4.08478747222
+ign_psn98_v03 5.83105646122
+ign_psn98_v04 5.48209660065
+ign_psn98_v05 5.26176751584
+ign_psn98_v06 7.78231083783
+ign_psn98_v07 6.94169989919
+ign_psn98_v08 6.14540686826
+psn98_v  Value has been calculated
+Project psn98_v saved successfully
+ign_psn98_w01 7.48286573246
+ign_psn98_w02 6.9733447642
+ign_psn98_w03 6.36995924671
+ign_psn98_w04 5.82125174039
+psn98_w  Value has been calculated
+Project psn98_w saved successfully
+ign_psn98_x01 6.41408137205
+ign_psn98_x02 5.20519172669
+ign_psn98_x03 7.01333389372
+ign_psn98_x04 5.95038979695
+ign_psn98_x05 5.72006175136
+ign_psn98_x06 5.91961297372
+psn98_x  Value has been calculated
+Project psn98_x saved successfully
+ign_psn98_y01 5.78702688546
+ign_psn98_y02 5.45917707958
+psn98_y  Value has been calculated
+Project psn98_y saved successfully
+ign_sb70_a01 4.40290229895
+ign_sb70_a02 4.70440332498
+ign_sb70_a03 5.1315043833
+ign_sb70_a04 5.38546499524
+ign_sb70_a05 5.51936778641
+ign_sb70_a06 5.96052571324
+ign_sb70_a07 6.21828644463
+ign_sb70_a08 6.32667708605
+ign_sb70_a09 6.63292532174
+ign_sb70_a10 6.69904485931
+ign_sb70_a11 7.25224757157
+sb70_a  Value has been calculated
+Project sb70_a saved successfully
+ign_sb70_b01 4.48564890416
+ign_sb70_b02 4.84759096523
+ign_sb70_b03 4.89743467676
+ign_sb70_b04 5.32931826918
+ign_sb70_b05 5.63373319166
+ign_sb70_b06 5.73171318759
+ign_sb70_b07 5.7812354907
+ign_sb70_b08 5.85143121896
+ign_sb70_b09 6.00701023669
+ign_sb70_b10 6.43099334127
+ign_sb70_b11 6.6581041417
+sb70_b  Value has been calculated
+Project sb70_b saved successfully
+ign_sb70_c01 5.66936483229
+ign_sb70_c02 5.71783804635
+ign_sb70_c03 6.03223312223
+ign_sb70_c04 6.26277568462
+ign_sb70_c05 6.45624360402
+ign_sb70_c06 6.68355575804
+ign_sb70_c07 6.77748064488
+ign_sb70_c08 7.24303234366
+ign_sb70_c09 7.20037249927
+ign_sb70_c10 7.53229973367
+ign_sb70_c11 7.87627735604
+ign_sb70_c12 6.40938879564
+sb70_c  Value has been calculated
+Project sb70_c saved successfully
+ign_yf95_a01 5.91248373537
+ign_yf95_a02 5.06195869362
+ign_yf95_a03 5.31574645708
+ign_yf95_a04 5.12740952029
+ign_yf95_a05 4.44339722273
+ign_yf95_a06 4.01305519767
+ign_yf95_a07 3.71332454596
+ign_yf95_a08 3.32631255285
+ign_yf95_a09 2.89286853662
+yf95_a  Value has been calculated
+Project yf95_a saved successfully
+ign_yf95_b01 6.40950881985
+ign_yf95_b02 6.29188799741
+ign_yf95_b03 6.49937533574
+ign_yf95_b04 6.09843401627
+ign_yf95_b05 5.43019434
+ign_yf95_b06 5.08506271247
+ign_yf95_b07 5.37710207643
+ign_yf95_b08 4.83895407119
+ign_yf95_b09 4.78922021333
+ign_yf95_b10 4.35246788012
+yf95_b  Value has been calculated
+Project yf95_b saved successfully
+ign_yf95_c01 5.7219946799
+ign_yf95_c02 6.01977279142
+ign_yf95_c03 5.51832355519
+ign_yf95_c04 5.24647693508
+ign_yf95_c05 5.18937148216
+ign_yf95_c06 4.80925969937
+ign_yf95_c07 4.23809171185
+ign_yf95_c08 4.18585154848
+yf95_c  Value has been calculated
+Project yf95_c saved successfully
+ign_yf95_d01 6.28404118062
+ign_yf95_d02 6.07378041195
+ign_yf95_d03 6.2631242644
+ign_yf95_d04 5.62703397197
+ign_yf95_d05 5.53213386137
+ign_yf95_d06 4.98924605724
+yf95_d  Value has been calculated
+Project yf95_d saved successfully
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="stderr docutils container">
+<div class="highlight"><pre>
+/opt/anaconda2/envs/py36/lib/python3.6/site-packages/matplotlib/pyplot.py:524: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  max_open_warning, RuntimeWarning)
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<div class="highlight"><pre>
+
+
+Methane
+*******
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   hhbm04methane
+   hhbm06methane
+   hn09methane
+   hsi99methane
+   lif77methane
+   psn98methane
+   sb70methane
+   yf95methane
+
+
+methane_ign.rst
+ign_bs72_a01 7.63478023266
+ign_bs72_a02 6.30481438862
+ign_bs72_a03 5.32289013464
+ign_bs72_a04 4.57200762321
+ign_bs72_a05 3.97015111972
+ign_bs72_a06 3.73793806428
+bs72_a  Value has been calculated
+Project bs72_a saved successfully
+ign_bs72_b01 6.89868872801
+ign_bs72_b02 5.98638422023
+ign_bs72_b03 5.26394583898
+ign_bs72_b04 4.65995575784
+ign_bs72_b05 4.62845725834
+bs72_b  Value has been calculated
+Project bs72_b saved successfully
+ign_bs72_c01 7.91972288922
+ign_bs72_c02 6.54605193184
+ign_bs72_c03 5.33814032704
+ign_bs72_c04 4.31906564462
+ign_bs72_c05 3.8550233781
+bs72_c  Value has been calculated
+Project bs72_c saved successfully
+ign_bs72_d01 7.33087870215
+ign_bs72_d02 6.22344648801
+ign_bs72_d03 5.39336395071
+ign_bs72_d04 4.72461200136
+ign_bs72_d05 4.14542382919
+ign_bs72_d06 3.63989599963
+bs72_d  Value has been calculated
+Project bs72_d saved successfully
+ign_bs72_e01 7.91606820949
+ign_bs72_e02 6.91606870995
+ign_bs72_e03 6.05282275778
+ign_bs72_e04 5.26659465706
+ign_bs72_e05 4.57585991853
+ign_bs72_e06 3.9918638072
+ign_bs72_e07 3.52675044528
+bs72_e  Value has been calculated
+Project bs72_e saved successfully
+ign_bs72_f01 8.1468028814
+ign_bs72_f02 6.57252345315
+ign_bs72_f03 5.36247362965
+ign_bs72_f04 4.44994628846
+ign_bs72_f05 4.01262891921
+bs72_f  Value has been calculated
+Project bs72_f saved successfully
+ign_bs72_g01 11.2636754827
+ign_bs72_g02 12.4485784842
+ign_bs72_g03 6.48044205394
+ign_bs72_g04 5.26860791819
+ign_bs72_g05 4.69955317272
+bs72_g  Value has been calculated
+Project bs72_g saved successfully
+ign_bs72_h01 8.49689487854
+ign_bs72_h02 6.92890754753
+ign_bs72_h03 5.78193318179
+ign_bs72_h04 4.97360870529
+ign_bs72_h05 4.37314483979
+ign_bs72_h06 3.82319012409
+bs72_h  Value has been calculated
+Project bs72_h saved successfully
+ign_bs72_i01 6.47697236289
+ign_bs72_i02 5.23765316646
+ign_bs72_i03 6.57696996611
+ign_bs72_i04 5.67336175424
+ign_bs72_i05 4.89931062155
+ign_bs72_i06 4.28310868975
+ign_bs72_i07 3.61696926507
+ign_bs72_i08 3.20577710431
+bs72_i  Value has been calculated
+Project bs72_i saved successfully
+ign_bt99_a01 1.47921403224
+ign_bt99_a02 1.53902638463
+ign_bt99_a03 1.71340937176
+ign_bt99_a04 1.80197626462
+ign_bt99_a05 1.83851596813
+ign_bt99_a06 1.87707553606
+ign_bt99_a07 1.88833394181
+ign_bt99_a08 1.9248156284
+ign_bt99_a09 1.94559664079
+ign_bt99_a10 2.01505498653
+ign_bt99_a11 2.02059682236
+ign_bt99_a12 2.01469690392
+ign_bt99_a13 2.05294654932
+ign_bt99_a14 2.05985125603
+ign_bt99_a15 2.19671751792
+ign_bt99_a16 2.15991539325
+ign_bt99_a17 2.23501626898
+ign_bt99_a18 2.30317573884
+ign_bt99_a19 2.40448693658
+ign_bt99_a20 2.5754709685
+ign_bt99_a21 2.56174033786
+ign_bt99_a22 2.5852418951
+ign_bt99_a23 2.86156853121
+ign_bt99_a24 2.9560221218
+ign_bt99_a25 2.99896723926
+ign_bt99_a26 3.13182804807
+ign_bt99_a27 3.24599439393
+ign_bt99_a28 3.34339232468
+ign_bt99_a29 3.35330555654
+ign_bt99_a30 3.45821130694
+ign_bt99_a31 3.56253954788
+ign_bt99_a32 3.58678195686
+ign_bt99_a33 3.50946397941
+ign_bt99_a34 4.0812209508
+ign_bt99_a35 4.1199445989
+ign_bt99_a36 4.13650428463
+ign_bt99_a37 4.14890741067
+ign_bt99_a38 4.16112147252
+ign_bt99_a39 4.2903634943
+ign_bt99_a40 4.38005535552
+ign_bt99_a41 4.48427262123
+ign_bt99_a42 4.64270881765
+ign_bt99_a43 4.84823878645
+ign_bt99_a44 4.73834829432
+ign_bt99_a45 4.77901924066
+ign_bt99_a46 5.29864163953
+ign_bt99_a47 5.4908223642
+ign_bt99_a48 5.52786796116
+ign_bt99_a49 5.50870596804
+ign_bt99_a50 5.86204152485
+ign_bt99_a51 5.89314695804
+ign_bt99_a52 5.90009089155
+ign_bt99_a53 5.97715132675
+ign_bt99_a54 5.82927766553
+ign_bt99_a55 6.26164094141
+ign_bt99_a56 6.22345586517
+ign_bt99_a57 6.26929168115
+ign_bt99_a58 6.11660401622
+bt99_a  Value has been calculated
+Project bt99_a saved successfully
+ign_bt99_b01 1.35151965193
+ign_bt99_b02 1.6071596233
+ign_bt99_b03 1.67527954305
+ign_bt99_b04 2.01338555304
+ign_bt99_b05 2.05005486856
+ign_bt99_b06 2.02123122177
+ign_bt99_b07 2.52011563074
+ign_bt99_b08 2.59633658457
+ign_bt99_b09 2.64142073679
+ign_bt99_b10 2.75977832729
+ign_bt99_b11 2.76677062905
+ign_bt99_b12 2.96860289854
+ign_bt99_b13 3.55059215862
+ign_bt99_b14 3.63336140521
+ign_bt99_b15 3.48153630072
+ign_bt99_b16 3.90335671617
+ign_bt99_b17 3.75128364104
+ign_bt99_b18 4.18672747889
+ign_bt99_b19 4.64778944142
+ign_bt99_b20 4.68349539271
+ign_bt99_b21 4.58038339935
+ign_bt99_b22 4.98942489535
+ign_bt99_b23 5.15067450993
+ign_bt99_b24 5.37900730687
+ign_bt99_b25 5.420035453
+ign_bt99_b26 5.64451783679
+ign_bt99_b27 5.21339093945
+ign_bt99_b28 5.2144568155
+ign_bt99_b29 5.5760280527
+ign_bt99_b30 5.80684497225
+ign_bt99_b31 6.13803422598
+ign_bt99_b32 6.29571178529
+ign_bt99_b33 6.50487806694
+ign_bt99_b34 6.60244726128
+ign_bt99_b35 6.77759031875
+ign_bt99_b36 6.80919885376
+ign_bt99_b37 7.32996398953
+bt99_b  Value has been calculated
+Project bt99_b saved successfully
+ign_hge82_a01 4.26618860853
+ign_hge82_a02 4.39710573839
+ign_hge82_a03 4.6281049306
+ign_hge82_a04 4.80237900228
+ign_hge82_a05 4.87974132443
+ign_hge82_a06 4.92565155643
+ign_hge82_a07 5.22875174501
+ign_hge82_a08 5.37588829066
+ign_hge82_a09 5.52028041177
+ign_hge82_a10 5.59769548985
+ign_hge82_a11 5.75275621185
+ign_hge82_a12 5.82086856249
+ign_hge82_a13 5.89600821557
+ign_hge82_a14 5.91423309893
+ign_hge82_a15 6.23047970543
+ign_hge82_a16 6.53029232862
+hge82_a  Value has been calculated
+Project hge82_a saved successfully
+ign_hge82_b01 4.19256516255
+ign_hge82_b02 4.65515476305
+ign_hge82_b03 4.83214257956
+ign_hge82_b04 4.95458688839
+ign_hge82_b05 4.96286853185
+ign_hge82_b06 5.1645726769
+ign_hge82_b07 5.71135787538
+ign_hge82_b08 5.80436180324
+ign_hge82_b09 6.12623404359
+ign_hge82_b10 6.13998405826
+ign_hge82_b11 6.31606363016
+ign_hge82_b12 6.77737895551
+ign_hge82_b13 7.16506316482
+hge82_b  Value has been calculated
+Project hge82_b saved successfully
+ign_hnh99_b01 4.16296362524
+ign_hnh99_b02 4.41278590128
+ign_hnh99_b03 5.13813568374
+ign_hnh99_b04 5.11924826624
+ign_hnh99_b05 5.36399511774
+ign_hnh99_b06 5.91890525728
+ign_hnh99_b07 6.3851105622
+ign_hnh99_b08 6.45900036253
+hnh99_b  Value has been calculated
+Project hnh99_b saved successfully
+ign_hnh99_c01 4.41919866563
+ign_hnh99_c02 4.4909901374
+ign_hnh99_c03 4.87608496736
+ign_hnh99_c04 5.02539200583
+ign_hnh99_c05 5.10323220529
+ign_hnh99_c06 5.29278911339
+ign_hnh99_c07 5.41187599717
+ign_hnh99_c08 5.5020289494
+ign_hnh99_c09 5.76966382091
+ign_hnh99_c10 6.01891111109
+ign_hnh99_c11 6.03966234953
+ign_hnh99_c12 6.18685625335
+ign_hnh99_c13 6.44950554348
+ign_hnh99_c14 6.65532895697
+ign_hnh99_c15 6.9103306951
+hnh99_c  Value has been calculated
+Project hnh99_c saved successfully
+ign_hnh99_d01 3.66261632829
+ign_hnh99_d02 3.86769616292
+ign_hnh99_d03 4.39491208582
+ign_hnh99_d04 4.65448075741
+ign_hnh99_d05 4.65093963843
+ign_hnh99_d06 4.89501453086
+ign_hnh99_d07 5.26990624379
+ign_hnh99_d08 5.87653350449
+ign_hnh99_d09 5.95682688262
+ign_hnh99_d10 6.5211018324
+hnh99_d  Value has been calculated
+Project hnh99_d saved successfully
+ign_khp05_a01 3.59335177477
+ign_khp05_a02 3.98761716862
+ign_khp05_a03 4.19080796493
+ign_khp05_a04 4.15862651206
+ign_khp05_a05 4.82266794697
+ign_khp05_a06 5.1499477752
+ign_khp05_a07 5.52443683211
+ign_khp05_a08 4.3657739808
+ign_khp05_a09 3.2902069436
+ign_khp05_a10 3.2441518229
+ign_khp05_a11 3.53666349615
+ign_khp05_a12 3.61925764103
+ign_khp05_a13 3.94362321516
+ign_khp05_a14 4.61152598265
+ign_khp05_a15 5.1926914823
+ign_khp05_a16 5.63461956221
+ign_khp05_a17 6.11904239281
+khp05_a  Value has been calculated
+Project khp05_a saved successfully
+ign_khp05_b18 4.97919106891
+ign_khp05_b19 5.61734854544
+ign_khp05_b20 5.38880247
+ign_khp05_b21 5.19231662456
+ign_khp05_b22 5.17651501471
+ign_khp05_b23 5.86195598813
+ign_khp05_b24 5.45927119863
+ign_khp05_b25 5.28486671505
+ign_khp05_b26 5.63751013796
+ign_khp05_b27 5.44775288075
+ign_khp05_b28 5.05867337741
+ign_khp05_b29 5.54518185521
+ign_khp05_b30 5.60952053269
+ign_khp05_b31 5.42074859951
+ign_khp05_b32 5.55514617825
+ign_khp05_b33 5.36419371272
+ign_khp05_b34 6.21270596092
+ign_khp05_b35 4.38305073779
+ign_khp05_b36 4.44577746831
+ign_khp05_b37 5.11581665552
+ign_khp05_b38 6.27690583726
+khp05_b  Value has been calculated
+Project khp05_b saved successfully
+ign_khp05_c01 4.37425169892
+ign_khp05_c02 4.82438268097
+ign_khp05_c03 6.34671647434
+ign_khp05_c04 5.4309854067
+khp05_c  Value has been calculated
+Project khp05_c saved successfully
+ign_khp05_d05 7.11079452176
+ign_khp05_d06 6.02622917024
+ign_khp05_d07 5.00148713165
+ign_khp05_d08 6.55527423481
+ign_khp05_d09 4.9289276541
+ign_khp05_d10 5.31572778795
+ign_khp05_d11 6.13523085938
+ign_khp05_d12 5.68824077623
+ign_khp05_d13 7.48873118523
+ign_khp05_d14 6.81225017967
+ign_khp05_d15 7.48873118523
+ign_khp05_d16 5.35067245208
+ign_khp05_d17 4.81582494314
+khp05_d  Value has been calculated
+Project khp05_d saved successfully
+ign_khp05_e01 4.71195958143
+ign_khp05_e02 4.15122587762
+ign_khp05_e03 3.97666356451
+ign_khp05_e04 4.36488803535
+ign_khp05_e05 5.04097677818
+ign_khp05_e06 4.82386415531
+khp05_e  Value has been calculated
+Project khp05_e saved successfully
+ign_pyk09_a01 2.07023851873
+ign_pyk09_a02 2.96144838982
+ign_pyk09_a03 3.49912171749
+ign_pyk09_a04 3.84520095453
+ign_pyk09_a05 4.58134115304
+ign_pyk09_a06 5.23476875243
+ign_pyk09_a07 5.83063880652
+pyk09_a  Value has been calculated
+Project pyk09_a saved successfully
+ign_pyk09_b01 2.77153722051
+ign_pyk09_b02 3.24723750327
+ign_pyk09_b03 3.75582524886
+ign_pyk09_b04 4.47885235442
+ign_pyk09_b05 4.91585231905
+ign_pyk09_b06 5.46911083583
+ign_pyk09_b07 5.64927539271
+pyk09_b  Value has been calculated
+Project pyk09_b saved successfully
+ign_pyk09_c01 1.61696868892
+ign_pyk09_c02 2.09706375105
+ign_pyk09_c03 2.47108501726
+ign_pyk09_c04 3.00539385435
+ign_pyk09_c05 3.61811226514
+ign_pyk09_c06 4.017869853
+ign_pyk09_c07 4.75081793407
+pyk09_c  Value has been calculated
+Project pyk09_c saved successfully
+ign_pyk09_d01 2.41476571308
+ign_pyk09_d02 2.88669697078
+ign_pyk09_d03 3.29246351138
+ign_pyk09_d04 3.68523397771
+ign_pyk09_d05 4.24731744213
+ign_pyk09_d06 4.92183898878
+ign_pyk09_d07 5.1553843555
+pyk09_d  Value has been calculated
+Project pyk09_d saved successfully
+ign_pyk09_e01 2.68194436402
+ign_pyk09_e02 3.04810907955
+ign_pyk09_e03 3.90700034214
+ign_pyk09_e04 4.36142050014
+ign_pyk09_e05 4.65175192846
+ign_pyk09_e06 5.19056939353
+ign_pyk09_e07 5.39280045547
+pyk09_e  Value has been calculated
+Project pyk09_e saved successfully
+ign_pyk09_f01 1.40604320722
+ign_pyk09_f02 1.8686444961
+ign_pyk09_f03 2.55463421633
+ign_pyk09_f04 3.02991975948
+ign_pyk09_f05 3.61807541456
+ign_pyk09_f06 4.13019327294
+ign_pyk09_f07 4.74360705332
+pyk09_f  Value has been calculated
+Project pyk09_f saved successfully
+ign_sks11_a01 7.56588165465
+ign_sks11_a02 7.42397738727
+ign_sks11_a03 7.25173168102
+ign_sks11_a04 6.85149780482
+ign_sks11_a05 6.57771313063
+ign_sks11_a06 6.67955229656
+ign_sks11_a07 6.42849802925
+ign_sks11_a08 6.34254449197
+ign_sks11_a09 6.25129499269
+ign_sks11_a10 6.0110480671
+ign_sks11_a11 5.92176666184
+ign_sks11_a12 5.92176666184
+ign_sks11_a13 5.87312264522
+ign_sks11_a14 5.49735306469
+ign_sks11_a15 5.42391618764
+ign_sks11_a16 5.20330873124
+ign_sks11_a17 5.02157760873
+ign_sks11_a18 5.05827297382
+ign_sks11_a19 5.09707734774
+ign_sks11_a20 4.98452528037
+ign_sks11_a21 4.93768913176
+ign_sks11_a22 4.70317102871
+ign_sks11_a23 4.57776530324
+ign_sks11_a24 4.31375985875
+sks11_a  Value has been calculated
+Project sks11_a saved successfully
+ign_sks11_b01 6.72052852287
+ign_sks11_b02 6.45887224621
+ign_sks11_b03 6.18486406785
+ign_sks11_b04 5.97528982198
+ign_sks11_b05 5.94418348232
+ign_sks11_b06 5.4584310238
+ign_sks11_b07 4.99760109109
+ign_sks11_b08 4.83371781013
+ign_sks11_b09 4.73331332397
+ign_sks11_b10 4.4655341207
+ign_sks11_b11 4.36506652883
+ign_sks11_b12 4.24870230418
+ign_sks11_b13 4.23258078923
+ign_sks11_b14 4.1382523669
+ign_sks11_b15 3.94795209214
+ign_sks11_b16 3.88041101652
+ign_sks11_b17 3.69349221206
+ign_sks11_b18 3.53248697245
+ign_sks11_b19 3.47464584771
+ign_sks11_b20 3.36076483427
+ign_sks11_b21 6.69623595096
+ign_sks11_b22 6.31903464535
+ign_sks11_b23 5.77823661608
+ign_sks11_b24 5.20974393478
+ign_sks11_b25 4.69335275187
+ign_sks11_b26 4.19347461873
+ign_sks11_b27 4.18707453034
+ign_sks11_b28 3.81560271261
+ign_sks11_b29 3.62500721487
+ign_sks11_b30 3.32614315178
+ign_sks11_b31 3.21677523149
+ign_sks11_b32 2.94477943313
+sks11_b  Value has been calculated
+Project sks11_b saved successfully
+ign_sks11_c01 7.06416649826
+ign_sks11_c02 6.48366845613
+ign_sks11_c03 6.34527972343
+ign_sks11_c04 6.08535742996
+ign_sks11_c05 5.95955438793
+ign_sks11_c06 5.62773044407
+ign_sks11_c07 5.5065182878
+ign_sks11_c08 5.14673817112
+ign_sks11_c09 5.04787764715
+ign_sks11_c10 4.99071260344
+ign_sks11_c11 4.74509797101
+ign_sks11_c12 4.60550277228
+ign_sks11_c13 4.43037092483
+ign_sks11_c14 4.39452337368
+ign_sks11_c15 4.21926129025
+ign_sks11_c16 3.9875096393
+ign_sks11_c17 3.99863401338
+ign_sks11_c18 3.89486306236
+ign_sks11_c19 3.57612293175
+ign_sks11_c20 3.56162410225
+ign_sks11_c21 3.40849036421
+ign_sks11_c22 3.38016526961
+ign_sks11_c23 3.21727481249
+ign_sks11_c24 3.0296867464
+ign_sks11_c25 3.01420156103
+ign_sks11_c26 2.77657190583
+ign_sks11_c27 2.56959950194
+ign_sks11_c28 6.74106830888
+ign_sks11_c29 6.42918724769
+ign_sks11_c30 6.17913523611
+ign_sks11_c31 13.9043244126
+ign_sks11_c32 5.09790468088
+ign_sks11_c33 4.97342712148
+ign_sks11_c34 4.43410763982
+ign_sks11_c35 4.12262980292
+ign_sks11_c36 3.86728711159
+ign_sks11_c37 3.65449845108
+ign_sks11_c38 3.56005368235
+ign_sks11_c39 3.15257207476
+ign_sks11_c40 2.69287934765
+ign_sks11_c41 2.51674677745
+ign_sks11_c42 2.50238579786
+sks11_c  Value has been calculated
+Project sks11_c saved successfully
+ign_sks11_d01 7.58887284292
+ign_sks11_d02 7.32683075424
+ign_sks11_d03 7.1913614445
+ign_sks11_d04 6.46156639998
+ign_sks11_d05 5.61879652203
+ign_sks11_d06 5.47737075095
+ign_sks11_d07 5.0955947185
+ign_sks11_d08 4.6322418262
+ign_sks11_d09 4.12490263669
+ign_sks11_d10 3.80081248538
+sks11_d  Value has been calculated
+Project sks11_d saved successfully
+ign_sks11_e01 7.79255370608
+ign_sks11_e02 6.95468359193
+ign_sks11_e03 5.45123306605
+ign_sks11_e04 4.64385611167
+ign_sks11_e05 3.35412479678
+ign_sks11_e06 2.93757390925
+ign_sks11_e07 2.34304422872
+ign_sks11_e08 2.21225455957
+ign_sks11_e09 2.04357533382
+sks11_e  Value has been calculated
+Project sks11_e saved successfully
+ign_sks11_f01 6.69253826024
+ign_sks11_f02 5.36583667974
+ign_sks11_f03 5.09292813509
+ign_sks11_f04 4.35052795236
+ign_sks11_f05 4.05913963972
+ign_sks11_f06 3.51001428894
+sks11_f  Value has been calculated
+Project sks11_f saved successfully
+ign_sks11_g01 5.80911903373
+ign_sks11_g02 4.59380981914
+ign_sks11_g03 3.84828852294
+ign_sks11_g04 3.30518062294
+ign_sks11_g05 2.77188943452
+ign_sks11_g06 2.37667987711
+sks11_g  Value has been calculated
+Project sks11_g saved successfully
+ign_sks11_h01 6.56109644703
+ign_sks11_h02 4.09428098191
+ign_sks11_h03 3.21359150165
+ign_sks11_h04 2.37391592756
+sks11_h  Value has been calculated
+Project sks11_h saved successfully
+ign_sks11_i01 7.21327280283
+ign_sks11_i02 5.93467748119
+ign_sks11_i03 5.54122823989
+ign_sks11_i04 5.11419731844
+ign_sks11_i05 4.78156269145
+ign_sks11_i06 3.92178960963
+sks11_i  Value has been calculated
+Project sks11_i saved successfully
+ign_sks11_j01 7.14534356158
+ign_sks11_j02 5.63055724453
+ign_sks11_j03 4.06127610901
+ign_sks11_j04 3.58732131127
+ign_sks11_j05 3.02357068678
+sks11_j  Value has been calculated
+Project sks11_j saved successfully
+ign_sks11_k01 6.15701545084
+ign_sks11_k02 5.41139915597
+ign_sks11_k03 4.06624003699
+ign_sks11_k04 3.05148232714
+sks11_k  Value has been calculated
+Project sks11_k saved successfully
+
+
+Ethylene
+********
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   bs72ethylene
+   bt99ethylene
+   hge82ethylene
+   hnh99ethylene
+   khp05ethylene
+   pyk09ethylene
+   sks11ethylene
+
+
+ethylene_ign.rst
+ign_blss70_a01 4.70345611408
+ign_blss70_a02 4.94404388598
+ign_blss70_a03 5.19434105141
+ign_blss70_a04 5.21010065139
+ign_blss70_a05 5.83285498697
+ign_blss70_a06 5.72252709841
+ign_blss70_a07 5.84879995098
+ign_blss70_a08 5.89638879112
+ign_blss70_a09 6.13303236099
+ign_blss70_a10 6.156794958
+ign_blss70_a11 6.32161139849
+ign_blss70_a12 6.41565206516
+ign_blss70_a13 6.58710274402
+ign_blss70_a14 6.67264002233
+blss70_a  Value has been calculated
+Project blss70_a saved successfully
+ign_blss70_b01 4.37618839726
+ign_blss70_b02 4.56821421594
+ign_blss70_b03 4.81282167189
+ign_blss70_b04 5.55878892489
+ign_blss70_b05 5.54188626885
+ign_blss70_b06 5.71495537966
+ign_blss70_b07 5.81886229757
+ign_blss70_b08 6.01009859614
+ign_blss70_b09 6.1230863876
+ign_blss70_b10 6.43569435918
+ign_blss70_b11 6.40126898159
+ign_blss70_b12 6.61760087386
+ign_blss70_b13 6.67798658885
+ign_blss70_b14 6.80756782235
+ign_blss70_b15 7.08243177066
+blss70_b  Value has been calculated
+Project blss70_b saved successfully
+ign_blss70_c01 4.50481759043
+ign_blss70_c02 5.17460093051
+ign_blss70_c03 5.39822373481
+ign_blss70_c04 5.37607945576
+ign_blss70_c05 5.54565440629
+ign_blss70_c06 5.56782999881
+ign_blss70_c07 5.86504153187
+ign_blss70_c08 6.08507192298
+ign_blss70_c09 6.17592703455
+blss70_c  Value has been calculated
+Project blss70_c saved successfully
+ign_blss70_d01 2.08319577721
+ign_blss70_d02 2.68257588047
+ign_blss70_d03 4.53850701354
+ign_blss70_d04 4.65328582956
+ign_blss70_d05 4.66668911138
+ign_blss70_d06 4.77413542588
+ign_blss70_d07 5.01968842881
+ign_blss70_d08 5.39031019923
+ign_blss70_d09 5.56878400007
+ign_blss70_d10 5.9052806863
+ign_blss70_d11 5.88702041036
+ign_blss70_d12 5.96675846855
+ign_blss70_d13 6.42900378167
+ign_blss70_d14 6.41145579952
+ign_blss70_d15 6.60484244872
+ign_blss70_d16 7.08138925458
+blss70_d  Value has been calculated
+Project blss70_d saved successfully
+ign_blss70_e01 3.26309010595
+ign_blss70_e02 3.4009379486
+ign_blss70_e03 3.66191978356
+ign_blss70_e04 3.80299570044
+ign_blss70_e05 3.80925515455
+ign_blss70_e06 4.12543527904
+ign_blss70_e07 4.31320813414
+ign_blss70_e08 4.46400861346
+ign_blss70_e09 4.5716485586
+ign_blss70_e10 4.87550524707
+ign_blss70_e11 5.24861453932
+ign_blss70_e12 5.26766119117
+ign_blss70_e13 5.24876206293
+ign_blss70_e14 5.45687161419
+ign_blss70_e15 5.52011846444
+ign_blss70_e16 5.72687051125
+ign_blss70_e17 6.12351168447
+ign_blss70_e18 6.32455506508
+ign_blss70_e19 6.32437979944
+blss70_e  Value has been calculated
+Project blss70_e saved successfully
+ign_blss70_f01 5.00213470735
+ign_blss70_f02 5.02098096597
+ign_blss70_f03 5.17798410383
+ign_blss70_f04 5.35922127496
+ign_blss70_f05 5.56632726203
+ign_blss70_f06 5.71078962576
+ign_blss70_f07 5.9555682884
+ign_blss70_f08 6.21302970498
+ign_blss70_f09 6.21311497988
+ign_blss70_f10 6.18225595446
+ign_blss70_f11 6.28238966529
+ign_blss70_f12 6.45771295585
+ign_blss70_f13 6.37054733895
+ign_blss70_f14 6.56426340611
+ign_blss70_f15 6.79519199892
+ign_blss70_f16 6.94487026454
+ign_blss70_f17 7.04418912122
+blss70_f  Value has been calculated
+Project blss70_f saved successfully
+ign_blss70_g01 3.57651057416
+ign_blss70_g02 3.68452198216
+ign_blss70_g03 4.03985413084
+ign_blss70_g04 4.22724575906
+ign_blss70_g05 4.36604069678
+ign_blss70_g06 4.49939590201
+ign_blss70_g07 4.63598061048
+ign_blss70_g08 4.63470113685
+ign_blss70_g09 4.93716595261
+ign_blss70_g10 5.07350158043
+ign_blss70_g11 5.34349704008
+ign_blss70_g12 5.34906455237
+ign_blss70_g13 5.51410851562
+ign_blss70_g14 5.57836712298
+ign_blss70_g15 5.63196983983
+ign_blss70_g16 5.64480247799
+ign_blss70_g17 6.06638079934
+ign_blss70_g18 6.11987276557
+ign_blss70_g19 6.13373771678
+ign_blss70_g20 6.40947172665
+ign_blss70_g21 6.4819673323
+blss70_g  Value has been calculated
+Project blss70_g saved successfully
+ign_blss70_h01 4.86170388708
+ign_blss70_h02 4.82015308819
+ign_blss70_h03 4.95425567274
+ign_blss70_h04 5.12390058076
+ign_blss70_h05 5.34012373969
+ign_blss70_h06 5.45544669904
+ign_blss70_h07 5.48988987514
+ign_blss70_h08 5.65768346452
+ign_blss70_h09 5.96888409367
+ign_blss70_h10 6.07738442057
+ign_blss70_h11 6.08192351512
+ign_blss70_h12 6.1616423279
+ign_blss70_h13 6.2633148444
+ign_blss70_h14 6.30719740582
+ign_blss70_h15 6.44099564985
+ign_blss70_h16 6.579548926
+ign_blss70_h17 6.78790205922
+blss70_h  Value has been calculated
+Project blss70_h saved successfully
+ign_blss70_i01 3.92804568733
+ign_blss70_i02 4.17584705688
+ign_blss70_i03 4.58940679294
+ign_blss70_i04 4.57193821831
+ign_blss70_i05 4.7938576222
+ign_blss70_i06 4.99049362007
+ign_blss70_i07 4.99830165259
+ign_blss70_i08 5.73659100163
+ign_blss70_i09 5.91159507526
+ign_blss70_i10 5.98724652679
+ign_blss70_i11 6.13566225195
+ign_blss70_i12 6.29360298794
+ign_blss70_i13 6.43531215315
+blss70_i  Value has been calculated
+Project blss70_i saved successfully
+ign_blss70_j01 3.42562299183
+ign_blss70_j02 3.74318315865
+ign_blss70_j03 3.85034042824
+ign_blss70_j04 4.07662356809
+ign_blss70_j05 4.20912649897
+ign_blss70_j06 4.51600972847
+ign_blss70_j07 4.57900347261
+ign_blss70_j08 4.68075020125
+ign_blss70_j09 4.69623218601
+ign_blss70_j10 4.62493511439
+ign_blss70_j11 4.98037762914
+ign_blss70_j12 5.20098205099
+ign_blss70_j13 5.32756383334
+ign_blss70_j14 5.43690568401
+ign_blss70_j15 6.38654829785
+ign_blss70_j16 6.38628744231
+blss70_j  Value has been calculated
+Project blss70_j saved successfully
+ign_bsl71_a01 1.34575191304
+ign_bsl71_a02 4.54089367479
+ign_bsl71_a03 4.57386084427
+ign_bsl71_a04 4.7694996855
+ign_bsl71_a05 5.0758240097
+ign_bsl71_a06 5.15207297159
+ign_bsl71_a07 5.42546666624
+ign_bsl71_a08 5.70771911289
+ign_bsl71_a09 5.88520590283
+ign_bsl71_a10 5.96402194667
+ign_bsl71_a11 6.12509826375
+bsl71_a  Value has been calculated
+Project bsl71_a saved successfully
+ign_bt99_c01 1.3004942143
+ign_bt99_c02 1.45279695181
+ign_bt99_c03 1.55742157197
+ign_bt99_c04 2.05934540665
+ign_bt99_c05 2.27017069306
+ign_bt99_c06 2.62568853101
+ign_bt99_c07 4.88544317259
+ign_bt99_c08 3.71102768588
+ign_bt99_c09 4.21490738592
+ign_bt99_c10 5.34939279129
+ign_bt99_c11 3.26722004233
+ign_bt99_c12 4.07956429016
+ign_bt99_c13 4.49544921843
+bt99_c  Value has been calculated
+Project bt99_c saved successfully
+ign_bt99_d01 2.48451811098
+ign_bt99_d02 2.09039833265
+ign_bt99_d03 1.65351115887
+ign_bt99_d04 2.55171591199
+ign_bt99_d05 2.61930492209
+ign_bt99_d06 2.91974664766
+ign_bt99_d07 2.91974664766
+ign_bt99_d08 3.27751433044
+ign_bt99_d09 4.99813747677
+ign_bt99_d10 3.54153501173
+ign_bt99_d11 4.17667487819
+ign_bt99_d12 4.22729207216
+ign_bt99_d13 5.04866805074
+ign_bt99_d14 4.44970032792
+ign_bt99_d15 4.52420880797
+ign_bt99_d16 4.7488410779
+ign_bt99_d17 5.17236304766
+ign_bt99_d18 5.81861021094
+ign_bt99_d19 5.84116298171
+ign_bt99_d20 5.61808581809
+ign_bt99_d21 6.35422062619
+bt99_d  Value has been calculated
+Project bt99_d saved successfully
+ign_bt99_e01 2.17610484973
+ign_bt99_e02 1.69542716587
+ign_bt99_e03 1.76567086061
+ign_bt99_e04 1.83756074574
+ign_bt99_e05 2.6193039216
+ign_bt99_e06 2.28528310541
+ign_bt99_e07 7.04712678552
+bt99_e  Value has been calculated
+Project bt99_e saved successfully
+ign_bt99_f01 6.71538153678
+ign_bt99_f02 5.84008686426
+ign_bt99_f03 3.84270419669
+ign_bt99_f04 3.41621066247
+ign_bt99_f05 4.48694584509
+ign_bt99_f06 4.39550315089
+ign_bt99_f07 4.05763461048
+ign_bt99_f08 4.79345815107
+ign_bt99_f09 5.36645049356
+ign_bt99_f10 5.27724733487
+ign_bt99_f11 6.04298955751
+ign_bt99_f12 4.82305407991
+bt99_f  Value has been calculated
+Project bt99_f saved successfully
+ign_gw94_a01 4.39187993154
+ign_gw94_a02 4.42810942511
+ign_gw94_a03 4.51652172752
+ign_gw94_a04 4.53140005677
+ign_gw94_a05 4.5842840251
+ign_gw94_a06 4.60714272655
+ign_gw94_a07 4.73215285396
+ign_gw94_a08 4.90336730716
+ign_gw94_a09 4.91180676582
+ign_gw94_a10 5.06619675976
+ign_gw94_a11 5.19138056309
+ign_gw94_a12 5.27433049089
+ign_gw94_a13 5.26494578579
+ign_gw94_a14 5.4169125181
+ign_gw94_a15 5.5350973757
+ign_gw94_a16 5.54512284513
+ign_gw94_a17 5.79415792084
+ign_gw94_a18 6.18740111223
+ign_gw94_a19 6.2705538225
+ign_gw94_a20 6.59284447768
+ign_gw94_a21 6.73573449055
+ign_gw94_a22 6.89196537849
+ign_gw94_a23 6.9324264546
+gw94_a  Value has been calculated
+Project gw94_a saved successfully
+ign_hjr09_a01 11.2336679501
+ign_hjr09_a02 10.0290118148
+ign_hjr09_a03 10.3640218501
+ign_hjr09_a04 9.70139252879
+ign_hjr09_a05 10.0290118148
+ign_hjr09_a06 9.54028313741
+ign_hjr09_a07 9.30153526186
+ign_hjr09_a08 8.29072150669
+ign_hjr09_a09 8.29072150669
+ign_hjr09_a10 7.83400178047
+ign_hjr09_a11 7.63979021157
+ign_hjr09_a12 7.91382166064
+ign_hjr09_a13 7.507886932
+ign_hjr09_a14 7.06204005278
+ign_hjr09_a15 7.30562703488
+ign_hjr09_a16 7.63979622904
+ign_hjr09_a17 7.30562703488
+ign_hjr09_a18 6.79065432648
+ign_hjr09_a19 6.4101352786
+ign_hjr09_a20 5.73533359982
+ign_hjr09_a21 5.86221691737
+ign_hjr09_a22 5.41098480074
+hjr09_a  Value has been calculated
+Project hjr09_a saved successfully
+ign_hjr09_b01 10.3830211372
+ign_hjr09_b02 9.14388057277
+ign_hjr09_b03 9.4890596305
+ign_hjr09_b04 8.80653450059
+ign_hjr09_b05 9.14388057277
+ign_hjr09_b06 8.64079611841
+ign_hjr09_b07 8.39597511695
+ign_hjr09_b08 7.39583078401
+ign_hjr09_b09 7.39583078401
+ign_hjr09_b10 6.95647277961
+ign_hjr09_b11 6.7589625848
+ign_hjr09_b12 7.01704012174
+ign_hjr09_b13 6.6519411706
+ign_hjr09_b14 6.2308109591
+ign_hjr09_b15 6.46677296115
+ign_hjr09_b16 6.75900755904
+ign_hjr09_b17 6.46677296115
+ign_hjr09_b18 6.00451756492
+ign_hjr09_b19 5.65047942666
+ign_hjr09_b20 5.06797730518
+ign_hjr09_b21 5.181596827
+ign_hjr09_b22 4.77475765654
+ign_hjr09_b23 8.97421755992
+ign_hjr09_b24 9.14388057277
+hjr09_b  Value has been calculated
+Project hjr09_b saved successfully
+ign_lhdh11_a01 4.85208855556
+ign_lhdh11_a02 5.14010827124
+ign_lhdh11_a03 5.71340703018
+ign_lhdh11_a04 6.22007287562
+ign_lhdh11_a05 6.52003793246
+ign_lhdh11_a06 6.96068391607
+ign_lhdh11_a07 7.10025121408
+ign_lhdh11_a08 7.3115884002
+ign_lhdh11_a09 7.76170364411
+ign_lhdh11_a10 7.71026868977
+ign_lhdh11_a11 7.78353423026
+ign_lhdh11_a12 8.29384019129
+ign_lhdh11_a13 8.62247985181
+ign_lhdh11_a14 9.31466327064
+ign_lhdh11_a15 9.89917222461
+ign_lhdh11_a16 10.2879911895
+ign_lhdh11_a17 10.5540415488
+lhdh11_a  Value has been calculated
+Project lhdh11_a saved successfully
+ign_lhdh11_b01 5.0640755842
+ign_lhdh11_b02 5.70969958567
+ign_lhdh11_b03 6.60276443963
+ign_lhdh11_b04 6.7789056414
+ign_lhdh11_b05 7.47512379109
+ign_lhdh11_b06 7.74214407263
+ign_lhdh11_b07 8.03938673823
+ign_lhdh11_b08 8.33080551783
+ign_lhdh11_b09 8.56643055608
+ign_lhdh11_b10 8.74588795658
+ign_lhdh11_b11 9.14379087837
+ign_lhdh11_b12 9.39984079054
+ign_lhdh11_b13 9.68926387084
+ign_lhdh11_b14 9.66945211282
+ign_lhdh11_b15 9.78892617418
+ign_lhdh11_b16 9.8829916155
+ign_lhdh11_b17 9.96854712092
+ign_lhdh11_b18 10.1380090005
+lhdh11_b  Value has been calculated
+Project lhdh11_b saved successfully
+ign_lhdh11_c01 5.54215175066
+ign_lhdh11_c02 6.04958359118
+ign_lhdh11_c03 6.47538042636
+ign_lhdh11_c04 6.86212396165
+ign_lhdh11_c05 7.16919537292
+ign_lhdh11_c06 7.28162393693
+ign_lhdh11_c07 7.29242448712
+ign_lhdh11_c08 7.59702302654
+ign_lhdh11_c09 7.66913179498
+ign_lhdh11_c10 7.90043553183
+ign_lhdh11_c11 8.56292372479
+ign_lhdh11_c12 8.74385179791
+ign_lhdh11_c13 8.57661879507
+ign_lhdh11_c14 9.31745238936
+ign_lhdh11_c15 9.40667135889
+ign_lhdh11_c16 9.41247497786
+ign_lhdh11_c17 9.8960536786
+ign_lhdh11_c18 9.74854465326
+ign_lhdh11_c19 10.2298125013
+lhdh11_c  Value has been calculated
+Project lhdh11_c saved successfully
+ign_lhdh11_d01 5.82760104306
+ign_lhdh11_d02 6.06344697414
+ign_lhdh11_d03 6.09749599548
+ign_lhdh11_d04 6.61711412084
+ign_lhdh11_d05 7.01481177387
+ign_lhdh11_d06 7.32569012659
+ign_lhdh11_d07 7.45740950553
+ign_lhdh11_d08 7.84727747646
+ign_lhdh11_d09 7.80630347934
+ign_lhdh11_d10 8.00411588902
+ign_lhdh11_d11 8.13940279941
+ign_lhdh11_d12 8.36782734118
+ign_lhdh11_d13 8.20157905277
+ign_lhdh11_d14 8.39364320788
+ign_lhdh11_d15 8.48777135794
+ign_lhdh11_d16 8.57489304394
+ign_lhdh11_d17 9.06309051936
+ign_lhdh11_d18 9.43549203751
+lhdh11_d  Value has been calculated
+Project lhdh11_d saved successfully
+ign_lhdh11_e01 5.53867278011
+ign_lhdh11_e02 5.91587519966
+ign_lhdh11_e03 6.7378786667
+ign_lhdh11_e04 7.39803123135
+ign_lhdh11_e05 7.59906514038
+ign_lhdh11_e06 8.26590378724
+ign_lhdh11_e07 8.32423518954
+ign_lhdh11_e08 8.80303802114
+ign_lhdh11_e09 9.01025932265
+ign_lhdh11_e10 9.06828133682
+lhdh11_e  Value has been calculated
+Project lhdh11_e saved successfully
+ign_lhdh11_f01 5.59669509538
+ign_lhdh11_f02 6.16764021698
+ign_lhdh11_f03 6.35357573765
+ign_lhdh11_f04 6.88801956839
+ign_lhdh11_f05 7.15425623406
+ign_lhdh11_f06 7.27401853769
+ign_lhdh11_f07 7.50868038687
+ign_lhdh11_f08 7.71630228652
+ign_lhdh11_f09 7.92172764412
+ign_lhdh11_f10 8.20979740373
+ign_lhdh11_f11 8.32457564833
+ign_lhdh11_f12 8.63107022532
+ign_lhdh11_f13 8.84685386465
+lhdh11_f  Value has been calculated
+Project lhdh11_f saved successfully
+
+
+Propane
+*******
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   blss70propane
+   bsl71propane
+   bt99propane
+   gw94propane
+   hjr09propane
+   lhdh11propane
+
+
+propane_ign.rst
+ign_bsl71_b01 6.03355031792
+ign_bsl71_b02 5.90767165412
+ign_bsl71_b03 5.7225771151
+ign_bsl71_b04 5.81587306954
+ign_bsl71_b05 5.45324154214
+ign_bsl71_b06 5.19339294523
+ign_bsl71_b07 4.75657075856
+ign_bsl71_b08 4.90422272512
+ign_bsl71_b09 4.73531610123
+ign_bsl71_b10 4.73531610123
+ign_bsl71_b11 4.4993768883
+ign_bsl71_b12 4.3693541707
+ign_bsl71_b13 4.34757768199
+bsl71_b  Value has been calculated
+Project bsl71_b saved successfully
+ign_hdh02_a01 4.82168045754
+ign_hdh02_a02 4.93921223472
+ign_hdh02_a03 5.05955430196
+ign_hdh02_a04 5.22412464584
+ign_hdh02_a05 5.56668026111
+hdh02_a  Value has been calculated
+Project hdh02_a saved successfully
+ign_hdh02_b01 4.38360429271
+ign_hdh02_b02 4.82897269983
+ign_hdh02_b03 4.89215239812
+ign_hdh02_b04 5.04179750149
+ign_hdh02_b05 5.10686243026
+ign_hdh02_b06 5.41712255758
+ign_hdh02_b07 5.85464930874
+ign_hdh02_b08 5.90166497385
+hdh02_b  Value has been calculated
+Project hdh02_b saved successfully
+ign_hdh02_c01 4.25654381986
+ign_hdh02_c02 4.51132286391
+ign_hdh02_c03 4.86421544391
+ign_hdh02_c04 5.67792824812
+ign_hdh02_c05 5.11453478204
+ign_hdh02_c06 5.09154526381
+hdh02_c  Value has been calculated
+Project hdh02_c saved successfully
+ign_hdh02_d01 3.823831289
+ign_hdh02_d02 5.49262882904
+ign_hdh02_d03 5.42243338805
+ign_hdh02_d04 4.98525905759
+ign_hdh02_d05 4.89486629641
+hdh02_d  Value has been calculated
+Project hdh02_d saved successfully
+ign_hdh02_e01 5.10121796383
+ign_hdh02_e02 4.91154509081
+ign_hdh02_e03 4.70042487775
+hdh02_e  Value has been calculated
+Project hdh02_e saved successfully
+ign_hdh02_f01 5.73956935329
+ign_hdh02_f02 5.4143485159
+ign_hdh02_f03 4.98995893316
+ign_hdh02_f04 5.07374132456
+ign_hdh02_f05 4.70168231317
+ign_hdh02_f06 4.24854537681
+hdh02_f  Value has been calculated
+Project hdh02_f saved successfully
+ign_hdh02_g02 5.05458909813
+ign_hdh02_g03 5.00976821908
+ign_hdh02_g04 4.74559798594
+ign_hdh02_g05 4.63827694762
+ign_hdh02_g06 4.32639365374
+hdh02_g  Value has been calculated
+Project hdh02_g saved successfully
+
+
+Butane
+******
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   bsl71butane
+   hdh02butane
+
+
+butane_ign.rst
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_3.png" src="_images/ignition_plotter_6_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_4.png" src="_images/ignition_plotter_6_4.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_5.png" src="_images/ignition_plotter_6_5.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_6.png" src="_images/ignition_plotter_6_6.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_7.png" src="_images/ignition_plotter_6_7.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_8.png" src="_images/ignition_plotter_6_8.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_9.png" src="_images/ignition_plotter_6_9.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_10.png" src="_images/ignition_plotter_6_10.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_11.png" src="_images/ignition_plotter_6_11.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_12.png" src="_images/ignition_plotter_6_12.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_13.png" src="_images/ignition_plotter_6_13.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_14.png" src="_images/ignition_plotter_6_14.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_15.png" src="_images/ignition_plotter_6_15.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_16.png" src="_images/ignition_plotter_6_16.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_17.png" src="_images/ignition_plotter_6_17.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_18.png" src="_images/ignition_plotter_6_18.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_19.png" src="_images/ignition_plotter_6_19.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_20.png" src="_images/ignition_plotter_6_20.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_21.png" src="_images/ignition_plotter_6_21.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_22.png" src="_images/ignition_plotter_6_22.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_23.png" src="_images/ignition_plotter_6_23.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_24.png" src="_images/ignition_plotter_6_24.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_25.png" src="_images/ignition_plotter_6_25.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_26.png" src="_images/ignition_plotter_6_26.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_27.png" src="_images/ignition_plotter_6_27.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_28.png" src="_images/ignition_plotter_6_28.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_29.png" src="_images/ignition_plotter_6_29.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_30.png" src="_images/ignition_plotter_6_30.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_31.png" src="_images/ignition_plotter_6_31.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_32.png" src="_images/ignition_plotter_6_32.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_33.png" src="_images/ignition_plotter_6_33.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_34.png" src="_images/ignition_plotter_6_34.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_35.png" src="_images/ignition_plotter_6_35.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_36.png" src="_images/ignition_plotter_6_36.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_37.png" src="_images/ignition_plotter_6_37.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_38.png" src="_images/ignition_plotter_6_38.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_39.png" src="_images/ignition_plotter_6_39.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_40.png" src="_images/ignition_plotter_6_40.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_41.png" src="_images/ignition_plotter_6_41.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_42.png" src="_images/ignition_plotter_6_42.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_43.png" src="_images/ignition_plotter_6_43.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_44.png" src="_images/ignition_plotter_6_44.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_45.png" src="_images/ignition_plotter_6_45.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_46.png" src="_images/ignition_plotter_6_46.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_47.png" src="_images/ignition_plotter_6_47.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_48.png" src="_images/ignition_plotter_6_48.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_49.png" src="_images/ignition_plotter_6_49.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_50.png" src="_images/ignition_plotter_6_50.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_51.png" src="_images/ignition_plotter_6_51.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_52.png" src="_images/ignition_plotter_6_52.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_53.png" src="_images/ignition_plotter_6_53.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_54.png" src="_images/ignition_plotter_6_54.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_55.png" src="_images/ignition_plotter_6_55.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_56.png" src="_images/ignition_plotter_6_56.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_57.png" src="_images/ignition_plotter_6_57.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_58.png" src="_images/ignition_plotter_6_58.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_59.png" src="_images/ignition_plotter_6_59.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_60.png" src="_images/ignition_plotter_6_60.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_61.png" src="_images/ignition_plotter_6_61.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_62.png" src="_images/ignition_plotter_6_62.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_63.png" src="_images/ignition_plotter_6_63.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_64.png" src="_images/ignition_plotter_6_64.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_65.png" src="_images/ignition_plotter_6_65.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_66.png" src="_images/ignition_plotter_6_66.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_67.png" src="_images/ignition_plotter_6_67.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_68.png" src="_images/ignition_plotter_6_68.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_69.png" src="_images/ignition_plotter_6_69.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_70.png" src="_images/ignition_plotter_6_70.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_71.png" src="_images/ignition_plotter_6_71.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_72.png" src="_images/ignition_plotter_6_72.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_73.png" src="_images/ignition_plotter_6_73.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_74.png" src="_images/ignition_plotter_6_74.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_75.png" src="_images/ignition_plotter_6_75.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_76.png" src="_images/ignition_plotter_6_76.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_77.png" src="_images/ignition_plotter_6_77.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_78.png" src="_images/ignition_plotter_6_78.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_79.png" src="_images/ignition_plotter_6_79.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_80.png" src="_images/ignition_plotter_6_80.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_81.png" src="_images/ignition_plotter_6_81.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_82.png" src="_images/ignition_plotter_6_82.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_83.png" src="_images/ignition_plotter_6_83.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_84.png" src="_images/ignition_plotter_6_84.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_85.png" src="_images/ignition_plotter_6_85.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_86.png" src="_images/ignition_plotter_6_86.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_87.png" src="_images/ignition_plotter_6_87.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_88.png" src="_images/ignition_plotter_6_88.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_89.png" src="_images/ignition_plotter_6_89.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_90.png" src="_images/ignition_plotter_6_90.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_91.png" src="_images/ignition_plotter_6_91.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_92.png" src="_images/ignition_plotter_6_92.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_93.png" src="_images/ignition_plotter_6_93.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_94.png" src="_images/ignition_plotter_6_94.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_95.png" src="_images/ignition_plotter_6_95.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_96.png" src="_images/ignition_plotter_6_96.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_97.png" src="_images/ignition_plotter_6_97.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_98.png" src="_images/ignition_plotter_6_98.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_99.png" src="_images/ignition_plotter_6_99.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_100.png" src="_images/ignition_plotter_6_100.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_101.png" src="_images/ignition_plotter_6_101.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_102.png" src="_images/ignition_plotter_6_102.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_103.png" src="_images/ignition_plotter_6_103.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_104.png" src="_images/ignition_plotter_6_104.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_105.png" src="_images/ignition_plotter_6_105.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_106.png" src="_images/ignition_plotter_6_106.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_107.png" src="_images/ignition_plotter_6_107.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_108.png" src="_images/ignition_plotter_6_108.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_109.png" src="_images/ignition_plotter_6_109.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_110.png" src="_images/ignition_plotter_6_110.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_111.png" src="_images/ignition_plotter_6_111.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_112.png" src="_images/ignition_plotter_6_112.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_113.png" src="_images/ignition_plotter_6_113.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_114.png" src="_images/ignition_plotter_6_114.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_115.png" src="_images/ignition_plotter_6_115.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_116.png" src="_images/ignition_plotter_6_116.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_117.png" src="_images/ignition_plotter_6_117.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_118.png" src="_images/ignition_plotter_6_118.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_119.png" src="_images/ignition_plotter_6_119.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_120.png" src="_images/ignition_plotter_6_120.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_121.png" src="_images/ignition_plotter_6_121.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_122.png" src="_images/ignition_plotter_6_122.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_123.png" src="_images/ignition_plotter_6_123.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_124.png" src="_images/ignition_plotter_6_124.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_125.png" src="_images/ignition_plotter_6_125.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_126.png" src="_images/ignition_plotter_6_126.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_127.png" src="_images/ignition_plotter_6_127.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_128.png" src="_images/ignition_plotter_6_128.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_129.png" src="_images/ignition_plotter_6_129.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_130.png" src="_images/ignition_plotter_6_130.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_131.png" src="_images/ignition_plotter_6_131.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_132.png" src="_images/ignition_plotter_6_132.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_133.png" src="_images/ignition_plotter_6_133.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_134.png" src="_images/ignition_plotter_6_134.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_135.png" src="_images/ignition_plotter_6_135.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_136.png" src="_images/ignition_plotter_6_136.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_137.png" src="_images/ignition_plotter_6_137.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_138.png" src="_images/ignition_plotter_6_138.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_139.png" src="_images/ignition_plotter_6_139.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_140.png" src="_images/ignition_plotter_6_140.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_141.png" src="_images/ignition_plotter_6_141.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_142.png" src="_images/ignition_plotter_6_142.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_143.png" src="_images/ignition_plotter_6_143.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_144.png" src="_images/ignition_plotter_6_144.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_145.png" src="_images/ignition_plotter_6_145.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_146.png" src="_images/ignition_plotter_6_146.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_147.png" src="_images/ignition_plotter_6_147.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_148.png" src="_images/ignition_plotter_6_148.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_149.png" src="_images/ignition_plotter_6_149.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_150.png" src="_images/ignition_plotter_6_150.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_151.png" src="_images/ignition_plotter_6_151.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_152.png" src="_images/ignition_plotter_6_152.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/ignition_plotter_6_153.png" src="_images/ignition_plotter_6_153.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="highlight-none"><div class="highlight"><pre>
+<span></span>In [ ]:
+</pre></div>
+</div>
+<div class="highlight-ipython3"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="flame_plotter.html" title="previous chapter">Laminar flame speed documentation creator</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ignition_plotter.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, David A. Sheen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/ignition_plotter.ipynb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
