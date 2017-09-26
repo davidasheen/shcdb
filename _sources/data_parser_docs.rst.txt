@@ -26,4 +26,22 @@ Creating documentation
    make_main_ign_page
    make_ign_subpage
    make_ign_doc_page
-   
+
+Full function documentation
+===========================
+
+.. autofunction:: find_data_sets
+.. autofunction:: load_projects
+.. autofunction:: run_project
+.. autofunction:: run_project_parallel
+.. autofunction:: run_project_sensitivity
+
+.. autofunction:: make_fls_docs
+.. autofunction:: make_main_fls_page
+.. autofunction:: make_main_page
+.. autofunction:: make_fls_subpage
+.. autofunction:: make_fls_doc_page
+.. autofunction:: make_ign_docs
+.. autofunction:: make_main_ign_page
+.. autofunction:: make_ign_subpage
+.. autofunction:: make_ign_doc_page

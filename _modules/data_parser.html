@@ -1,0 +1,686 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>data_parser &#8212; Small Hydrocarbons Combustion Properties Database 0.1.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Small Hydrocarbons Combustion Properties Database 0.1.1 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for data_parser</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">mumpce_py</span>
+<span class="kn">import</span> <span class="nn">mumpce_py.cantera_utils</span> <span class="k">as</span> <span class="nn">mpct</span>
+<span class="kn">import</span> <span class="nn">tqdm</span>
+<span class="kn">import</span> <span class="nn">mpc_parallel</span>
+
+<span class="n">main_title_punc</span> <span class="o">=</span> <span class="s1">&#39;*&#39;</span>
+
+<span class="k">def</span> <span class="nf">find_x_in_comp_string</span><span class="p">(</span><span class="n">comp_string</span><span class="p">,</span><span class="n">species</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Takes a Cantera composition string and finds the number of moles of a particular species in that string.</span>
+<span class="sd">    </span>
+<span class="sd">    :param comp_string: The Cantera composition string being parsed</span>
+<span class="sd">    :param species: The species name whose value is to be found</span>
+<span class="sd">    :type comp_string: str</span>
+<span class="sd">    :type species: str</span>
+<span class="sd">    :returns: val, the number of moles of the desired species</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">comps</span> <span class="o">=</span> <span class="n">comp_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">comps</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">comp</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">species</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">comp_split</span> <span class="o">=</span> <span class="n">comp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">comp_split</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">val</span>
+
+<div class="viewcode-block" id="find_data_sets"><a class="viewcode-back" href="../data_parser_docs.html#data_parser.find_data_sets">[docs]</a><span class="k">def</span> <span class="nf">find_data_sets</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Takes a pandas.DataFrame object containing mumpce_py.cantera_utils compatible measurements and returns the data sources and data sets in the DataFrame.</span>
+<span class="sd">    </span>
+<span class="sd">    In the Small Hydrocarbon Databse, measurements are named according to the convention source_setidXX, where &#39;source&#39; is a string that uniquely identifies the origin of the data (e.g. paper, online database, etc), setid is a unique identifier for each set within that source, and XX is a unique identifier for each measurement within a set. This function will return all of the unique source strings and source_set strings.</span>
+<span class="sd">    </span>
+<span class="sd">    :param df: The pandas DataFrame to be parsed</span>
+<span class="sd">    :type df: pandas.DataFrame</span>
+<span class="sd">    :returns: sources,sets, the data sources and data sets contained within the dataframe.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">ids</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">values</span> <span class="c1">#Find all of the IDs that are in this DataFrame</span>
+    
+    <span class="c1">#Assume that the sets are named according to Source_SetXX where XX identifies a particular measurement within a set.</span>
+    <span class="c1">#</span>
+    <span class="n">id_full</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ident</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ident</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">])</span> <span class="c1">#Returns [&#39;Source&#39; &#39;SetXX&#39;] for each Source_SetXX</span>
+    <span class="n">id_strip_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ident</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">ident</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">])</span> <span class="c1">#Returns [&#39;Source_Set&#39;] for each Source_SetXX</span>
+    
+    <span class="n">sources</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">id_full</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span> <span class="c1">#Find each unique Source</span>
+    <span class="n">sets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">id_strip_num</span><span class="p">)</span> <span class="c1">#Find each unique Source_Set</span>
+    
+    <span class="k">return</span> <span class="n">sources</span><span class="p">,</span><span class="n">sets</span></div>
+
+<div class="viewcode-block" id="make_ign_docs"><a class="viewcode-back" href="../data_parser_docs.html#data_parser.make_ign_docs">[docs]</a><span class="k">def</span> <span class="nf">make_ign_docs</span><span class="p">(</span><span class="n">primary_fuel_name</span><span class="p">,</span><span class="n">sources</span><span class="p">,</span><span class="n">project_list</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Creates the documentation for the ignition delay times in the database</span>
+<span class="sd">    </span>
+<span class="sd">    This function takes a primary fuel name and creates the main documentation page for that fuel. It will also make the subpages for each of the experimental sets described in `sources`. In addition, the function will return the table of contents for the primary fuel&#39;s main documentation page.</span>
+<span class="sd">    </span>
+<span class="sd">    :param primary_fuel_name: The English name of the fuel for which the documentation page is being created</span>
+<span class="sd">    :param sources: The list of sources associated with this fuel</span>
+<span class="sd">    :param project_list: The list of mumpce Projects containing ignition delay information</span>
+<span class="sd">    :returns: main_contents, the table of contents for the primary fuel main page</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">main_contents</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    
+    <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
+        <span class="n">make_ign_subpage</span><span class="p">(</span><span class="n">source</span><span class="p">,</span><span class="n">primary_fuel_name</span><span class="p">,</span><span class="n">project_list</span><span class="p">)</span>
+        <span class="n">main_contents</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">   &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">main_contents</span><span class="p">,</span><span class="n">source</span><span class="o">+</span><span class="n">primary_fuel_name</span><span class="p">))</span>
+        
+    <span class="n">make_main_ign_page</span><span class="p">(</span><span class="n">primary_fuel_name</span><span class="p">,</span><span class="n">main_contents</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">main_contents</span></div>
+
+<div class="viewcode-block" id="make_ign_subpage"><a class="viewcode-back" href="../data_parser_docs.html#data_parser.make_ign_subpage">[docs]</a><span class="k">def</span> <span class="nf">make_ign_subpage</span><span class="p">(</span><span class="n">source</span><span class="p">,</span><span class="n">primary_fuel_name</span><span class="p">,</span><span class="n">project_list</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Creates the documentation page for a single data source</span>
+<span class="sd">    </span>
+<span class="sd">    This function takes a data source and creates the main documentation page for that source. It also creates the individual subpages for each data set associated with that source.</span>
+<span class="sd">    </span>
+<span class="sd">    :param source: The source for which the main page and subpages will be created.</span>
+<span class="sd">    :param primary_fuel_name: The English name of the fuel for which the documentation page is being created</span>
+<span class="sd">    :param project_list: The list of mumpce Projects containing ignition delay information</span>
+<span class="sd">    :returns: contents, the table of contents for the data source main page</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1">#boilerplate for the subpages</span>
+    <span class="n">rst_datasource</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;.. data header title</span>
+
+<span class="si">{}</span><span class="s1"></span>
+
+
+<span class="s1">.. toctree::</span>
+<span class="s1">   :maxdepth: 2</span>
+<span class="s1">   :caption: Contents:</span>
+<span class="si">{}</span><span class="s1"></span>
+
+<span class="s1">&#39;&#39;&#39;</span>
+    
+    <span class="n">set_TOC_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> &lt;</span><span class="si">{}</span><span class="s1">&gt;&#39;</span>
+    
+    <span class="c1">#Get projects associated with this project source</span>
+    <span class="n">sets_for_this_source</span> <span class="o">=</span> <span class="p">[</span><span class="n">project</span> <span class="k">for</span> <span class="n">project</span> <span class="ow">in</span> <span class="n">project_list</span> <span class="k">if</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+
+    <span class="c1">#Get the data source for this project</span>
+    <span class="n">first_project</span> <span class="o">=</span> <span class="n">sets_for_this_source</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">source_name</span> <span class="o">=</span> <span class="n">first_project</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">comment</span>
+
+    <span class="c1">#Build the title for this source page</span>
+    <span class="n">title_underline</span> <span class="o">=</span> <span class="n">main_title_punc</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">source_name</span><span class="p">)</span>
+    <span class="n">docname</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">source_name</span><span class="p">,</span><span class="n">title_underline</span><span class="p">))</span>
+
+    <span class="c1">#Start building the TOC for this data source</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">project</span> <span class="ow">in</span> <span class="n">sets_for_this_source</span><span class="p">:</span>
+        <span class="c1">#Make the doc page for this project and get the project identifier</span>
+        <span class="n">setname</span> <span class="o">=</span> <span class="n">make_ign_doc_page</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
+        <span class="n">set_ID</span> <span class="o">=</span> <span class="n">setname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>             
+        <span class="n">set_title</span> <span class="o">=</span> <span class="s1">&#39;Set &#39;</span> <span class="o">+</span> <span class="n">set_ID</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+
+        <span class="c1">#Make the line associated with this project in the table of contents</span>
+        <span class="n">set_TOC_line</span> <span class="o">=</span> <span class="n">set_TOC_format</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">set_title</span><span class="p">,</span><span class="n">setname</span><span class="p">)</span>
+        <span class="n">contents</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">   &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">contents</span><span class="p">,</span><span class="n">set_TOC_line</span><span class="p">))</span>
+
+    <span class="n">datasource_contents</span> <span class="o">=</span> <span class="n">rst_datasource</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">docname</span><span class="p">,</span><span class="n">contents</span><span class="p">)</span>
+    <span class="n">datafile</span> <span class="o">=</span> <span class="n">source</span> <span class="o">+</span> <span class="n">primary_fuel_name</span> <span class="o">+</span> <span class="s1">&#39;.rst&#39;</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">datafile</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">datasource_contents</span><span class="p">)</span>
+            
+    <span class="k">return</span> <span class="n">contents</span></div>
+
+<div class="viewcode-block" id="make_fls_docs"><a class="viewcode-back" href="../data_parser_docs.html#data_parser.make_fls_docs">[docs]</a><span class="k">def</span> <span class="nf">make_fls_docs</span><span class="p">(</span><span class="n">primary_fuel_name</span><span class="p">,</span><span class="n">primary_fuel</span><span class="p">,</span><span class="n">project_dict</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Creates the documentation for the laminar flame speeds in the database</span>
+<span class="sd">    </span>
+<span class="sd">    This function takes a primary fuel name and creates the main documentation page for that fuel. It will also make the subpages for each of the experimental sets described in `sources`. In addition, the function will return the table of contents for the primary fuel&#39;s main documentation page.</span>
+<span class="sd">    </span>
+<span class="sd">    :param primary_fuel_name: The English name of the fuel for which the documentation page is being created</span>
+<span class="sd">    :param primary_fuel: The Cantera name of the fuel</span>
+<span class="sd">    :param project_dict: The dictionary of mumpce Projects containing laminar flame speed information</span>
+<span class="sd">    :returns: main_contents, the table of contents for the primary fuel main page</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="n">main_contents</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    
+    <span class="n">main_contents</span> <span class="o">=</span> <span class="n">make_fls_subpage</span><span class="p">(</span><span class="n">primary_fuel</span><span class="p">,</span><span class="n">project_dict</span><span class="p">)</span>
+        
+    <span class="n">make_main_fls_page</span><span class="p">(</span><span class="n">primary_fuel_name</span><span class="p">,</span><span class="n">main_contents</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">main_contents</span></div>
+
+
+<div class="viewcode-block" id="make_fls_subpage"><a class="viewcode-back" href="../data_parser_docs.html#data_parser.make_fls_subpage">[docs]</a><span class="k">def</span> <span class="nf">make_fls_subpage</span><span class="p">(</span><span class="n">primary_fuel</span><span class="p">,</span><span class="n">project_dict</span><span class="p">):</span>   
+    <span class="sd">&#39;&#39;&#39;Creates the documentation page for a single data source</span>
+<span class="sd">    </span>
+<span class="sd">    This function takes a data source and creates the main documentation page for that source. It also creates the individual subpages for each data set associated with that source.</span>
+<span class="sd">    </span>
+<span class="sd">    :param primary_fuel: The Cantera name of the fuel</span>
+<span class="sd">    :param project_dict: The dictionary of mumpce Projects containing laminar flame speed information</span>
+<span class="sd">    :returns: contents, the table of contents for the data source main page</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">contents</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    
+    
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">project_dict</span><span class="p">:</span>
+        <span class="n">project_list</span> <span class="o">=</span> <span class="n">project_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="n">nominal_T</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="mi">470</span><span class="p">)</span>
+    
+        <span class="n">bin_ends</span> <span class="o">=</span> <span class="n">key</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="n">end_T</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bin_ends</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;]&#39;</span><span class="p">))</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">end_T</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">end_T</span> <span class="o">&lt;</span> <span class="mi">325</span><span class="p">:</span>
+            <span class="n">nominal_T</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">end_T</span> <span class="o">&lt;</span> <span class="mi">375</span><span class="p">:</span>
+            <span class="n">nominal_T</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="mi">360</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">end_T</span> <span class="o">&lt;</span> <span class="mi">425</span><span class="p">:</span>
+            <span class="n">nominal_T</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>            
+
+        <span class="n">nominal_pres</span> <span class="o">=</span> <span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="n">contents</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">   &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">contents</span><span class="p">,</span><span class="n">make_fls_doc_page</span><span class="p">(</span><span class="n">primary_fuel</span><span class="p">,</span><span class="n">nominal_pres</span><span class="p">,</span><span class="n">nominal_T</span><span class="p">,</span><span class="n">project_list</span><span class="p">)))</span>
+
+    <span class="k">return</span> <span class="n">contents</span></div>
+
+<div class="viewcode-block" id="make_main_page"><a class="viewcode-back" href="../data_parser_docs.html#data_parser.make_main_page">[docs]</a><span class="k">def</span> <span class="nf">make_main_page</span><span class="p">(</span><span class="n">primary_fuel_name</span><span class="p">,</span><span class="n">data_source_table</span><span class="p">,</span><span class="n">main_rstcontents</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Creates the table of contents for the top level index page.</span>
+<span class="sd">    </span>
+<span class="sd">    This function accepts a boilerplate restructured text string and inserts the primary fuel name as the tile and the data source table as the table of contents. It returns the properly-formatted restructured text.</span>
+<span class="sd">    </span>
+<span class="sd">    :param primary_fuel_name: The English name of the primary fuel. This will be the title of the documentation page</span>
+<span class="sd">    :param data_source_table: The table of contents that will go into the index file. This will be inserted into the documentation page as its table of contents</span>
+<span class="sd">    :param main_rstcontents: A string representing the index page boilerplate.</span>
+<span class="sd">    :returns: main_source_contents, the information that will be written to the documentation file</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="c1">#Build the document title</span>
+    <span class="n">primary_fuel_underline</span> <span class="o">=</span> <span class="n">main_title_punc</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">primary_fuel_name</span><span class="p">)</span>
+    <span class="n">primary_fuel_title</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">primary_fuel_name</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span><span class="n">primary_fuel_underline</span><span class="p">))</span>
+    
+    <span class="c1">#Load the data source table and title into the boilerplate and return it to the main function</span>
+    <span class="n">main_source_contents</span> <span class="o">=</span> <span class="n">main_rstcontents</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">primary_fuel_title</span><span class="p">,</span><span class="n">data_source_table</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">main_source_contents</span></div>
+
+<div class="viewcode-block" id="make_main_ign_page"><a class="viewcode-back" href="../data_parser_docs.html#data_parser.make_main_ign_page">[docs]</a><span class="k">def</span> <span class="nf">make_main_ign_page</span><span class="p">(</span><span class="n">primary_fuel_name</span><span class="p">,</span><span class="n">data_source_table</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Creates the top level index page for a set of ignition delay time projects</span>
+<span class="sd">    </span>
+<span class="sd">    This function takes a primary fuel name and a table of sources and creates the top-level index page for that fuel. </span>
+<span class="sd">    </span>
+<span class="sd">    :param primary_fuel_name: The English name of the primary fuel</span>
+<span class="sd">    :param data_source_table: The table of data sources that will go into the index file</span>
+<span class="sd">    :type primary_fuel_name: str</span>
+<span class="sd">    :type data_source_table: str</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1">#Title page boilerplate</span>
+    <span class="n">main_rstcontents</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+
+<span class="si">{}</span><span class="s1"></span>
+
+<span class="s1">.. toctree::</span>
+<span class="s1">   :maxdepth: 2</span>
+<span class="s1">   :caption: Contents:  </span>
+<span class="si">{}</span><span class="s1"></span>
+
+<span class="s1">&#39;&#39;&#39;</span>
+    
+    <span class="n">main_source_contents</span> <span class="o">=</span> <span class="n">make_main_page</span><span class="p">(</span><span class="n">primary_fuel_name</span><span class="p">,</span><span class="n">data_source_table</span><span class="p">,</span><span class="n">main_rstcontents</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">main_source_contents</span><span class="p">)</span>
+
+    <span class="n">main_source_file</span> <span class="o">=</span> <span class="n">primary_fuel_name</span> <span class="o">+</span> <span class="s1">&#39;_ign.rst&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">main_source_file</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">main_source_file</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">main_source_contents</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">main_source_contents</span></div>
+
+<div class="viewcode-block" id="make_main_fls_page"><a class="viewcode-back" href="../data_parser_docs.html#data_parser.make_main_fls_page">[docs]</a><span class="k">def</span> <span class="nf">make_main_fls_page</span><span class="p">(</span><span class="n">primary_fuel_name</span><span class="p">,</span><span class="n">data_source_table</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Creates the top level index page for a set of laminar flame speed projects</span>
+<span class="sd">    </span>
+<span class="sd">    This function takes a primary fuel name and a table of sources and creates the top-level index page for that fuel. </span>
+<span class="sd">    </span>
+<span class="sd">    :param primary_fuel_name: The English name of the primary fuel</span>
+<span class="sd">    :param data_source_table: The table of data sources that will go into the index file</span>
+<span class="sd">    :type primary_fuel_name: str</span>
+<span class="sd">    :type data_source_table: str</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1">#Title page boilerplate</span>
+    <span class="n">main_rstcontents</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+
+<span class="si">{}</span><span class="s1"></span>
+
+<span class="s1">.. toctree::</span>
+<span class="s1">   :maxdepth: 1</span>
+<span class="s1">   :caption: Contents:  </span>
+<span class="si">{}</span><span class="s1"></span>
+
+<span class="s1">&#39;&#39;&#39;</span>
+    
+    <span class="n">main_source_contents</span> <span class="o">=</span> <span class="n">make_main_page</span><span class="p">(</span><span class="n">primary_fuel_name</span><span class="p">,</span><span class="n">data_source_table</span><span class="p">,</span><span class="n">main_rstcontents</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">main_source_contents</span><span class="p">)</span>
+
+    <span class="n">main_source_file</span> <span class="o">=</span> <span class="n">primary_fuel_name</span> <span class="o">+</span> <span class="s1">&#39;_flame.rst&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">main_source_file</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">main_source_file</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">main_source_contents</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">main_source_contents</span></div>
+
+<div class="viewcode-block" id="load_projects"><a class="viewcode-back" href="../data_parser_docs.html#data_parser.load_projects">[docs]</a><span class="k">def</span> <span class="nf">load_projects</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Takes a pandas.DataFrame object containing mumpce_py.cantera_utils compatible measurements and returns a list of mumpce.Project objects built from measuremenst in the DataFrame.</span>
+<span class="sd">    </span>
+<span class="sd">    This function will use :py:func:`find_data_sets` to break the DataFrame into sources and sets. Each set will then be built into its own Project, and each Measurement in the Project will be a measurement from that data set.</span>
+<span class="sd">    </span>
+<span class="sd">    In the Small Hydrocarbon Databse, measurements are named according to the convention source_setidXX, where &#39;source&#39; is a string that uniquely identifies the origin of the data (e.g. paper, online database, etc), setid is a unique identifier for each set within that source, and XX is a unique identifier for each measurement within a set.</span>
+<span class="sd">    </span>
+<span class="sd">    :param df: The pandas DataFrame to be parsed</span>
+<span class="sd">    :type df: pandas.DataFrame</span>
+<span class="sd">    :returns: project_list, the list of Projects contained within the dataframe.</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">project_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">sources</span><span class="p">,</span><span class="n">sets</span> <span class="o">=</span> <span class="n">find_data_sets</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">data_set</span> <span class="ow">in</span> <span class="n">sets</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span> <span class="c1">#Try to load the project from the expected save file</span>
+            <span class="n">project</span> <span class="o">=</span> <span class="n">mumpce_py</span><span class="o">.</span><span class="n">load_project</span><span class="p">(</span><span class="n">data_set</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span> <span class="c1">#The project doesn&#39;t exist, so create it and its measurement list</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Project </span><span class="si">{}</span><span class="s1"> does not exist, creating it&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_set</span><span class="p">))</span>
+            <span class="n">measurement_list</span> <span class="o">=</span> <span class="n">mpct</span><span class="o">.</span><span class="n">measurement_initialize_pd</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">data_set</span> <span class="ow">in</span> <span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">ID</span><span class="o">.</span><span class="n">values</span><span class="p">]])</span>
+            <span class="n">project</span> <span class="o">=</span> <span class="n">mumpce_py</span><span class="o">.</span><span class="n">Project</span><span class="p">(</span><span class="n">measurement_list</span><span class="o">=</span><span class="n">measurement_list</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="n">data_set</span><span class="p">)</span> 
+            <span class="n">project</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        
+        <span class="n">project_list</span> <span class="o">+=</span> <span class="p">[</span><span class="n">project</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">project_list</span></div>
+        
+<div class="viewcode-block" id="run_project_parallel"><a class="viewcode-back" href="../data_parser_docs.html#data_parser.run_project_parallel">[docs]</a><span class="k">def</span> <span class="nf">run_project_parallel</span><span class="p">(</span><span class="n">project_to_run</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Check to see if the Measurements in a Project have been evaluated and, if they havent, evaluate them. Returns the Project. This is the parallel version.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">meas</span> <span class="ow">in</span> <span class="n">project_to_run</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="n">meas</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">meas</span><span class="o">.</span><span class="n">model_value</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">project_to_run</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">model_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="c1">#If the model value is blank, run the project</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">mpc_parallel</span><span class="o">.</span><span class="n">evaluate_parallel</span><span class="p">(</span><span class="n">project_to_run</span><span class="p">,</span><span class="n">nWorkers</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">meas_name</span><span class="p">,</span><span class="n">val</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+            <span class="n">project_to_run</span><span class="p">[</span><span class="n">meas_name</span><span class="p">]</span><span class="o">.</span><span class="n">model_value</span> <span class="o">=</span> <span class="n">val</span> <span class="c1">#Load model values back into the project</span>
+    <span class="n">project_to_run</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">project_to_run</span></div>
+
+<div class="viewcode-block" id="run_project"><a class="viewcode-back" href="../data_parser_docs.html#data_parser.run_project">[docs]</a><span class="k">def</span> <span class="nf">run_project</span><span class="p">(</span><span class="n">project_to_run</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Check to see if the Measurements in a Project have been evaluated and, if they havent, evaluate them. Returns the Project.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">meas</span> <span class="ow">in</span> <span class="n">project_to_run</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="n">meas</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">meas</span><span class="o">.</span><span class="n">model_value</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">project_to_run</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">model_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">meas</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm_notebook</span><span class="p">(</span><span class="n">project_to_run</span><span class="p">,</span><span class="n">desc</span><span class="o">=</span><span class="n">project_to_run</span><span class="o">.</span><span class="n">name</span><span class="p">):</span>
+            <span class="n">meas</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">project_to_run</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39; Value has been calculated&#39;</span><span class="p">)</span>
+    <span class="n">project_to_run</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">project_to_run</span></div>
+
+<div class="viewcode-block" id="run_project_sensitivity"><a class="viewcode-back" href="../data_parser_docs.html#data_parser.run_project_sensitivity">[docs]</a><span class="k">def</span> <span class="nf">run_project_sensitivity</span><span class="p">(</span><span class="n">project_to_run</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Check to see if the Measurements in a Project have been evaluated for sensitivity analysis and, if they havent, evaluate them. Returns the Project.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">project_to_run</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sensitivity_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">meas</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm_notebook</span><span class="p">(</span><span class="n">project_to_run</span><span class="p">,</span><span class="n">desc</span><span class="o">=</span><span class="n">project_to_run</span><span class="o">.</span><span class="n">name</span><span class="p">):</span>
+            <span class="n">meas</span><span class="o">.</span><span class="n">evaluate_sensitivity</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">project_to_run</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39; Sensitivity has been calculated&#39;</span><span class="p">)</span>
+    <span class="n">project_to_run</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">project_to_run</span></div>
+
+<span class="k">def</span> <span class="nf">make_fls_plot</span><span class="p">(</span><span class="n">primary_fuel</span><span class="p">,</span><span class="n">pres</span><span class="p">,</span><span class="n">nominal_T</span><span class="p">,</span><span class="n">project_list</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Creates a plot of the data for laminar flame speeds at a particular nominal condition associated with a list of :py:class:`Project` objects</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1">#Figure name</span>
+    <span class="n">figname_fmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">K_plot.png&#39;</span>
+    <span class="n">figname</span> <span class="o">=</span> <span class="n">figname_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">primary_fuel</span><span class="p">,</span><span class="n">pres</span><span class="p">,</span><span class="n">nominal_T</span><span class="p">)</span>
+    
+    <span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    
+    <span class="c1">#Extract calculation data for plot</span>
+    <span class="n">project_to_run</span> <span class="o">=</span> <span class="n">project_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">phis</span> <span class="o">=</span> <span class="p">[</span><span class="n">find_x_in_comp_string</span><span class="p">(</span><span class="n">meas</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">initial</span><span class="o">.</span><span class="n">composition</span><span class="p">,</span><span class="n">primary_fuel</span><span class="p">)</span> <span class="k">for</span> <span class="n">meas</span> <span class="ow">in</span> <span class="n">project_to_run</span><span class="p">]</span>
+    <span class="n">md_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">meas</span><span class="o">.</span><span class="n">model_value</span> <span class="k">for</span> <span class="n">meas</span> <span class="ow">in</span> <span class="n">project_to_run</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phis</span><span class="p">,</span><span class="n">md_v</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Model&#39;</span><span class="p">)</span>
+    
+    <span class="c1">#Extract experimental data for plot</span>
+    <span class="k">for</span> <span class="n">project</span> <span class="ow">in</span> <span class="n">project_list</span><span class="p">:</span>
+        <span class="n">phis</span> <span class="o">=</span> <span class="p">[</span><span class="n">find_x_in_comp_string</span><span class="p">(</span><span class="n">meas</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">initial</span><span class="o">.</span><span class="n">composition</span><span class="p">,</span><span class="n">primary_fuel</span><span class="p">)</span> <span class="k">for</span> <span class="n">meas</span> <span class="ow">in</span> <span class="n">project</span><span class="p">]</span>
+        <span class="n">ex_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">meas</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">meas</span> <span class="ow">in</span> <span class="n">project</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">phis</span><span class="p">,</span><span class="n">ex_v</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">project</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower center&#39;</span><span class="p">)</span>
+    
+    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span><span class="n">figname</span>
+
+<span class="k">def</span> <span class="nf">make_data_plot</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">make_ign_plot</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">make_ign_plot</span><span class="p">(</span><span class="n">project</span><span class="p">):</span><span class="c1">#,fig,ax):</span>
+    <span class="sd">&#39;&#39;&#39;Creates a plot of the data for a single ignition delay set associated with a :py:class:`Project`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">pjname</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">figname</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;_plot.png&#39;</span>
+    
+    <span class="n">temps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1000</span><span class="o">/</span><span class="n">meas</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">initial</span><span class="o">.</span><span class="n">T</span> <span class="k">for</span> <span class="n">meas</span> <span class="ow">in</span> <span class="n">project</span><span class="p">])</span>
+    <span class="n">ex_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">meas</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">meas</span> <span class="ow">in</span> <span class="n">project</span><span class="p">])</span>
+    <span class="n">md_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">meas</span><span class="o">.</span><span class="n">model_value</span> <span class="k">for</span> <span class="n">meas</span> <span class="ow">in</span> <span class="n">project</span><span class="p">])</span>
+    
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">temps</span><span class="p">)</span>
+    
+    <span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">temps</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ex_v</span><span class="p">)[</span><span class="n">indices</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temps</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">md_v</span><span class="p">)[</span><span class="n">indices</span><span class="p">],</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;1000 / T&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">r&#39;$\tau$&#39;</span><span class="p">)</span>
+
+    <span class="c1">#for meas,temp,tau in zip(project,temps,np.exp(ex_v)):</span>
+    <span class="c1">#    ax.text(temp-0.005,tau*1.01,meas.name[-4:],ha=&#39;right&#39;)</span>
+    <span class="c1">#for meas,temp,tau in zip(project,temps,np.exp(md_v)):</span>
+    <span class="c1">#    ax.text(temp+0.005,tau*1.01,&#39;\n  {:4.2f}&#39;.format(tau),ha=&#39;left&#39;)</span>
+    
+    <span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="n">project</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+    
+    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span><span class="n">figname</span>
+
+<div class="viewcode-block" id="make_fls_doc_page"><a class="viewcode-back" href="../data_parser_docs.html#data_parser.make_fls_doc_page">[docs]</a><span class="k">def</span> <span class="nf">make_fls_doc_page</span><span class="p">(</span><span class="n">primary_fuel</span><span class="p">,</span><span class="n">nominal_pres</span><span class="p">,</span><span class="n">nominal_T</span><span class="p">,</span><span class="n">project_list</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Creates the documentation page for laminar flame speeds at a particular nominal condition associated with a list of :py:class:`Project` objects</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1">#This is the default format string that will be used to make the restructured text file</span>
+    <span class="n">rststring</span> <span class="o">=</span> <span class="n">rststring</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;.. data title</span>
+
+<span class="si">{}</span><span class="s1"> </span>
+
+
+<span class="s1">Composition</span>
+<span class="s1">===========</span>
+<span class="s1">.. composition tables</span>
+
+<span class="si">{}</span><span class="s1"> </span>
+<span class="s1"> </span>
+
+<span class="s1">Plot</span>
+<span class="s1">----</span>
+
+<span class="s1">.. image:: </span><span class="si">{}</span><span class="s1"></span>
+
+<span class="s1">    &#39;&#39;&#39;</span>
+    <span class="c1"># Format strings to build the composition table</span>
+    <span class="n">condition_line_fmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:^5.2f}</span><span class="s1">  </span><span class="si">{:^10.1f}</span><span class="s1">  </span><span class="si">{:^8.0f}</span><span class="s1">&#39;</span>
+    <span class="n">condition_head_fmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:5}</span><span class="s1">  </span><span class="si">{:10}</span><span class="s1">  </span><span class="si">{:8}</span><span class="s1">&#39;</span>
+    <span class="n">condition_table_outer</span> <span class="o">=</span> <span class="n">condition_head_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;=====&#39;</span><span class="p">,</span><span class="s1">&#39;==========&#39;</span><span class="p">,</span><span class="s1">&#39;========&#39;</span><span class="p">,)</span>
+    <span class="n">condition_table_inner</span> <span class="o">=</span> <span class="n">condition_head_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;-----&#39;</span><span class="p">,</span><span class="s1">&#39;----------&#39;</span><span class="p">,</span><span class="s1">&#39;--------&#39;</span><span class="p">,)</span>
+    <span class="n">condition_header</span> <span class="o">=</span> <span class="n">condition_head_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39; Phi &#39;</span><span class="p">,</span><span class="s1">&#39;Pres (kPa)&#39;</span><span class="p">,</span><span class="s1">&#39;Temp (K)&#39;</span><span class="p">)</span>
+    
+    <span class="c1">#The title of the page</span>
+    <span class="n">doc_title_fmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> atm pressure, </span><span class="si">{}</span><span class="s1"> K nominal temperature&#39;</span>
+
+    
+    <span class="c1">#Build the document title    </span>
+    <span class="n">doc_title_text</span> <span class="o">=</span> <span class="n">doc_title_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">nominal_pres</span><span class="p">,</span><span class="n">nominal_T</span><span class="p">)</span>
+    <span class="n">title_underline</span> <span class="o">=</span> <span class="n">main_title_punc</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">doc_title_text</span><span class="p">)</span>
+    <span class="n">doctitle</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">doc_title_text</span><span class="p">,</span><span class="n">title_underline</span><span class="p">))</span>
+    
+    <span class="c1">#Build the filename</span>
+    <span class="n">docfile_fmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">K_plot&#39;</span>
+    <span class="n">listname</span> <span class="o">=</span> <span class="n">docfile_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">primary_fuel</span><span class="p">,</span><span class="n">nominal_pres</span><span class="p">,</span><span class="n">nominal_T</span><span class="p">)</span>
+    
+    <span class="c1">#Initialize the blank data source table</span>
+    <span class="n">source_punc</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span>
+    <span class="n">data_source_table</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="c1">#Blank composition table</span>
+    <span class="n">composition_data</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    
+    <span class="k">for</span> <span class="n">project</span> <span class="ow">in</span> <span class="n">project_list</span><span class="p">:</span>
+        
+        <span class="c1">#Get the data source for this project and build the section title</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="n">project</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">comment</span>
+        <span class="n">source_underline</span> <span class="o">=</span> <span class="n">source_punc</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        <span class="n">source_header</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">source</span><span class="p">,</span><span class="n">source_underline</span><span class="p">))</span>
+        
+        <span class="c1">#Build the header for the composition table</span>
+        <span class="n">composition_data</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">composition_data</span><span class="p">,</span><span class="n">source_header</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+        
+        <span class="n">condition_table</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">condition_table_outer</span><span class="p">,</span><span class="n">condition_header</span><span class="p">,</span><span class="n">condition_table_outer</span><span class="p">))</span>
+        
+        <span class="k">for</span> <span class="n">meas</span> <span class="ow">in</span> <span class="n">project</span><span class="p">:</span>
+            <span class="c1">#Extract the temperature, pressure, and equivalence ratio data from this measurement</span>
+            <span class="n">phi</span> <span class="o">=</span> <span class="n">find_x_in_comp_string</span><span class="p">(</span><span class="n">meas</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">initial</span><span class="o">.</span><span class="n">composition</span><span class="p">,</span><span class="n">primary_fuel</span><span class="p">)</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">meas</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">initial</span><span class="o">.</span><span class="n">T</span>
+            <span class="n">pres</span> <span class="o">=</span> <span class="n">meas</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">initial</span><span class="o">.</span><span class="n">P</span><span class="o">/</span><span class="mi">1000</span> <span class="c1"># convert to kPa, </span>
+            
+            <span class="c1">#Build this line of the condition table</span>
+            <span class="n">condition_line</span> <span class="o">=</span> <span class="n">condition_line_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span><span class="n">pres</span><span class="p">,</span><span class="n">temp</span><span class="p">)</span>
+            <span class="n">condition_table</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">condition_table</span><span class="p">,</span><span class="n">condition_line</span><span class="p">))</span>
+        <span class="n">condition_table</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">condition_table</span><span class="p">,</span><span class="n">condition_table_outer</span><span class="p">))</span>      
+        <span class="c1">#Add the composition table to  composition data</span>
+        <span class="n">composition_data</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">composition_data</span><span class="p">,</span><span class="n">condition_table</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">))</span>    
+    
+    <span class="c1">#Make the flame speed plot</span>
+    <span class="n">fig</span><span class="p">,</span><span class="n">figname</span> <span class="o">=</span> <span class="n">make_fls_plot</span><span class="p">(</span><span class="n">primary_fuel</span><span class="p">,</span><span class="n">nominal_pres</span><span class="p">,</span><span class="n">nominal_T</span><span class="p">,</span><span class="n">project_list</span><span class="p">)</span>
+    
+    <span class="c1">#print(composition_data)</span>
+    <span class="n">rstcontents</span> <span class="o">=</span> <span class="n">rststring</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">doctitle</span><span class="p">,</span><span class="n">composition_data</span><span class="p">,</span><span class="n">figname</span><span class="p">)</span>
+    <span class="c1">#print(rstcontents)</span>
+    
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">listname</span> <span class="o">+</span> <span class="s1">&#39;.rst&#39;</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">rstcontents</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">listname</span></div>
+    
+
+<span class="k">def</span> <span class="nf">make_doc_page</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">make_ign_doc_page</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
+
+<div class="viewcode-block" id="make_ign_doc_page"><a class="viewcode-back" href="../data_parser_docs.html#data_parser.make_ign_doc_page">[docs]</a><span class="k">def</span> <span class="nf">make_ign_doc_page</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Creates the documentation page for a single ignition delay set associated with a :py:class:`Project`</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="n">rststring</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;.. data title</span>
+
+<span class="si">{}</span><span class="s1"> </span>
+
+<span class="s1">.. data source</span>
+
+<span class="si">{}</span><span class="s1"> </span>
+
+<span class="s1">Composition</span>
+<span class="s1">-----------</span>
+<span class="s1">.. composition table</span>
+
+<span class="si">{}</span><span class="s1"> </span>
+
+<span class="s1">Data Table</span>
+<span class="s1">----------</span>
+
+<span class="s1">.. data table</span>
+
+<span class="si">{}</span><span class="s1"> </span>
+
+<span class="s1">Plot</span>
+<span class="s1">----</span>
+
+<span class="s1">.. image:: </span><span class="si">{}</span><span class="s1"></span>
+
+<span class="s1">    &#39;&#39;&#39;</span>
+    
+    <span class="n">component_line_fmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:9}</span><span class="s1">  </span><span class="si">{:6}</span><span class="s1">&#39;</span>
+    <span class="n">component_table_outer</span> <span class="o">=</span> <span class="n">component_line_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;=========&#39;</span><span class="p">,</span><span class="s1">&#39;======&#39;</span><span class="p">)</span>
+    <span class="n">component_table_inner</span> <span class="o">=</span> <span class="n">component_line_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;---------&#39;</span><span class="p">,</span><span class="s1">&#39;------&#39;</span><span class="p">)</span>
+
+    <span class="n">condition_line_fmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:^8.0f}</span><span class="s1">  </span><span class="si">{:^10.1f}</span><span class="s1">&#39;</span>
+    <span class="n">condition_head_fmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:8}</span><span class="s1">  </span><span class="si">{:10}</span><span class="s1">&#39;</span>
+    <span class="n">condition_table_outer</span> <span class="o">=</span> <span class="n">condition_head_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;========&#39;</span><span class="p">,</span><span class="s1">&#39;==========&#39;</span><span class="p">)</span>
+    <span class="n">condition_table_inner</span> <span class="o">=</span> <span class="n">condition_head_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;--------&#39;</span><span class="p">,</span><span class="s1">&#39;----------&#39;</span><span class="p">)</span>
+    <span class="n">condition_header</span> <span class="o">=</span><span class="n">condition_head_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Temp (K)&#39;</span><span class="p">,</span><span class="s1">&#39;Pres (kPa)&#39;</span><span class="p">)</span>
+
+    
+    <span class="n">setname</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">name</span>
+    
+    <span class="n">set_ID</span> <span class="o">=</span> <span class="n">setname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">source</span> <span class="o">=</span> <span class="n">project</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">comment</span> <span class="o">+</span> <span class="s1">&#39;: Set &#39;</span> <span class="o">+</span> <span class="n">set_ID</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+    
+    <span class="n">title_underline</span> <span class="o">=</span> <span class="n">main_title_punc</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+    
+    <span class="n">doctitle</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">source</span><span class="p">,</span><span class="n">title_underline</span><span class="p">))</span>
+
+    <span class="c1">#print (source)</span>
+    
+    <span class="n">pj_comp</span> <span class="o">=</span> <span class="n">project</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">initial</span><span class="o">.</span><span class="n">composition</span>
+    <span class="n">pj_comp_split</span> <span class="o">=</span> <span class="n">pj_comp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        
+    <span class="n">component_header</span> <span class="o">=</span> <span class="n">component_line_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Comp&#39;</span><span class="p">,</span><span class="s1">&#39;Frac %&#39;</span><span class="p">)</span>
+        
+    <span class="n">component_table</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">component_table_outer</span><span class="p">,</span><span class="n">component_header</span><span class="p">,</span><span class="n">component_table_outer</span><span class="p">))</span>
+    
+    
+    <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">pj_comp_split</span><span class="p">:</span>
+        <span class="n">component_split</span> <span class="o">=</span> <span class="n">component</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+        
+        <span class="n">component_name</span> <span class="o">=</span> <span class="n">component_split</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">component_frac</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">component_split</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        
+        <span class="n">component_percent</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:4.1f}</span><span class="s1"> %&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">component_frac</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+        
+        <span class="n">component_line</span> <span class="o">=</span> <span class="n">component_line_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">component_name</span><span class="p">,</span><span class="n">component_percent</span><span class="p">)</span>
+        
+        <span class="n">component_table</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">component_table</span><span class="p">,</span><span class="n">component_line</span><span class="p">))</span>
+    <span class="n">component_table</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">component_table</span><span class="p">,</span><span class="n">component_table_outer</span><span class="p">))</span>
+    <span class="c1">#print (component_table)</span>
+    
+    <span class="n">condition_table</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">condition_table_outer</span><span class="p">,</span><span class="n">condition_header</span><span class="p">,</span><span class="n">condition_table_outer</span><span class="p">))</span>
+    
+    <span class="k">for</span> <span class="n">meas</span> <span class="ow">in</span> <span class="n">project</span><span class="p">:</span>
+        
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">meas</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">initial</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">pres</span> <span class="o">=</span> <span class="n">meas</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">initial</span><span class="o">.</span><span class="n">P</span><span class="o">/</span><span class="mi">1000</span> <span class="c1"># convert to kPa, </span>
+        
+        <span class="n">condition_line</span> <span class="o">=</span> <span class="n">condition_line_fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span><span class="n">pres</span><span class="p">)</span>
+        <span class="n">condition_table</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">condition_table</span><span class="p">,</span><span class="n">condition_line</span><span class="p">))</span>
+        
+    <span class="n">condition_table</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">condition_table</span><span class="p">,</span><span class="n">condition_table_outer</span><span class="p">))</span>    
+    <span class="c1">#print (condition_table)</span>
+    
+    <span class="n">fig</span><span class="p">,</span><span class="n">figname</span> <span class="o">=</span> <span class="n">make_data_plot</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
+    <span class="c1">#fig.close()</span>
+    
+    <span class="n">rstcontents</span> <span class="o">=</span> <span class="n">rststring</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">doctitle</span><span class="p">,</span><span class="n">source</span><span class="p">,</span><span class="n">component_table</span><span class="p">,</span><span class="n">condition_table</span><span class="p">,</span><span class="n">figname</span><span class="p">)</span>
+    
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;.rst&#39;</span>
+    
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">rstcontents</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">project</span><span class="o">.</span><span class="n">name</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table Of Contents</h3>
+          <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ign.html">Ignition Delay Times</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fls.html">Laminar Flame Speeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_parser_docs.html">The data parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flame_plotter.html">Laminar flame speed documentation creator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ignition_plotter.html">Ignition delay time documentation creator</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>
