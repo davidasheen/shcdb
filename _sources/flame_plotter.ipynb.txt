@@ -1447,7 +1447,63 @@
       "False\n",
       "Mix\n",
       "Mixture-averaged solution, no energy equation, no grid refinement\n",
-      "Mixture-averaged solution, enable energy equation and grid refinement\n"
+      "Mixture-averaged solution, enable energy equation and grid refinement\n",
+      "Multicomponent solution\n",
+      "Multicomponent solution\n",
+      "No data saved from flame speed solution\n",
+      "No data saved from flame speed solution\n",
+      "No data saved from flame speed solution\n",
+      "No data saved from flame speed solution\n",
+      "No data saved from flame speed solution\n",
+      "No data saved from flame speed solution\n",
+      "Project ghlw00_h saved successfully\n",
+      "(10.0, '(365, 415]')\n",
+      "Project ghlw00_i does not exist, creating it\n",
+      "No data saved from flame speed solution\n",
+      "No data saved from flame speed solution\n",
+      "No data saved from flame speed solution\n",
+      "No data saved from flame speed solution\n",
+      "No data saved from flame speed solution\n",
+      "No data saved from flame speed solution\n",
+      "Project ghlw00_i saved successfully\n",
+      "fls_ghlw00_i01 None\n",
+      "fls_ghlw00_i02 None\n",
+      "fls_ghlw00_i03 None\n",
+      "fls_ghlw00_i04 None\n",
+      "fls_ghlw00_i05 None\n",
+      "fls_ghlw00_i06 None\n",
+      "fls_ghlw00_i01\n",
+      "fls_ghlw00_i02\n",
+      "fls_ghlw00_i03\n",
+      "fls_ghlw00_i04\n",
+      "fls_ghlw00_i05\n",
+      "fls_ghlw00_i06\n",
+      "False\n",
+      "Mix\n",
+      "Mixture-averaged solution, no energy equation, no grid refinement\n",
+      "False\n",
+      "False\n",
+      "Mix\n",
+      "False\n",
+      "Mix\n",
+      "Mixture-averaged solution, no energy equation, no grid refinement\n",
+      "Mixture-averaged solution, no energy equation, no grid refinement\n",
+      "Mix\n",
+      "Mixture-averaged solution, no energy equation, no grid refinement\n",
+      "False\n",
+      "Mix\n",
+      "Mixture-averaged solution, no energy equation, no grid refinement\n",
+      "Mixture-averaged solution, enable energy equation and grid refinement\n",
+      "Mixture-averaged solution, enable energy equation and grid refinement\n",
+      "Mixture-averaged solution, enable energy equation and grid refinement\n",
+      "Mixture-averaged solution, enable energy equation and grid refinement\n",
+      "Mixture-averaged solution, enable energy equation and grid refinement\n",
+      "Multicomponent solution\n",
+      "False\n",
+      "Mix\n",
+      "Mixture-averaged solution, no energy equation, no grid refinement\n",
+      "Mixture-averaged solution, enable energy equation and grid refinement\n",
+      "Multicomponent solution\n"
      ]
     }
    ],
@@ -1671,6 +1727,13 @@
      "views": [
       {
        "cell_index": 5
+      }
+     ]
+    },
+    "4ce6afc46b834985a72ba1fc76de3290": {
+     "views": [
+      {
+       "cell_index": 6
       }
      ]
     },

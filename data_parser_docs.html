@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The data parser &#8212; Small Hydrocarbons Combustion Properties Database 0.1.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Laminar flame speed documentation creator" href="flame_plotter.html" />
+    <link rel="prev" title="1 atm pressure, 300 K nominal temperature" href="C4H6_1_300K_plot.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-data-parser">
+<h1>The data parser<a class="headerlink" href="#the-data-parser" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="parsing-the-database">
+<h2>Parsing the database<a class="headerlink" href="#parsing-the-database" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">find_data_sets</span></code>(df)</td>
+<td>Takes a pandas.DataFrame object containing mumpce_py.cantera_utils compatible measurements and returns the data sources and data sets in the DataFrame.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">load_projects</span></code>(df)</td>
+<td>Takes a pandas.DataFrame object containing mumpce_py.cantera_utils compatible measurements and returns a list of mumpce.Project objects built from measuremenst in the DataFrame.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">run_project</span></code>(project_to_run)</td>
+<td>Check to see if the Measurements in a Project have been evaluated and, if they havent, evaluate them.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">run_project_parallel</span></code>(project_to_run)</td>
+<td>Check to see if the Measurements in a Project have been evaluated and, if they havent, evaluate them.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">run_project_sensitivity</span></code>(project_to_run)</td>
+<td>Check to see if the Measurements in a Project have been evaluated for sensitivity analysis and, if they havent, evaluate them.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="creating-documentation">
+<h2>Creating documentation<a class="headerlink" href="#creating-documentation" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">make_fls_docs</span></code>(primary_fuel_name,&nbsp;...)</td>
+<td>Creates the documentation for the laminar flame speeds in the database</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">make_main_fls_page</span></code>(primary_fuel_name,&nbsp;...)</td>
+<td>Creates the top level index page for a set of laminar flame speed projects</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">make_main_page</span></code>(primary_fuel_name,&nbsp;...)</td>
+<td>Creates the table of contents for the top level index page.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">make_fls_subpage</span></code>(primary_fuel,&nbsp;project_dict)</td>
+<td>Creates the documentation page for a single data source</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">make_fls_doc_page</span></code>(primary_fuel,&nbsp;...)</td>
+<td>Creates the documentation page for laminar flame speeds at a particular nominal condition associated with a list of <code class="xref py py-class docutils literal"><span class="pre">Project</span></code> objects</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">make_ign_docs</span></code>(primary_fuel_name,&nbsp;sources,&nbsp;...)</td>
+<td>Creates the documentation for the ignition delay times in the database</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">make_main_ign_page</span></code>(primary_fuel_name,&nbsp;...)</td>
+<td>Creates the top level index page for a set of ignition delay time projects</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">make_ign_subpage</span></code>(source,&nbsp;primary_fuel_name,&nbsp;...)</td>
+<td>Creates the documentation page for a single data source</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">make_ign_doc_page</span></code>(project)</td>
+<td>Creates the documentation page for a single ignition delay set associated with a <code class="xref py py-class docutils literal"><span class="pre">Project</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The data parser</a><ul>
+<li><a class="reference internal" href="#parsing-the-database">Parsing the database</a></li>
+<li><a class="reference internal" href="#creating-documentation">Creating documentation</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="C4H6_1_300K_plot.html" title="previous chapter">1 atm pressure, 300 K nominal temperature</a></li>
+      <li>Next: <a href="flame_plotter.html" title="next chapter">Laminar flame speed documentation creator</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/data_parser_docs.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, David A. Sheen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="_sources/data_parser_docs.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

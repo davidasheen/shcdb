@@ -1,0 +1,29 @@
+The data parser
+***************
+
+.. currentmodule:: data_parser
+
+Parsing the database
+====================
+
+.. autosummary::
+   find_data_sets
+   load_projects
+   run_project
+   run_project_parallel
+   run_project_sensitivity
+   
+Creating documentation
+======================
+
+.. autosummary::
+   make_fls_docs
+   make_main_fls_page
+   make_main_page
+   make_fls_subpage
+   make_fls_doc_page
+   make_ign_docs
+   make_main_ign_page
+   make_ign_subpage
+   make_ign_doc_page
+   
