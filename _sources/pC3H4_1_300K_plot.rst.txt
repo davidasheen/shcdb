@@ -8,6 +8,7 @@ Plot
 ----
 
 .. image:: pC3H4_1_300K_plot.png
+   :scale: 50%
 
 
 Composition

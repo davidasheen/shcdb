@@ -23,6 +23,7 @@ Plot
 ----
 
 .. image:: khp05_a_plot.png
+   :scale: 50%
 
 Data Table
 ----------

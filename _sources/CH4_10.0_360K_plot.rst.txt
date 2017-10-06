@@ -8,6 +8,7 @@ Plot
 ----
 
 .. image:: CH4_10.0_360K_plot.png
+   :scale: 50%
 
 
 Composition

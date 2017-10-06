@@ -23,6 +23,7 @@ Plot
 ----
 
 .. image:: bsl71_a_plot.png
+   :scale: 50%
 
 Data Table
 ----------

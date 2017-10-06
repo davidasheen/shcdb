@@ -23,6 +23,7 @@ Plot
 ----
 
 .. image:: bt99_e_plot.png
+   :scale: 50%
 
 Data Table
 ----------

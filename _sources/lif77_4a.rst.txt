@@ -24,6 +24,7 @@ Plot
 ----
 
 .. image:: lif77_4a_plot.png
+   :scale: 50%
 
 Data Table
 ----------

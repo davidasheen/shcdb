@@ -23,6 +23,7 @@ Plot
 ----
 
 .. image:: psn98_m_plot.png
+   :scale: 50%
 
 Data Table
 ----------

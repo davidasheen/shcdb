@@ -23,6 +23,7 @@ Plot
 ----
 
 .. image:: lif77_1c_plot.png
+   :scale: 50%
 
 Data Table
 ----------

@@ -24,6 +24,7 @@ Plot
 ----
 
 .. image:: hn09_u_plot.png
+   :scale: 50%
 
 Data Table
 ----------

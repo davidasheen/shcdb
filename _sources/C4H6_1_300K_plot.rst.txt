@@ -8,6 +8,7 @@ Plot
 ----
 
 .. image:: C4H6_1_300K_plot.png
+   :scale: 50%
 
 
 Composition

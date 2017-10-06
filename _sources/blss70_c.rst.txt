@@ -23,6 +23,7 @@ Plot
 ----
 
 .. image:: blss70_c_plot.png
+   :scale: 50%
 
 Data Table
 ----------

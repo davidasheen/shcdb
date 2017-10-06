@@ -24,6 +24,7 @@ Plot
 ----
 
 .. image:: hhbm06_e_plot.png
+   :scale: 50%
 
 Data Table
 ----------

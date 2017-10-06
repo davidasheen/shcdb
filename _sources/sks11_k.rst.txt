@@ -23,6 +23,7 @@ Plot
 ----
 
 .. image:: sks11_k_plot.png
+   :scale: 50%
 
 Data Table
 ----------

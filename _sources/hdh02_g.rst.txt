@@ -23,6 +23,7 @@ Plot
 ----
 
 .. image:: hdh02_g_plot.png
+   :scale: 50%
 
 Data Table
 ----------

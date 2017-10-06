@@ -23,6 +23,7 @@ Plot
 ----
 
 .. image:: bs72_h_plot.png
+   :scale: 50%
 
 Data Table
 ----------

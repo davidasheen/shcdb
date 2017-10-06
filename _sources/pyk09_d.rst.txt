@@ -23,6 +23,7 @@ Plot
 ----
 
 .. image:: pyk09_d_plot.png
+   :scale: 50%
 
 Data Table
 ----------

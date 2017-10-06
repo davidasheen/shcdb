@@ -23,6 +23,7 @@ Plot
 ----
 
 .. image:: yf95_a_plot.png
+   :scale: 50%
 
 Data Table
 ----------
