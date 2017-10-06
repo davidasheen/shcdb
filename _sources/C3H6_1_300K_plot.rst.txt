@@ -4,6 +4,12 @@
 ***************************************** 
 
 
+Plot
+----
+
+.. image:: C3H6_1_300K_plot.png
+
+
 Composition
 ===========
 .. composition tables
@@ -53,9 +59,5 @@ G. Jomaas, X. L. Zheng, D. L. Zhu, C. K. Law, Proc. Combust. Inst. 30 (2005), 19
  
  
 
-Plot
-----
-
-.. image:: C3H6_1_300K_plot.png
 
     

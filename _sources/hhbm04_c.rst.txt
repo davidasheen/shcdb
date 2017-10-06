@@ -19,6 +19,11 @@ O2         18.5 %
 AR         69.5 %
 =========  ====== 
 
+Plot
+----
+
+.. image:: hhbm04_c_plot.png
+
 Data Table
 ----------
 
@@ -34,10 +39,4 @@ Temp (K)  Pres (kPa)
   1266      3647.7  
   1290      3890.9  
 ========  ========== 
-
-Plot
-----
-
-.. image:: hhbm04_c_plot.png
-
     

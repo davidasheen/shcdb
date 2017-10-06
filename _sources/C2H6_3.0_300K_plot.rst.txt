@@ -4,6 +4,12 @@
 ******************************************* 
 
 
+Plot
+----
+
+.. image:: C2H6_3.0_300K_plot.png
+
+
 Composition
 ===========
 .. composition tables
@@ -26,9 +32,5 @@ Hassan, M. I., Aung, K. T., Kwon, K. C., and Faeth, G. M. J. Propul. Power 1998,
  
  
 
-Plot
-----
-
-.. image:: C2H6_3.0_300K_plot.png
 
     

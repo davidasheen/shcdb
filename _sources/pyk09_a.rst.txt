@@ -19,6 +19,11 @@ O2         19.6 %
 N2         73.8 %
 =========  ====== 
 
+Plot
+----
+
+.. image:: pyk09_a_plot.png
+
 Data Table
 ----------
 
@@ -35,10 +40,4 @@ Temp (K)  Pres (kPa)
   1167      648.5   
   1123      636.3   
 ========  ========== 
-
-Plot
-----
-
-.. image:: pyk09_a_plot.png
-
     

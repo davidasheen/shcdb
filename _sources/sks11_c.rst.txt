@@ -19,6 +19,11 @@ O2          3.5 %
 AR         93.0 %
 =========  ====== 
 
+Plot
+----
+
+.. image:: sks11_c_plot.png
+
 Data Table
 ----------
 
@@ -70,10 +75,4 @@ Temp (K)  Pres (kPa)
   1584      1722.5  
   1590      1682.0  
 ========  ========== 
-
-Plot
-----
-
-.. image:: sks11_c_plot.png
-
     

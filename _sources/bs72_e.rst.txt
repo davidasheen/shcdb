@@ -19,6 +19,11 @@ O2          1.5 %
 AR         97.5 %
 =========  ====== 
 
+Plot
+----
+
+.. image:: bs72_e_plot.png
+
 Data Table
 ----------
 
@@ -35,10 +40,4 @@ Temp (K)  Pres (kPa)
   1655      304.0   
   1747      304.0   
 ========  ========== 
-
-Plot
-----
-
-.. image:: bs72_e_plot.png
-
     

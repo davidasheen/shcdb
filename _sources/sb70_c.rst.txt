@@ -19,6 +19,11 @@ O2         19.1 %
 AR         76.1 %
 =========  ====== 
 
+Plot
+----
+
+.. image:: sb70_c_plot.png
+
 Data Table
 ----------
 
@@ -40,10 +45,4 @@ Temp (K)  Pres (kPa)
   1357      162.1   
   1347      162.1   
 ========  ========== 
-
-Plot
-----
-
-.. image:: sb70_c_plot.png
-
     

@@ -4,6 +4,12 @@
 ******************************************* 
 
 
+Plot
+----
+
+.. image:: CH4_1.0_360K_plot.png
+
+
 Composition
 ===========
 .. composition tables
@@ -24,9 +30,5 @@ X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
  
  
 
-Plot
-----
-
-.. image:: CH4_1.0_360K_plot.png
 
     

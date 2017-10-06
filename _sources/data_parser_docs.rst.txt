@@ -6,6 +6,16 @@ The data parser
 Parsing the database
 ====================
 
+In the database, experimental measurements are logically grouped in the following ways:
+
+   * Sources: A source is a unique publication in which the data was produced
+   * Sets: A set is those measurements that were taken under a similar set of conditions with one variable changed. For instance, a set might be all ignition delay times at a particular pressure and composition that vary with temperature, or all laminar flame speeds at a particular pressure and temperature.
+   * Primary fuel: The primary fuel in a combustion experiment is that substance which is the principal component being oxidized. It is usually designated by the researcher.
+   
+Measurements are named according to the convention source_setidXX, where ‘source’ is a string that uniquely identifies the origin of the data (e.g. paper, online database, etc), setid is a unique identifier for each set within that source, and XX is a unique identifier for each measurement within a set. So, for instance, the name 'ecl90_b01' refers to the data source named ecl90, set b, measurement 01. Likewise, lif77_1a04 refers to source lif77, set 1a, measurement 04. In addition, each Excel data file in the database contains the measurements for a particular primary fuel, so some sources appear in different data files (for instance, ezl90).
+
+The functions in the `data_parser` module will scan the database and break it down into individual sets. A MUM-PCE Measurement is created for each measurement in the database, and then all the measurements identified as belonging to a particular set are grouped into a Project. Each project will then be run and the resulting values saved.
+
 .. autosummary::
    find_data_sets
    load_projects
@@ -16,12 +26,16 @@ Parsing the database
 Creating documentation
 ======================
 
+Once the projects have been run, the data parser will automatically generate the web documentation for the database. For ignition delay, each set will be given its own page. For laminar flame speed, the sets are grouped by nominal unburned gas temperature and pressure, and then every set with that condition will be plotted together.
+
 .. autosummary::
    make_fls_docs
    make_main_fls_page
    make_main_page
    make_fls_subpage
    make_fls_doc_page
+   
+.. autosummary::   
    make_ign_docs
    make_main_ign_page
    make_ign_subpage

@@ -19,6 +19,11 @@ O2         18.8 %
 AR         75.0 %
 =========  ====== 
 
+Plot
+----
+
+.. image:: bt99_b_plot.png
+
 Data Table
 ----------
 
@@ -65,10 +70,4 @@ Temp (K)  Pres (kPa)
   1134      152.7   
   1102      143.2   
 ========  ========== 
-
-Plot
-----
-
-.. image:: bt99_b_plot.png
-
     

@@ -4,6 +4,12 @@
 ******************************************* 
 
 
+Plot
+----
+
+.. image:: C2H4_1.0_400K_plot.png
+
+
 Composition
 ===========
 .. composition tables
@@ -28,9 +34,5 @@ K. Kumar, G. Mittal, C.-J. Sung, C. K. Law, Combust. Flame 153 (2008), 343-354.
  
  
 
-Plot
-----
-
-.. image:: C2H4_1.0_400K_plot.png
 
     

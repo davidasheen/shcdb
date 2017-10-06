@@ -19,6 +19,11 @@ O2          8.0 %
 AR         91.2 %
 =========  ====== 
 
+Plot
+----
+
+.. image:: lhdh11_c_plot.png
+
 Data Table
 ----------
 
@@ -47,10 +52,4 @@ Temp (K)  Pres (kPa)
   968       2979.0  
   950       2168.4  
 ========  ========== 
-
-Plot
-----
-
-.. image:: lhdh11_c_plot.png
-
     

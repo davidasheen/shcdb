@@ -19,6 +19,11 @@ O2          4.5 %
 AR         95.0 %
 =========  ====== 
 
+Plot
+----
+
+.. image:: hge82_b_plot.png
+
 Data Table
 ----------
 
@@ -41,10 +46,4 @@ Temp (K)  Pres (kPa)
   1432       21.3   
   1380       20.3   
 ========  ========== 
-
-Plot
-----
-
-.. image:: hge82_b_plot.png
-
     

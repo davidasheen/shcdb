@@ -19,6 +19,11 @@ O2         13.0 %
 AR         86.0 %
 =========  ====== 
 
+Plot
+----
+
+.. image:: hdh02_g_plot.png
+
 Data Table
 ----------
 
@@ -33,10 +38,4 @@ Temp (K)  Pres (kPa)
   1422      121.6   
   1453      121.6   
 ========  ========== 
-
-Plot
-----
-
-.. image:: hdh02_g_plot.png
-
     

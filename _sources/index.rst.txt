@@ -29,6 +29,7 @@ This data is subject to the `NIST Data License <https://www.nist.gov/director/li
    ign
    fls
    data_parser_docs
+   mpc_parallel_docs
    flame_plotter
    ignition_plotter
 

@@ -4,6 +4,12 @@
 ******************************************** 
 
 
+Plot
+----
+
+.. image:: C2H4_1.01_300K_plot.png
+
+
 Composition
 ===========
 .. composition tables
@@ -30,9 +36,5 @@ F. N. Egolfopoulos, D. L. Zhu, C. K. Law, Proc. Combust. Inst. 23 (1991), 471-47
  
  
 
-Plot
-----
-
-.. image:: C2H4_1.01_300K_plot.png
 
     

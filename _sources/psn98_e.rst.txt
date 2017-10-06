@@ -19,6 +19,11 @@ O2         13.3 %
 AR         66.7 %
 =========  ====== 
 
+Plot
+----
+
+.. image:: psn98_e_plot.png
+
 Data Table
 ----------
 
@@ -32,10 +37,4 @@ Temp (K)  Pres (kPa)
   1383      3901.0  
   1431      3495.7  
 ========  ========== 
-
-Plot
-----
-
-.. image:: psn98_e_plot.png
-
     

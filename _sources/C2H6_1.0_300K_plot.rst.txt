@@ -4,6 +4,12 @@
 ******************************************* 
 
 
+Plot
+----
+
+.. image:: C2H6_1.0_300K_plot.png
+
+
 Composition
 ===========
 .. composition tables
@@ -125,9 +131,5 @@ C. M. Vagelopoulos, F. N. Egolfopoulos, Proc. Combust. Inst. 27 (1998), 513-519.
  
  
 
-Plot
-----
-
-.. image:: C2H6_1.0_300K_plot.png
 
     

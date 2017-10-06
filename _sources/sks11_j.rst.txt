@@ -19,6 +19,11 @@ O2          1.5 %
 N2         98.0 %
 =========  ====== 
 
+Plot
+----
+
+.. image:: sks11_j_plot.png
+
 Data Table
 ----------
 
@@ -33,10 +38,4 @@ Temp (K)  Pres (kPa)
   1605      982.9   
   1719      972.7   
 ========  ========== 
-
-Plot
-----
-
-.. image:: sks11_j_plot.png
-
     

@@ -19,6 +19,11 @@ O2          2.1 %
 AR         95.8 %
 =========  ====== 
 
+Plot
+----
+
+.. image:: lif77_2a_plot.png
+
 Data Table
 ----------
 
@@ -38,10 +43,4 @@ Temp (K)  Pres (kPa)
   1972      911.9   
   2028      911.9   
 ========  ========== 
-
-Plot
-----
-
-.. image:: lif77_2a_plot.png
-
     

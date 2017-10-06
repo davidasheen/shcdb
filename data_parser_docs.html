@@ -10,6 +10,7 @@
     
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -24,6 +25,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://pages.nist.gov/nist-header-footer/js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -58,6 +61,16 @@
 <h1>The data parser<a class="headerlink" href="#the-data-parser" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="parsing-the-database">
 <h2>Parsing the database<a class="headerlink" href="#parsing-the-database" title="Permalink to this headline">¶</a></h2>
+<p>In the database, experimental measurements are logically grouped in the following ways:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Sources: A source is a unique publication in which the data was produced</li>
+<li>Sets: A set is those measurements that were taken under a similar set of conditions with one variable changed. For instance, a set might be all ignition delay times at a particular pressure and composition that vary with temperature, or all laminar flame speeds at a particular pressure and temperature.</li>
+<li>Primary fuel: The primary fuel in a combustion experiment is that substance which is the principal component being oxidized. It is usually designated by the researcher.</li>
+</ul>
+</div></blockquote>
+<p>Measurements are named according to the convention source_setidXX, where ‘source’ is a string that uniquely identifies the origin of the data (e.g. paper, online database, etc), setid is a unique identifier for each set within that source, and XX is a unique identifier for each measurement within a set. So, for instance, the name &#8216;ecl90_b01&#8217; refers to the data source named ecl90, set b, measurement 01. Likewise, lif77_1a04 refers to source lif77, set 1a, measurement 04. In addition, each Excel data file in the database contains the measurements for a particular primary fuel, so some sources appear in different data files (for instance, ezl90).</p>
+<p>The functions in the <cite>data_parser</cite> module will scan the database and break it down into individual sets. A MUM-PCE Measurement is created for each measurement in the database, and then all the measurements identified as belonging to a particular set are grouped into a Project. Each project will then be run and the resulting values saved.</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -84,6 +97,7 @@
 </div>
 <div class="section" id="creating-documentation">
 <h2>Creating documentation<a class="headerlink" href="#creating-documentation" title="Permalink to this headline">¶</a></h2>
+<p>Once the projects have been run, the data parser will automatically generate the web documentation for the database. For ignition delay, each set will be given its own page. For laminar flame speed, the sets are grouped by nominal unburned gas temperature and pressure, and then every set with that condition will be plotted together.</p>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -105,16 +119,24 @@
 <tr class="row-odd"><td><a class="reference internal" href="#data_parser.make_fls_doc_page" title="data_parser.make_fls_doc_page"><code class="xref py py-obj docutils literal"><span class="pre">make_fls_doc_page</span></code></a>(primary_fuel,&nbsp;...)</td>
 <td>Creates the documentation page for laminar flame speeds at a particular nominal condition associated with a list of <code class="xref py py-class docutils literal"><span class="pre">Project</span></code> objects</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#data_parser.make_ign_docs" title="data_parser.make_ign_docs"><code class="xref py py-obj docutils literal"><span class="pre">make_ign_docs</span></code></a>(primary_fuel_name,&nbsp;sources,&nbsp;...)</td>
+</tbody>
+</table>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#data_parser.make_ign_docs" title="data_parser.make_ign_docs"><code class="xref py py-obj docutils literal"><span class="pre">make_ign_docs</span></code></a>(primary_fuel_name,&nbsp;sources,&nbsp;...)</td>
 <td>Creates the documentation for the ignition delay times in the database</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#data_parser.make_main_ign_page" title="data_parser.make_main_ign_page"><code class="xref py py-obj docutils literal"><span class="pre">make_main_ign_page</span></code></a>(primary_fuel_name,&nbsp;...)</td>
+<tr class="row-even"><td><a class="reference internal" href="#data_parser.make_main_ign_page" title="data_parser.make_main_ign_page"><code class="xref py py-obj docutils literal"><span class="pre">make_main_ign_page</span></code></a>(primary_fuel_name,&nbsp;...)</td>
 <td>Creates the top level index page for a set of ignition delay time projects</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#data_parser.make_ign_subpage" title="data_parser.make_ign_subpage"><code class="xref py py-obj docutils literal"><span class="pre">make_ign_subpage</span></code></a>(source,&nbsp;primary_fuel_name,&nbsp;...)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#data_parser.make_ign_subpage" title="data_parser.make_ign_subpage"><code class="xref py py-obj docutils literal"><span class="pre">make_ign_subpage</span></code></a>(source,&nbsp;primary_fuel_name,&nbsp;...)</td>
 <td>Creates the documentation page for a single data source</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#data_parser.make_ign_doc_page" title="data_parser.make_ign_doc_page"><code class="xref py py-obj docutils literal"><span class="pre">make_ign_doc_page</span></code></a>(project)</td>
+<tr class="row-even"><td><a class="reference internal" href="#data_parser.make_ign_doc_page" title="data_parser.make_ign_doc_page"><code class="xref py py-obj docutils literal"><span class="pre">make_ign_doc_page</span></code></a>(project)</td>
 <td>Creates the documentation page for a single ignition delay set associated with a <code class="xref py py-class docutils literal"><span class="pre">Project</span></code></td>
 </tr>
 </tbody>
@@ -398,7 +420,6 @@
         <div class="right">
           
     <div class="footer" role="contentinfo">
-        &#169; Copyright .
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
     </div>
         </div>

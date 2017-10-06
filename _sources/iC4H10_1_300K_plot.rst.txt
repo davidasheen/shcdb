@@ -4,6 +4,12 @@
 ***************************************** 
 
 
+Plot
+----
+
+.. image:: iC4H10_1_300K_plot.png
+
+
 Composition
 ===========
 .. composition tables
@@ -63,9 +69,5 @@ S. G. Davis, C. K. Law, Combust. Sci. Technol. 140 (1998), 427-449.
  
  
 
-Plot
-----
-
-.. image:: iC4H10_1_300K_plot.png
 
     

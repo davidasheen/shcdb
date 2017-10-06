@@ -10,6 +10,7 @@
     
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -24,11 +25,13 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://pages.nist.gov/nist-header-footer/js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Ignition delay time documentation creator" href="ignition_plotter.html" />
-    <link rel="prev" title="The data parser" href="data_parser_docs.html" /> 
+    <link rel="prev" title="MUM-PCE parallel implementation" href="mpc_parallel_docs.html" /> 
   </head>
   <body role="document">
     <div class="header-wrapper" role="banner">
@@ -36,7 +39,7 @@
         <div class="headertitle"><a
           href="index.html">Small Hydrocarbons Combustion Properties Database 0.1.1 documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="data_parser_docs.html" title="The data parser"
+          <a href="mpc_parallel_docs.html" title="MUM-PCE parallel implementation"
              accesskey="P">previous</a> |
           <a href="ignition_plotter.html" title="Ignition delay time documentation creator"
              accesskey="N">next</a> |
@@ -271,7 +274,7 @@ div.nboutput  > :nth-child(2).stderr {
 </div>
 <div class="nbinput docutils container">
 <div class="highlight-none"><div class="highlight"><pre>
-<span></span>In [10]:
+<span></span>In [6]:
 </pre></div>
 </div>
 <div class="highlight-ipython3"><div class="highlight"><pre>
@@ -443,58 +446,12 @@ No data saved from flame speed solution
 No data saved from flame speed solution
 Project haf98_e saved successfully
 (5.0, &#39;(0, 315]&#39;)
-Project ghlw00_d does not exist, creating it
-No data saved from flame speed solution
-No data saved from flame speed solution
-No data saved from flame speed solution
-No data saved from flame speed solution
-No data saved from flame speed solution
-No data saved from flame speed solution
-Project ghlw00_d saved successfully
-fls_ghlw00_d01 None
-fls_ghlw00_d02 None
-fls_ghlw00_d03 None
-fls_ghlw00_d04 None
-fls_ghlw00_d05 None
-fls_ghlw00_d06 None
-fls_ghlw00_d01
-fls_ghlw00_d02
-fls_ghlw00_d03
-fls_ghlw00_d04
-fls_ghlw00_d05
-fls_ghlw00_d06
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-False
-Mix
-False
-Mixture-averaged solution, no energy equation, no grid refinement
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-Warning: Temperature (2009.74 K) outside valid range of 300 K to 2000 K
-Warning: Temperature (2012.54 K) outside valid range of 300 K to 2000 K
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Multicomponent solution
-Multicomponent solution
-Multicomponent solution
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Multicomponent solution
-Multicomponent solution
-Multicomponent solution
+fls_ghlw00_d01 14.3789072478
+fls_ghlw00_d02 14.7232205208
+fls_ghlw00_d03 20.364305326
+fls_ghlw00_d04 20.3643053261
+fls_ghlw00_d05 14.4816909558
+fls_ghlw00_d06 14.7584273407
 No data saved from flame speed solution
 No data saved from flame speed solution
 No data saved from flame speed solution
@@ -503,532 +460,12 @@ No data saved from flame speed solution
 No data saved from flame speed solution
 Project ghlw00_d saved successfully
 (5.0, &#39;(315, 365]&#39;)
-fls_ghlw00_e01 None
-fls_ghlw00_e02 None
-fls_ghlw00_e03 None
-fls_ghlw00_e04 None
-fls_ghlw00_e05 None
-fls_ghlw00_e06 None
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="docutils container">
-</div>
-<div class="stderr docutils container">
-<div class="highlight"><pre>
---- Logging error ---
---- Logging error ---
-Traceback (most recent call last):
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 991, in emit
-    self.flush()
---- Logging error ---
-Traceback (most recent call last):
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 991, in emit
-    self.flush()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 971, in flush
-    self.stream.flush()
-Traceback (most recent call last):
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 971, in flush
-    self.stream.flush()
-Call stack:
-Traceback (most recent call last):
-Call stack:
-OSError: [Errno 5] Input/output error
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 971, in flush
-    self.stream.flush()
-OSError: [Errno 5] Input/output error
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 991, in emit
-    self.flush()
-OSError: [Errno 5] Input/output error
---- Logging error ---
-Call stack:
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 971, in flush
-    self.stream.flush()
-OSError: [Errno 5] Input/output error
-Call stack:
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 991, in emit
-    self.flush()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 971, in flush
-    self.stream.flush()
---- Logging error ---
-OSError: [Errno 5] Input/output error
-Call stack:
-Traceback (most recent call last):
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 991, in emit
-    self.flush()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 193, in _run_module_as_main
-    &#34;__main__&#34;, mod_spec)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 193, in _run_module_as_main
-    &#34;__main__&#34;, mod_spec)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 193, in _run_module_as_main
-    &#34;__main__&#34;, mod_spec)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 193, in _run_module_as_main
-    &#34;__main__&#34;, mod_spec)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 193, in _run_module_as_main
-    &#34;__main__&#34;, mod_spec)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 85, in _run_code
-    exec(code, run_globals)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 85, in _run_code
-    exec(code, run_globals)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 85, in _run_code
-    exec(code, run_globals)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 85, in _run_code
-    exec(code, run_globals)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 85, in _run_code
-    exec(code, run_globals)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/__main__.py&#34;, line 3, in &lt;module&gt;
-    app.launch_new_instance()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/__main__.py&#34;, line 3, in &lt;module&gt;
-    app.launch_new_instance()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/__main__.py&#34;, line 3, in &lt;module&gt;
-    app.launch_new_instance()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/__main__.py&#34;, line 3, in &lt;module&gt;
-    app.launch_new_instance()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/__main__.py&#34;, line 3, in &lt;module&gt;
-    app.launch_new_instance()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/config/application.py&#34;, line 658, in launch_instance
-    app.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/config/application.py&#34;, line 658, in launch_instance
-    app.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/config/application.py&#34;, line 658, in launch_instance
-    app.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/config/application.py&#34;, line 658, in launch_instance
-    app.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/config/application.py&#34;, line 658, in launch_instance
-    app.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelapp.py&#34;, line 474, in start
-    ioloop.IOLoop.instance().start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelapp.py&#34;, line 474, in start
-    ioloop.IOLoop.instance().start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelapp.py&#34;, line 474, in start
-    ioloop.IOLoop.instance().start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelapp.py&#34;, line 474, in start
-    ioloop.IOLoop.instance().start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/ioloop.py&#34;, line 177, in start
-    super(ZMQIOLoop, self).start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelapp.py&#34;, line 474, in start
-    ioloop.IOLoop.instance().start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/ioloop.py&#34;, line 177, in start
-    super(ZMQIOLoop, self).start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/ioloop.py&#34;, line 177, in start
-    super(ZMQIOLoop, self).start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/ioloop.py&#34;, line 177, in start
-    super(ZMQIOLoop, self).start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/ioloop.py&#34;, line 887, in start
-    handler_func(fd_obj, events)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/ioloop.py&#34;, line 177, in start
-    super(ZMQIOLoop, self).start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/ioloop.py&#34;, line 887, in start
-    handler_func(fd_obj, events)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/ioloop.py&#34;, line 887, in start
-    handler_func(fd_obj, events)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/ioloop.py&#34;, line 887, in start
-    handler_func(fd_obj, events)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/ioloop.py&#34;, line 887, in start
-    handler_func(fd_obj, events)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 440, in _handle_events
-    self._handle_recv()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 440, in _handle_events
-    self._handle_recv()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 440, in _handle_events
-    self._handle_recv()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 440, in _handle_events
-    self._handle_recv()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 440, in _handle_events
-    self._handle_recv()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 472, in _handle_recv
-    self._run_callback(callback, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 472, in _handle_recv
-    self._run_callback(callback, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 472, in _handle_recv
-    self._run_callback(callback, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 472, in _handle_recv
-    self._run_callback(callback, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 472, in _handle_recv
-    self._run_callback(callback, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 414, in _run_callback
-    callback(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 414, in _run_callback
-    callback(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 414, in _run_callback
-    callback(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 414, in _run_callback
-    callback(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 414, in _run_callback
-    callback(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 276, in dispatcher
-    return self.dispatch_shell(stream, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 276, in dispatcher
-    return self.dispatch_shell(stream, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 276, in dispatcher
-    return self.dispatch_shell(stream, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 228, in dispatch_shell
-    handler(stream, idents, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 276, in dispatcher
-    return self.dispatch_shell(stream, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 276, in dispatcher
-    return self.dispatch_shell(stream, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 228, in dispatch_shell
-    handler(stream, idents, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 228, in dispatch_shell
-    handler(stream, idents, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 390, in execute_request
-    user_expressions, allow_stdin)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 228, in dispatch_shell
-    handler(stream, idents, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 390, in execute_request
-    user_expressions, allow_stdin)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 390, in execute_request
-    user_expressions, allow_stdin)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 228, in dispatch_shell
-    handler(stream, idents, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/ipkernel.py&#34;, line 196, in do_execute
-    res = shell.run_cell(code, store_history=store_history, silent=silent)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 390, in execute_request
-    user_expressions, allow_stdin)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/ipkernel.py&#34;, line 196, in do_execute
-    res = shell.run_cell(code, store_history=store_history, silent=silent)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 390, in execute_request
-    user_expressions, allow_stdin)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/ipkernel.py&#34;, line 196, in do_execute
-    res = shell.run_cell(code, store_history=store_history, silent=silent)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/zmqshell.py&#34;, line 501, in run_cell
-    return super(ZMQInteractiveShell, self).run_cell(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/ipkernel.py&#34;, line 196, in do_execute
-    res = shell.run_cell(code, store_history=store_history, silent=silent)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/zmqshell.py&#34;, line 501, in run_cell
-    return super(ZMQInteractiveShell, self).run_cell(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/ipkernel.py&#34;, line 196, in do_execute
-    res = shell.run_cell(code, store_history=store_history, silent=silent)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/zmqshell.py&#34;, line 501, in run_cell
-    return super(ZMQInteractiveShell, self).run_cell(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2717, in run_cell
-    interactivity=interactivity, compiler=compiler, result=result)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/zmqshell.py&#34;, line 501, in run_cell
-    return super(ZMQInteractiveShell, self).run_cell(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2717, in run_cell
-    interactivity=interactivity, compiler=compiler, result=result)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/zmqshell.py&#34;, line 501, in run_cell
-    return super(ZMQInteractiveShell, self).run_cell(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2717, in run_cell
-    interactivity=interactivity, compiler=compiler, result=result)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2821, in run_ast_nodes
-    if self.run_code(code, result):
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2717, in run_cell
-    interactivity=interactivity, compiler=compiler, result=result)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2821, in run_ast_nodes
-    if self.run_code(code, result):
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2717, in run_cell
-    interactivity=interactivity, compiler=compiler, result=result)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2821, in run_ast_nodes
-    if self.run_code(code, result):
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2881, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2821, in run_ast_nodes
-    if self.run_code(code, result):
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2881, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2881, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2821, in run_ast_nodes
-    if self.run_code(code, result):
-  File &#34;&lt;ipython-input-10-e4cb6051d60a&gt;&#34;, line 13, in &lt;module&gt;
-    data_parser.run_project_parallel(project_to_run)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2881, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File &#34;&lt;ipython-input-10-e4cb6051d60a&gt;&#34;, line 13, in &lt;module&gt;
-    data_parser.run_project_parallel(project_to_run)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2881, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File &#34;&lt;ipython-input-10-e4cb6051d60a&gt;&#34;, line 13, in &lt;module&gt;
-    data_parser.run_project_parallel(project_to_run)
-  File &#34;&lt;ipython-input-10-e4cb6051d60a&gt;&#34;, line 13, in &lt;module&gt;
-    data_parser.run_project_parallel(project_to_run)
-  File &#34;/home/local/NIST/dsheen/shcdb/data_parser.py&#34;, line 212, in run_project_parallel
-    values = mpc_parallel.evaluate_parallel(project_to_run,nWorkers=5)
-  File &#34;/home/local/NIST/dsheen/shcdb/data_parser.py&#34;, line 212, in run_project_parallel
-    values = mpc_parallel.evaluate_parallel(project_to_run,nWorkers=5)
-  File &#34;/home/local/NIST/dsheen/shcdb/data_parser.py&#34;, line 212, in run_project_parallel
-    values = mpc_parallel.evaluate_parallel(project_to_run,nWorkers=5)
-  File &#34;&lt;ipython-input-10-e4cb6051d60a&gt;&#34;, line 13, in &lt;module&gt;
-    data_parser.run_project_parallel(project_to_run)
-  File &#34;/home/local/NIST/dsheen/shcdb/data_parser.py&#34;, line 212, in run_project_parallel
-    values = mpc_parallel.evaluate_parallel(project_to_run,nWorkers=5)
-  File &#34;/home/local/NIST/dsheen/shcdb/mpc_parallel.py&#34;, line 39, in evaluate_parallel
-    pool = mp.Pool(processes=nWorkers)
-  File &#34;/home/local/NIST/dsheen/shcdb/mpc_parallel.py&#34;, line 39, in evaluate_parallel
-    pool = mp.Pool(processes=nWorkers)
-  File &#34;/home/local/NIST/dsheen/shcdb/mpc_parallel.py&#34;, line 39, in evaluate_parallel
-    pool = mp.Pool(processes=nWorkers)
-  File &#34;/home/local/NIST/dsheen/shcdb/data_parser.py&#34;, line 212, in run_project_parallel
-    values = mpc_parallel.evaluate_parallel(project_to_run,nWorkers=5)
-  File &#34;/home/local/NIST/dsheen/shcdb/mpc_parallel.py&#34;, line 39, in evaluate_parallel
-    pool = mp.Pool(processes=nWorkers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 119, in Pool
-    context=self.get_context())
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 119, in Pool
-    context=self.get_context())
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 119, in Pool
-    context=self.get_context())
-  File &#34;/home/local/NIST/dsheen/shcdb/mpc_parallel.py&#34;, line 39, in evaluate_parallel
-    pool = mp.Pool(processes=nWorkers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 119, in Pool
-    context=self.get_context())
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 168, in __init__
-    self._repopulate_pool()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 168, in __init__
-    self._repopulate_pool()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 168, in __init__
-    self._repopulate_pool()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 168, in __init__
-    self._repopulate_pool()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 119, in Pool
-    context=self.get_context())
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 233, in _repopulate_pool
-    w.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 233, in _repopulate_pool
-    w.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 233, in _repopulate_pool
-    w.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 168, in __init__
-    self._repopulate_pool()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 233, in _repopulate_pool
-    w.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/process.py&#34;, line 105, in start
-    self._popen = self._Popen(self)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/process.py&#34;, line 105, in start
-    self._popen = self._Popen(self)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/process.py&#34;, line 105, in start
-    self._popen = self._Popen(self)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 233, in _repopulate_pool
-    w.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/process.py&#34;, line 105, in start
-    self._popen = self._Popen(self)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 277, in _Popen
-    return Popen(process_obj)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 277, in _Popen
-    return Popen(process_obj)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 277, in _Popen
-    return Popen(process_obj)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/process.py&#34;, line 105, in start
-    self._popen = self._Popen(self)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 277, in _Popen
-    return Popen(process_obj)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 20, in __init__
-    self._launch(process_obj)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 20, in __init__
-    self._launch(process_obj)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 277, in _Popen
-    return Popen(process_obj)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 20, in __init__
-    self._launch(process_obj)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 20, in __init__
-    self._launch(process_obj)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 67, in _launch
-    self.pid = os.fork()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 67, in _launch
-    self.pid = os.fork()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 20, in __init__
-    self._launch(process_obj)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 67, in _launch
-    self.pid = os.fork()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 67, in _launch
-    self.pid = os.fork()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm.py&#34;, line 764, in __del__
-    self.close()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm.py&#34;, line 764, in __del__
-    self.close()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 67, in _launch
-    self.pid = os.fork()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm.py&#34;, line 764, in __del__
-    self.close()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm.py&#34;, line 764, in __del__
-    self.close()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 214, in close
-    self.sp(bar_style=&#39;success&#39;)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 214, in close
-    self.sp(bar_style=&#39;success&#39;)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm.py&#34;, line 764, in __del__
-    self.close()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 214, in close
-    self.sp(bar_style=&#39;success&#39;)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 142, in print_status
-    pbar.bar_style = bar_style
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 214, in close
-    self.sp(bar_style=&#39;success&#39;)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 214, in close
-    self.sp(bar_style=&#39;success&#39;)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 142, in print_status
-    pbar.bar_style = bar_style
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 142, in print_status
-    pbar.bar_style = bar_style
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 583, in __set__
-    self.set(obj, value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 142, in print_status
-    pbar.bar_style = bar_style
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 583, in __set__
-    self.set(obj, value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 142, in print_status
-    pbar.bar_style = bar_style
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 583, in __set__
-    self.set(obj, value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 583, in __set__
-    self.set(obj, value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 572, in set
-    obj._notify_trait(self.name, old_value, new_value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 583, in __set__
-    self.set(obj, value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 572, in set
-    obj._notify_trait(self.name, old_value, new_value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 572, in set
-    obj._notify_trait(self.name, old_value, new_value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 572, in set
-    obj._notify_trait(self.name, old_value, new_value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 572, in set
-    obj._notify_trait(self.name, old_value, new_value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 1137, in _notify_trait
-    type=&#39;change&#39;,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 1137, in _notify_trait
-    type=&#39;change&#39;,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 1137, in _notify_trait
-    type=&#39;change&#39;,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 1137, in _notify_trait
-    type=&#39;change&#39;,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 1137, in _notify_trait
-    type=&#39;change&#39;,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 367, in notify_change
-    self.send_state(key=name)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 367, in notify_change
-    self.send_state(key=name)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 367, in notify_change
-    self.send_state(key=name)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 263, in send_state
-    self._send(msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 367, in notify_change
-    self.send_state(key=name)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 263, in send_state
-    self._send(msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 367, in notify_change
-    self.send_state(key=name)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 263, in send_state
-    self._send(msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 487, in _send
-    self.comm.send(data=msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 263, in send_state
-    self._send(msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 263, in send_state
-    self._send(msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 487, in _send
-    self.comm.send(data=msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 487, in _send
-    self.comm.send(data=msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 121, in send
-    data=data, metadata=metadata, buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 487, in _send
-    self.comm.send(data=msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 121, in send
-    data=data, metadata=metadata, buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 487, in _send
-    self.comm.send(data=msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 121, in send
-    data=data, metadata=metadata, buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 71, in _publish_msg
-    buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 121, in send
-    data=data, metadata=metadata, buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 71, in _publish_msg
-    buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 121, in send
-    data=data, metadata=metadata, buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 71, in _publish_msg
-    buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/jupyter_client/session.py&#34;, line 667, in send
-    msg
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 71, in _publish_msg
-    buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/jupyter_client/session.py&#34;, line 667, in send
-    msg
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 71, in _publish_msg
-    buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/jupyter_client/session.py&#34;, line 667, in send
-    msg
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/jupyter_client/session.py&#34;, line 667, in send
-    msg
-Message: &#39;WARNING: attempted to send message from fork\n%s&#39;
-Arguments: {&#39;header&#39;: {&#39;version&#39;: &#39;5.0&#39;, &#39;date&#39;: datetime.datetime(2017, 9, 26, 13, 31, 59, 108412), &#39;session&#39;: &#39;3d2f1e32-9925-43f0-9c33-3affd75fe355&#39;, &#39;username&#39;: &#39;dsheen&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;msg_id&#39;: &#39;f18e78f2-c9e2-46f7-a1ab-33b08c7399d9&#39;}, &#39;msg_id&#39;: &#39;f18e78f2-c9e2-46f7-a1ab-33b08c7399d9&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;parent_header&#39;: {&#39;username&#39;: &#39;username&#39;, &#39;version&#39;: &#39;5.0&#39;, &#39;msg_id&#39;: &#39;D6993838A8814ABB8E764FA2CD0E7188&#39;, &#39;msg_type&#39;: &#39;execute_request&#39;, &#39;session&#39;: &#39;CA614028264C4E9A80E783E0D2CF6FDD&#39;, &#39;date&#39;: &#39;2017-09-26T12:47:28.114854&#39;}, &#39;content&#39;: {&#39;data&#39;: {&#39;method&#39;: &#39;update&#39;, &#39;state&#39;: {&#39;bar_style&#39;: &#39;success&#39;}, &#39;buffers&#39;: []}, &#39;comm_id&#39;: &#39;2805f5de186642d695f80fa1cabb6048&#39;}, &#39;metadata&#39;: {}}
-Message: &#39;WARNING: attempted to send message from fork\n%s&#39;
-Arguments: {&#39;header&#39;: {&#39;version&#39;: &#39;5.0&#39;, &#39;date&#39;: datetime.datetime(2017, 9, 26, 13, 31, 59, 121288), &#39;session&#39;: &#39;3d2f1e32-9925-43f0-9c33-3affd75fe355&#39;, &#39;username&#39;: &#39;dsheen&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;msg_id&#39;: &#39;aa9a6880-5467-41f4-98c8-00387a240579&#39;}, &#39;msg_id&#39;: &#39;aa9a6880-5467-41f4-98c8-00387a240579&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;parent_header&#39;: {&#39;username&#39;: &#39;username&#39;, &#39;version&#39;: &#39;5.0&#39;, &#39;msg_id&#39;: &#39;D6993838A8814ABB8E764FA2CD0E7188&#39;, &#39;msg_type&#39;: &#39;execute_request&#39;, &#39;session&#39;: &#39;CA614028264C4E9A80E783E0D2CF6FDD&#39;, &#39;date&#39;: &#39;2017-09-26T12:47:28.114854&#39;}, &#39;content&#39;: {&#39;data&#39;: {&#39;method&#39;: &#39;update&#39;, &#39;state&#39;: {&#39;bar_style&#39;: &#39;success&#39;}, &#39;buffers&#39;: []}, &#39;comm_id&#39;: &#39;2805f5de186642d695f80fa1cabb6048&#39;}, &#39;metadata&#39;: {}}
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/jupyter_client/session.py&#34;, line 667, in send
-    msg
-Message: &#39;WARNING: attempted to send message from fork\n%s&#39;
-Arguments: {&#39;header&#39;: {&#39;version&#39;: &#39;5.0&#39;, &#39;date&#39;: datetime.datetime(2017, 9, 26, 13, 31, 59, 129363), &#39;session&#39;: &#39;3d2f1e32-9925-43f0-9c33-3affd75fe355&#39;, &#39;username&#39;: &#39;dsheen&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;msg_id&#39;: &#39;57f6e5be-8374-427e-9ab4-6a9a281374a3&#39;}, &#39;msg_id&#39;: &#39;57f6e5be-8374-427e-9ab4-6a9a281374a3&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;parent_header&#39;: {&#39;username&#39;: &#39;username&#39;, &#39;version&#39;: &#39;5.0&#39;, &#39;msg_id&#39;: &#39;D6993838A8814ABB8E764FA2CD0E7188&#39;, &#39;msg_type&#39;: &#39;execute_request&#39;, &#39;session&#39;: &#39;CA614028264C4E9A80E783E0D2CF6FDD&#39;, &#39;date&#39;: &#39;2017-09-26T12:47:28.114854&#39;}, &#39;content&#39;: {&#39;data&#39;: {&#39;method&#39;: &#39;update&#39;, &#39;state&#39;: {&#39;bar_style&#39;: &#39;success&#39;}, &#39;buffers&#39;: []}, &#39;comm_id&#39;: &#39;2805f5de186642d695f80fa1cabb6048&#39;}, &#39;metadata&#39;: {}}
-Message: &#39;WARNING: attempted to send message from fork\n%s&#39;
-Arguments: {&#39;header&#39;: {&#39;version&#39;: &#39;5.0&#39;, &#39;date&#39;: datetime.datetime(2017, 9, 26, 13, 31, 59, 139103), &#39;session&#39;: &#39;3d2f1e32-9925-43f0-9c33-3affd75fe355&#39;, &#39;username&#39;: &#39;dsheen&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;msg_id&#39;: &#39;fcc2d17c-eb9b-4990-9d89-b4b99e09a7b7&#39;}, &#39;msg_id&#39;: &#39;fcc2d17c-eb9b-4990-9d89-b4b99e09a7b7&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;parent_header&#39;: {&#39;username&#39;: &#39;username&#39;, &#39;version&#39;: &#39;5.0&#39;, &#39;msg_id&#39;: &#39;D6993838A8814ABB8E764FA2CD0E7188&#39;, &#39;msg_type&#39;: &#39;execute_request&#39;, &#39;session&#39;: &#39;CA614028264C4E9A80E783E0D2CF6FDD&#39;, &#39;date&#39;: &#39;2017-09-26T12:47:28.114854&#39;}, &#39;content&#39;: {&#39;data&#39;: {&#39;method&#39;: &#39;update&#39;, &#39;state&#39;: {&#39;bar_style&#39;: &#39;success&#39;}, &#39;buffers&#39;: []}, &#39;comm_id&#39;: &#39;2805f5de186642d695f80fa1cabb6048&#39;}, &#39;metadata&#39;: {}}
-Message: &#39;WARNING: attempted to send message from fork\n%s&#39;
-Arguments: {&#39;header&#39;: {&#39;version&#39;: &#39;5.0&#39;, &#39;date&#39;: datetime.datetime(2017, 9, 26, 13, 31, 59, 114006), &#39;session&#39;: &#39;3d2f1e32-9925-43f0-9c33-3affd75fe355&#39;, &#39;username&#39;: &#39;dsheen&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;msg_id&#39;: &#39;85f36976-c29a-43aa-83b8-9a1bedfec212&#39;}, &#39;msg_id&#39;: &#39;85f36976-c29a-43aa-83b8-9a1bedfec212&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;parent_header&#39;: {&#39;username&#39;: &#39;username&#39;, &#39;version&#39;: &#39;5.0&#39;, &#39;msg_id&#39;: &#39;D6993838A8814ABB8E764FA2CD0E7188&#39;, &#39;msg_type&#39;: &#39;execute_request&#39;, &#39;session&#39;: &#39;CA614028264C4E9A80E783E0D2CF6FDD&#39;, &#39;date&#39;: &#39;2017-09-26T12:47:28.114854&#39;}, &#39;content&#39;: {&#39;data&#39;: {&#39;method&#39;: &#39;update&#39;, &#39;state&#39;: {&#39;bar_style&#39;: &#39;success&#39;}, &#39;buffers&#39;: []}, &#39;comm_id&#39;: &#39;2805f5de186642d695f80fa1cabb6048&#39;}, &#39;metadata&#39;: {}}
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="docutils container">
-</div>
-<div class="docutils container">
-<div class="highlight"><pre>
-fls_ghlw00_e01
-fls_ghlw00_e02
-fls_ghlw00_e03
-fls_ghlw00_e04
-fls_ghlw00_e05
-fls_ghlw00_e06
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Multicomponent solution
-Multicomponent solution
-Multicomponent solution
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Multicomponent solution
-Multicomponent solution
-Multicomponent solution
+fls_ghlw00_e01 19.7663885258
+fls_ghlw00_e02 19.9800765076
+fls_ghlw00_e03 26.3118276681
+fls_ghlw00_e04 27.5404512167
+fls_ghlw00_e05 20.6334850446
+fls_ghlw00_e06 20.9749003678
 No data saved from flame speed solution
 No data saved from flame speed solution
 No data saved from flame speed solution
@@ -1051,542 +488,12 @@ No data saved from flame speed solution
 No data saved from flame speed solution
 Project ghlw00_f saved successfully
 (10.0, &#39;(0, 315]&#39;)
-Project ghlw00_g does not exist, creating it
-No data saved from flame speed solution
-No data saved from flame speed solution
-No data saved from flame speed solution
-No data saved from flame speed solution
-No data saved from flame speed solution
-No data saved from flame speed solution
-Project ghlw00_g saved successfully
-fls_ghlw00_g01 None
-fls_ghlw00_g02 None
-fls_ghlw00_g03 None
-fls_ghlw00_g04 None
-fls_ghlw00_g05 None
-fls_ghlw00_g06 None
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="docutils container">
-</div>
-<div class="stderr docutils container">
-<div class="highlight"><pre>
---- Logging error ---
---- Logging error ---
-Traceback (most recent call last):
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 991, in emit
-    self.flush()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 971, in flush
-    self.stream.flush()
-Traceback (most recent call last):
-OSError: [Errno 5] Input/output error
---- Logging error ---
---- Logging error ---
-Call stack:
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 991, in emit
-    self.flush()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 971, in flush
-    self.stream.flush()
-Traceback (most recent call last):
-Traceback (most recent call last):
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 991, in emit
-    self.flush()
-OSError: [Errno 5] Input/output error
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 991, in emit
-    self.flush()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 971, in flush
-    self.stream.flush()
-Call stack:
---- Logging error ---
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 971, in flush
-    self.stream.flush()
-OSError: [Errno 5] Input/output error
-OSError: [Errno 5] Input/output error
-Call stack:
-Call stack:
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 193, in _run_module_as_main
-    &#34;__main__&#34;, mod_spec)
-Traceback (most recent call last):
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 85, in _run_code
-    exec(code, run_globals)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/__main__.py&#34;, line 3, in &lt;module&gt;
-    app.launch_new_instance()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 991, in emit
-    self.flush()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/config/application.py&#34;, line 658, in launch_instance
-    app.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/logging/__init__.py&#34;, line 971, in flush
-    self.stream.flush()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelapp.py&#34;, line 474, in start
-    ioloop.IOLoop.instance().start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 193, in _run_module_as_main
-    &#34;__main__&#34;, mod_spec)
-OSError: [Errno 5] Input/output error
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/ioloop.py&#34;, line 177, in start
-    super(ZMQIOLoop, self).start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 85, in _run_code
-    exec(code, run_globals)
-Call stack:
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 193, in _run_module_as_main
-    &#34;__main__&#34;, mod_spec)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/ioloop.py&#34;, line 887, in start
-    handler_func(fd_obj, events)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 193, in _run_module_as_main
-    &#34;__main__&#34;, mod_spec)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/__main__.py&#34;, line 3, in &lt;module&gt;
-    app.launch_new_instance()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 85, in _run_code
-    exec(code, run_globals)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 85, in _run_code
-    exec(code, run_globals)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/config/application.py&#34;, line 658, in launch_instance
-    app.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/__main__.py&#34;, line 3, in &lt;module&gt;
-    app.launch_new_instance()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 440, in _handle_events
-    self._handle_recv()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/__main__.py&#34;, line 3, in &lt;module&gt;
-    app.launch_new_instance()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/config/application.py&#34;, line 658, in launch_instance
-    app.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelapp.py&#34;, line 474, in start
-    ioloop.IOLoop.instance().start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 472, in _handle_recv
-    self._run_callback(callback, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/config/application.py&#34;, line 658, in launch_instance
-    app.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/ioloop.py&#34;, line 177, in start
-    super(ZMQIOLoop, self).start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 414, in _run_callback
-    callback(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelapp.py&#34;, line 474, in start
-    ioloop.IOLoop.instance().start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelapp.py&#34;, line 474, in start
-    ioloop.IOLoop.instance().start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/ioloop.py&#34;, line 887, in start
-    handler_func(fd_obj, events)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 193, in _run_module_as_main
-    &#34;__main__&#34;, mod_spec)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/ioloop.py&#34;, line 177, in start
-    super(ZMQIOLoop, self).start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/ioloop.py&#34;, line 177, in start
-    super(ZMQIOLoop, self).start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 276, in dispatcher
-    return self.dispatch_shell(stream, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/runpy.py&#34;, line 85, in _run_code
-    exec(code, run_globals)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/ioloop.py&#34;, line 887, in start
-    handler_func(fd_obj, events)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/ioloop.py&#34;, line 887, in start
-    handler_func(fd_obj, events)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 440, in _handle_events
-    self._handle_recv()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 228, in dispatch_shell
-    handler(stream, idents, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/__main__.py&#34;, line 3, in &lt;module&gt;
-    app.launch_new_instance()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 472, in _handle_recv
-    self._run_callback(callback, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 390, in execute_request
-    user_expressions, allow_stdin)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/config/application.py&#34;, line 658, in launch_instance
-    app.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 440, in _handle_events
-    self._handle_recv()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 440, in _handle_events
-    self._handle_recv()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 414, in _run_callback
-    callback(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/ipkernel.py&#34;, line 196, in do_execute
-    res = shell.run_cell(code, store_history=store_history, silent=silent)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 472, in _handle_recv
-    self._run_callback(callback, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelapp.py&#34;, line 474, in start
-    ioloop.IOLoop.instance().start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 414, in _run_callback
-    callback(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/zmqshell.py&#34;, line 501, in run_cell
-    return super(ZMQInteractiveShell, self).run_cell(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 472, in _handle_recv
-    self._run_callback(callback, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 276, in dispatcher
-    return self.dispatch_shell(stream, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/ioloop.py&#34;, line 177, in start
-    super(ZMQIOLoop, self).start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 228, in dispatch_shell
-    handler(stream, idents, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2717, in run_cell
-    interactivity=interactivity, compiler=compiler, result=result)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 414, in _run_callback
-    callback(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/ioloop.py&#34;, line 887, in start
-    handler_func(fd_obj, events)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 390, in execute_request
-    user_expressions, allow_stdin)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 276, in dispatcher
-    return self.dispatch_shell(stream, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2821, in run_ast_nodes
-    if self.run_code(code, result):
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/ipkernel.py&#34;, line 196, in do_execute
-    res = shell.run_cell(code, store_history=store_history, silent=silent)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 228, in dispatch_shell
-    handler(stream, idents, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 276, in dispatcher
-    return self.dispatch_shell(stream, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2881, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/zmqshell.py&#34;, line 501, in run_cell
-    return super(ZMQInteractiveShell, self).run_cell(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 440, in _handle_events
-    self._handle_recv()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 390, in execute_request
-    user_expressions, allow_stdin)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 228, in dispatch_shell
-    handler(stream, idents, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 472, in _handle_recv
-    self._run_callback(callback, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2717, in run_cell
-    interactivity=interactivity, compiler=compiler, result=result)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/ipkernel.py&#34;, line 196, in do_execute
-    res = shell.run_cell(code, store_history=store_history, silent=silent)
-  File &#34;&lt;ipython-input-10-e4cb6051d60a&gt;&#34;, line 13, in &lt;module&gt;
-    data_parser.run_project_parallel(project_to_run)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 390, in execute_request
-    user_expressions, allow_stdin)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2821, in run_ast_nodes
-    if self.run_code(code, result):
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/zmq/eventloop/zmqstream.py&#34;, line 414, in _run_callback
-    callback(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/zmqshell.py&#34;, line 501, in run_cell
-    return super(ZMQInteractiveShell, self).run_cell(*args, **kwargs)
-  File &#34;/home/local/NIST/dsheen/shcdb/data_parser.py&#34;, line 212, in run_project_parallel
-    values = mpc_parallel.evaluate_parallel(project_to_run,nWorkers=5)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2881, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/ipkernel.py&#34;, line 196, in do_execute
-    res = shell.run_cell(code, store_history=store_history, silent=silent)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tornado/stack_context.py&#34;, line 275, in null_wrapper
-    return fn(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2717, in run_cell
-    interactivity=interactivity, compiler=compiler, result=result)
-  File &#34;/home/local/NIST/dsheen/shcdb/mpc_parallel.py&#34;, line 39, in evaluate_parallel
-    pool = mp.Pool(processes=nWorkers)
-  File &#34;&lt;ipython-input-10-e4cb6051d60a&gt;&#34;, line 13, in &lt;module&gt;
-    data_parser.run_project_parallel(project_to_run)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/zmqshell.py&#34;, line 501, in run_cell
-    return super(ZMQInteractiveShell, self).run_cell(*args, **kwargs)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 276, in dispatcher
-    return self.dispatch_shell(stream, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2821, in run_ast_nodes
-    if self.run_code(code, result):
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 119, in Pool
-    context=self.get_context())
-  File &#34;/home/local/NIST/dsheen/shcdb/data_parser.py&#34;, line 212, in run_project_parallel
-    values = mpc_parallel.evaluate_parallel(project_to_run,nWorkers=5)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2717, in run_cell
-    interactivity=interactivity, compiler=compiler, result=result)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 228, in dispatch_shell
-    handler(stream, idents, msg)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2881, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File &#34;/home/local/NIST/dsheen/shcdb/mpc_parallel.py&#34;, line 39, in evaluate_parallel
-    pool = mp.Pool(processes=nWorkers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 168, in __init__
-    self._repopulate_pool()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2821, in run_ast_nodes
-    if self.run_code(code, result):
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/kernelbase.py&#34;, line 390, in execute_request
-    user_expressions, allow_stdin)
-  File &#34;&lt;ipython-input-10-e4cb6051d60a&gt;&#34;, line 13, in &lt;module&gt;
-    data_parser.run_project_parallel(project_to_run)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 233, in _repopulate_pool
-    w.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 119, in Pool
-    context=self.get_context())
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2881, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/ipkernel.py&#34;, line 196, in do_execute
-    res = shell.run_cell(code, store_history=store_history, silent=silent)
-  File &#34;/home/local/NIST/dsheen/shcdb/data_parser.py&#34;, line 212, in run_project_parallel
-    values = mpc_parallel.evaluate_parallel(project_to_run,nWorkers=5)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/process.py&#34;, line 105, in start
-    self._popen = self._Popen(self)
-  File &#34;&lt;ipython-input-10-e4cb6051d60a&gt;&#34;, line 13, in &lt;module&gt;
-    data_parser.run_project_parallel(project_to_run)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 168, in __init__
-    self._repopulate_pool()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/zmqshell.py&#34;, line 501, in run_cell
-    return super(ZMQInteractiveShell, self).run_cell(*args, **kwargs)
-  File &#34;/home/local/NIST/dsheen/shcdb/mpc_parallel.py&#34;, line 39, in evaluate_parallel
-    pool = mp.Pool(processes=nWorkers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 277, in _Popen
-    return Popen(process_obj)
-  File &#34;/home/local/NIST/dsheen/shcdb/data_parser.py&#34;, line 212, in run_project_parallel
-    values = mpc_parallel.evaluate_parallel(project_to_run,nWorkers=5)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 233, in _repopulate_pool
-    w.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2717, in run_cell
-    interactivity=interactivity, compiler=compiler, result=result)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 119, in Pool
-    context=self.get_context())
-  File &#34;/home/local/NIST/dsheen/shcdb/mpc_parallel.py&#34;, line 39, in evaluate_parallel
-    pool = mp.Pool(processes=nWorkers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 20, in __init__
-    self._launch(process_obj)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/process.py&#34;, line 105, in start
-    self._popen = self._Popen(self)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2821, in run_ast_nodes
-    if self.run_code(code, result):
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 168, in __init__
-    self._repopulate_pool()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 119, in Pool
-    context=self.get_context())
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 67, in _launch
-    self.pid = os.fork()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 277, in _Popen
-    return Popen(process_obj)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/IPython/core/interactiveshell.py&#34;, line 2881, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 233, in _repopulate_pool
-    w.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 168, in __init__
-    self._repopulate_pool()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm.py&#34;, line 764, in __del__
-    self.close()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 20, in __init__
-    self._launch(process_obj)
-  File &#34;&lt;ipython-input-10-e4cb6051d60a&gt;&#34;, line 13, in &lt;module&gt;
-    data_parser.run_project_parallel(project_to_run)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/process.py&#34;, line 105, in start
-    self._popen = self._Popen(self)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 233, in _repopulate_pool
-    w.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 214, in close
-    self.sp(bar_style=&#39;success&#39;)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 67, in _launch
-    self.pid = os.fork()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 277, in _Popen
-    return Popen(process_obj)
-  File &#34;/home/local/NIST/dsheen/shcdb/data_parser.py&#34;, line 212, in run_project_parallel
-    values = mpc_parallel.evaluate_parallel(project_to_run,nWorkers=5)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/process.py&#34;, line 105, in start
-    self._popen = self._Popen(self)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 142, in print_status
-    pbar.bar_style = bar_style
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm.py&#34;, line 764, in __del__
-    self.close()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 20, in __init__
-    self._launch(process_obj)
-  File &#34;/home/local/NIST/dsheen/shcdb/mpc_parallel.py&#34;, line 39, in evaluate_parallel
-    pool = mp.Pool(processes=nWorkers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 277, in _Popen
-    return Popen(process_obj)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 583, in __set__
-    self.set(obj, value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 67, in _launch
-    self.pid = os.fork()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 119, in Pool
-    context=self.get_context())
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 214, in close
-    self.sp(bar_style=&#39;success&#39;)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 20, in __init__
-    self._launch(process_obj)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 572, in set
-    obj._notify_trait(self.name, old_value, new_value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 168, in __init__
-    self._repopulate_pool()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm.py&#34;, line 764, in __del__
-    self.close()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 142, in print_status
-    pbar.bar_style = bar_style
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 67, in _launch
-    self.pid = os.fork()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 1137, in _notify_trait
-    type=&#39;change&#39;,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/pool.py&#34;, line 233, in _repopulate_pool
-    w.start()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 214, in close
-    self.sp(bar_style=&#39;success&#39;)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 583, in __set__
-    self.set(obj, value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm.py&#34;, line 764, in __del__
-    self.close()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 367, in notify_change
-    self.send_state(key=name)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/process.py&#34;, line 105, in start
-    self._popen = self._Popen(self)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 142, in print_status
-    pbar.bar_style = bar_style
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 214, in close
-    self.sp(bar_style=&#39;success&#39;)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 572, in set
-    obj._notify_trait(self.name, old_value, new_value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 263, in send_state
-    self._send(msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/context.py&#34;, line 277, in _Popen
-    return Popen(process_obj)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 142, in print_status
-    pbar.bar_style = bar_style
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 1137, in _notify_trait
-    type=&#39;change&#39;,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 487, in _send
-    self.comm.send(data=msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 583, in __set__
-    self.set(obj, value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 20, in __init__
-    self._launch(process_obj)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 367, in notify_change
-    self.send_state(key=name)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 583, in __set__
-    self.set(obj, value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 121, in send
-    data=data, metadata=metadata, buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 572, in set
-    obj._notify_trait(self.name, old_value, new_value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 263, in send_state
-    self._send(msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/multiprocessing/popen_fork.py&#34;, line 67, in _launch
-    self.pid = os.fork()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 572, in set
-    obj._notify_trait(self.name, old_value, new_value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 1137, in _notify_trait
-    type=&#39;change&#39;,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 71, in _publish_msg
-    buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm.py&#34;, line 764, in __del__
-    self.close()
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 487, in _send
-    self.comm.send(data=msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 1137, in _notify_trait
-    type=&#39;change&#39;,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 367, in notify_change
-    self.send_state(key=name)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/jupyter_client/session.py&#34;, line 667, in send
-    msg
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 214, in close
-    self.sp(bar_style=&#39;success&#39;)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 121, in send
-    data=data, metadata=metadata, buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 367, in notify_change
-    self.send_state(key=name)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 263, in send_state
-    self._send(msg, buffers=buffers)
-Message: &#39;WARNING: attempted to send message from fork\n%s&#39;
-Arguments: {&#39;header&#39;: {&#39;version&#39;: &#39;5.0&#39;, &#39;date&#39;: datetime.datetime(2017, 9, 26, 14, 8, 39, 395777), &#39;session&#39;: &#39;3d2f1e32-9925-43f0-9c33-3affd75fe355&#39;, &#39;username&#39;: &#39;dsheen&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;msg_id&#39;: &#39;8ceda4a2-b3cf-4a85-8cc9-ecdca3c76142&#39;}, &#39;msg_id&#39;: &#39;8ceda4a2-b3cf-4a85-8cc9-ecdca3c76142&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;parent_header&#39;: {&#39;username&#39;: &#39;username&#39;, &#39;version&#39;: &#39;5.0&#39;, &#39;msg_id&#39;: &#39;D6993838A8814ABB8E764FA2CD0E7188&#39;, &#39;msg_type&#39;: &#39;execute_request&#39;, &#39;session&#39;: &#39;CA614028264C4E9A80E783E0D2CF6FDD&#39;, &#39;date&#39;: &#39;2017-09-26T12:47:28.114854&#39;}, &#39;content&#39;: {&#39;data&#39;: {&#39;method&#39;: &#39;update&#39;, &#39;state&#39;: {&#39;bar_style&#39;: &#39;success&#39;}, &#39;buffers&#39;: []}, &#39;comm_id&#39;: &#39;952d20ee8d5f4054981221ad16bd4e7f&#39;}, &#39;metadata&#39;: {}}
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/tqdm/_tqdm_notebook.py&#34;, line 142, in print_status
-    pbar.bar_style = bar_style
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 71, in _publish_msg
-    buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 263, in send_state
-    self._send(msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 487, in _send
-    self.comm.send(data=msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 583, in __set__
-    self.set(obj, value)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/jupyter_client/session.py&#34;, line 667, in send
-    msg
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 121, in send
-    data=data, metadata=metadata, buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 572, in set
-    obj._notify_trait(self.name, old_value, new_value)
-Message: &#39;WARNING: attempted to send message from fork\n%s&#39;
-Arguments: {&#39;header&#39;: {&#39;version&#39;: &#39;5.0&#39;, &#39;date&#39;: datetime.datetime(2017, 9, 26, 14, 8, 39, 398714), &#39;session&#39;: &#39;3d2f1e32-9925-43f0-9c33-3affd75fe355&#39;, &#39;username&#39;: &#39;dsheen&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;msg_id&#39;: &#39;8044db34-a4c6-4f6b-9369-1b6db6cffe97&#39;}, &#39;msg_id&#39;: &#39;8044db34-a4c6-4f6b-9369-1b6db6cffe97&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;parent_header&#39;: {&#39;username&#39;: &#39;username&#39;, &#39;version&#39;: &#39;5.0&#39;, &#39;msg_id&#39;: &#39;D6993838A8814ABB8E764FA2CD0E7188&#39;, &#39;msg_type&#39;: &#39;execute_request&#39;, &#39;session&#39;: &#39;CA614028264C4E9A80E783E0D2CF6FDD&#39;, &#39;date&#39;: &#39;2017-09-26T12:47:28.114854&#39;}, &#39;content&#39;: {&#39;data&#39;: {&#39;method&#39;: &#39;update&#39;, &#39;state&#39;: {&#39;bar_style&#39;: &#39;success&#39;}, &#39;buffers&#39;: []}, &#39;comm_id&#39;: &#39;952d20ee8d5f4054981221ad16bd4e7f&#39;}, &#39;metadata&#39;: {}}
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 487, in _send
-    self.comm.send(data=msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 71, in _publish_msg
-    buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/traitlets/traitlets.py&#34;, line 1137, in _notify_trait
-    type=&#39;change&#39;,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 121, in send
-    data=data, metadata=metadata, buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/jupyter_client/session.py&#34;, line 667, in send
-    msg
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 71, in _publish_msg
-    buffers=buffers,
-Message: &#39;WARNING: attempted to send message from fork\n%s&#39;
-Arguments: {&#39;header&#39;: {&#39;version&#39;: &#39;5.0&#39;, &#39;date&#39;: datetime.datetime(2017, 9, 26, 14, 8, 39, 404559), &#39;session&#39;: &#39;3d2f1e32-9925-43f0-9c33-3affd75fe355&#39;, &#39;username&#39;: &#39;dsheen&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;msg_id&#39;: &#39;93ecb46e-8350-4776-be51-0a8eb1c687c8&#39;}, &#39;msg_id&#39;: &#39;93ecb46e-8350-4776-be51-0a8eb1c687c8&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;parent_header&#39;: {&#39;username&#39;: &#39;username&#39;, &#39;version&#39;: &#39;5.0&#39;, &#39;msg_id&#39;: &#39;D6993838A8814ABB8E764FA2CD0E7188&#39;, &#39;msg_type&#39;: &#39;execute_request&#39;, &#39;session&#39;: &#39;CA614028264C4E9A80E783E0D2CF6FDD&#39;, &#39;date&#39;: &#39;2017-09-26T12:47:28.114854&#39;}, &#39;content&#39;: {&#39;data&#39;: {&#39;method&#39;: &#39;update&#39;, &#39;state&#39;: {&#39;bar_style&#39;: &#39;success&#39;}, &#39;buffers&#39;: []}, &#39;comm_id&#39;: &#39;952d20ee8d5f4054981221ad16bd4e7f&#39;}, &#39;metadata&#39;: {}}
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 367, in notify_change
-    self.send_state(key=name)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/jupyter_client/session.py&#34;, line 667, in send
-    msg
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 263, in send_state
-    self._send(msg, buffers=buffers)
-Message: &#39;WARNING: attempted to send message from fork\n%s&#39;
-Arguments: {&#39;header&#39;: {&#39;version&#39;: &#39;5.0&#39;, &#39;date&#39;: datetime.datetime(2017, 9, 26, 14, 8, 39, 410660), &#39;session&#39;: &#39;3d2f1e32-9925-43f0-9c33-3affd75fe355&#39;, &#39;username&#39;: &#39;dsheen&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;msg_id&#39;: &#39;f5704d70-46c3-4ea1-9868-271ec526cf3e&#39;}, &#39;msg_id&#39;: &#39;f5704d70-46c3-4ea1-9868-271ec526cf3e&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;parent_header&#39;: {&#39;username&#39;: &#39;username&#39;, &#39;version&#39;: &#39;5.0&#39;, &#39;msg_id&#39;: &#39;D6993838A8814ABB8E764FA2CD0E7188&#39;, &#39;msg_type&#39;: &#39;execute_request&#39;, &#39;session&#39;: &#39;CA614028264C4E9A80E783E0D2CF6FDD&#39;, &#39;date&#39;: &#39;2017-09-26T12:47:28.114854&#39;}, &#39;content&#39;: {&#39;data&#39;: {&#39;method&#39;: &#39;update&#39;, &#39;state&#39;: {&#39;bar_style&#39;: &#39;success&#39;}, &#39;buffers&#39;: []}, &#39;comm_id&#39;: &#39;952d20ee8d5f4054981221ad16bd4e7f&#39;}, &#39;metadata&#39;: {}}
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipywidgets/widgets/widget.py&#34;, line 487, in _send
-    self.comm.send(data=msg, buffers=buffers)
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 121, in send
-    data=data, metadata=metadata, buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/ipykernel/comm/comm.py&#34;, line 71, in _publish_msg
-    buffers=buffers,
-  File &#34;/opt/anaconda2/envs/py36/lib/python3.6/site-packages/jupyter_client/session.py&#34;, line 667, in send
-    msg
-Message: &#39;WARNING: attempted to send message from fork\n%s&#39;
-Arguments: {&#39;header&#39;: {&#39;version&#39;: &#39;5.0&#39;, &#39;date&#39;: datetime.datetime(2017, 9, 26, 14, 8, 39, 418015), &#39;session&#39;: &#39;3d2f1e32-9925-43f0-9c33-3affd75fe355&#39;, &#39;username&#39;: &#39;dsheen&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;msg_id&#39;: &#39;21c224c0-fa38-4497-90ef-0a4579a965ac&#39;}, &#39;msg_id&#39;: &#39;21c224c0-fa38-4497-90ef-0a4579a965ac&#39;, &#39;msg_type&#39;: &#39;comm_msg&#39;, &#39;parent_header&#39;: {&#39;username&#39;: &#39;username&#39;, &#39;version&#39;: &#39;5.0&#39;, &#39;msg_id&#39;: &#39;D6993838A8814ABB8E764FA2CD0E7188&#39;, &#39;msg_type&#39;: &#39;execute_request&#39;, &#39;session&#39;: &#39;CA614028264C4E9A80E783E0D2CF6FDD&#39;, &#39;date&#39;: &#39;2017-09-26T12:47:28.114854&#39;}, &#39;content&#39;: {&#39;data&#39;: {&#39;method&#39;: &#39;update&#39;, &#39;state&#39;: {&#39;bar_style&#39;: &#39;success&#39;}, &#39;buffers&#39;: []}, &#39;comm_id&#39;: &#39;952d20ee8d5f4054981221ad16bd4e7f&#39;}, &#39;metadata&#39;: {}}
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="docutils container">
-</div>
-<div class="docutils container">
-<div class="highlight"><pre>
-fls_ghlw00_g01
-fls_ghlw00_g02
-fls_ghlw00_g03
-fls_ghlw00_g04
-fls_ghlw00_g05
-fls_ghlw00_g06
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-Warning: Temperature (2017.72 K) outside valid range of 300 K to 2000 K
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-Warning: Temperature (2017.01 K) outside valid range of 300 K to 2000 K
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Multicomponent solution
-Multicomponent solution
-Multicomponent solution
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Multicomponent solution
-Multicomponent solution
-Multicomponent solution
+fls_ghlw00_g01 10.8908850845
+fls_ghlw00_g02 10.958086446
+fls_ghlw00_g03 14.7492796032
+fls_ghlw00_g04 15.191912485
+fls_ghlw00_g05 9.98027107451
+fls_ghlw00_g06 10.3583581258
 No data saved from flame speed solution
 No data saved from flame speed solution
 No data saved from flame speed solution
@@ -1595,56 +502,12 @@ No data saved from flame speed solution
 No data saved from flame speed solution
 Project ghlw00_g saved successfully
 (10.0, &#39;(315, 365]&#39;)
-Project ghlw00_h does not exist, creating it
-No data saved from flame speed solution
-No data saved from flame speed solution
-No data saved from flame speed solution
-No data saved from flame speed solution
-No data saved from flame speed solution
-No data saved from flame speed solution
-Project ghlw00_h saved successfully
-fls_ghlw00_h01 None
-fls_ghlw00_h02 None
-fls_ghlw00_h03 None
-fls_ghlw00_h04 None
-fls_ghlw00_h05 None
-fls_ghlw00_h06 None
-fls_ghlw00_h01
-fls_ghlw00_h02
-fls_ghlw00_h03
-fls_ghlw00_h04
-fls_ghlw00_h05
-fls_ghlw00_h06
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Multicomponent solution
-Multicomponent solution
-Multicomponent solution
-Multicomponent solution
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Multicomponent solution
-Multicomponent solution
+fls_ghlw00_h01 14.4541997041
+fls_ghlw00_h02 14.5356197187
+fls_ghlw00_h03 20.3516245705
+fls_ghlw00_h04 20.6645236416
+fls_ghlw00_h05 14.447568112
+fls_ghlw00_h06 14.5310725059
 No data saved from flame speed solution
 No data saved from flame speed solution
 No data saved from flame speed solution
@@ -1653,56 +516,12 @@ No data saved from flame speed solution
 No data saved from flame speed solution
 Project ghlw00_h saved successfully
 (10.0, &#39;(365, 415]&#39;)
-Project ghlw00_i does not exist, creating it
-No data saved from flame speed solution
-No data saved from flame speed solution
-No data saved from flame speed solution
-No data saved from flame speed solution
-No data saved from flame speed solution
-No data saved from flame speed solution
-Project ghlw00_i saved successfully
-fls_ghlw00_i01 None
-fls_ghlw00_i02 None
-fls_ghlw00_i03 None
-fls_ghlw00_i04 None
-fls_ghlw00_i05 None
-fls_ghlw00_i06 None
-fls_ghlw00_i01
-fls_ghlw00_i02
-fls_ghlw00_i03
-fls_ghlw00_i04
-fls_ghlw00_i05
-fls_ghlw00_i06
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-False
-False
-Mix
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-Mixture-averaged solution, no energy equation, no grid refinement
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Multicomponent solution
-False
-Mix
-Mixture-averaged solution, no energy equation, no grid refinement
-Mixture-averaged solution, enable energy equation and grid refinement
-Multicomponent solution
-Multicomponent solution
-Multicomponent solution
-Multicomponent solution
-Multicomponent solution
+fls_ghlw00_i01 18.5355823418
+fls_ghlw00_i02 18.5354917171
+fls_ghlw00_i03 25.3687013444
+fls_ghlw00_i04 25.4880579112
+fls_ghlw00_i05 18.4812974645
+fls_ghlw00_i06 18.4812974645
 No data saved from flame speed solution
 No data saved from flame speed solution
 No data saved from flame speed solution
@@ -2716,6 +1535,34 @@ butadiene_flame.rst
 <div class="docutils container">
 </div>
 <div class="docutils container">
+<img alt="_images/flame_plotter_6_3.png" src="_images/flame_plotter_6_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/flame_plotter_6_4.png" src="_images/flame_plotter_6_4.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/flame_plotter_6_5.png" src="_images/flame_plotter_6_5.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
+<img alt="_images/flame_plotter_6_6.png" src="_images/flame_plotter_6_6.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="docutils container">
+</div>
+<div class="docutils container">
 <img alt="_images/flame_plotter_6_7.png" src="_images/flame_plotter_6_7.png" />
 </div>
 </div>
@@ -2992,44 +1839,16 @@ butadiene_flame.rst
 <img alt="_images/flame_plotter_6_46.png" src="_images/flame_plotter_6_46.png" />
 </div>
 </div>
-<div class="nboutput docutils container">
+<div class="nboutput nblast docutils container">
 <div class="docutils container">
 </div>
 <div class="docutils container">
 <img alt="_images/flame_plotter_6_47.png" src="_images/flame_plotter_6_47.png" />
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="docutils container">
-</div>
-<div class="docutils container">
-<img alt="_images/flame_plotter_6_48.png" src="_images/flame_plotter_6_48.png" />
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="docutils container">
-</div>
-<div class="docutils container">
-<img alt="_images/flame_plotter_6_49.png" src="_images/flame_plotter_6_49.png" />
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="docutils container">
-</div>
-<div class="docutils container">
-<img alt="_images/flame_plotter_6_50.png" src="_images/flame_plotter_6_50.png" />
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="docutils container">
-</div>
-<div class="docutils container">
-<img alt="_images/flame_plotter_6_51.png" src="_images/flame_plotter_6_51.png" />
-</div>
-</div>
 <div class="nbinput docutils container">
 <div class="highlight-none"><div class="highlight"><pre>
-<span></span>In [9]:
+<span></span>In [7]:
 </pre></div>
 </div>
 <div class="highlight-ipython3"><div class="highlight"><pre>
@@ -3046,133 +1865,7 @@ butadiene_flame.rst
 </div>
 <div class="docutils container">
 <div class="highlight"><pre>
-(0.5, &#39;(0, 305]&#39;)
-(1.0, &#39;(0, 305]&#39;)
-ghlw00_a
-10 measurements
-fls_ghlw00_a01 (Active): Laminar flame speed:      300 K, 101.33 kPa, CH4:0.8,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_a02 (Active): Laminar flame speed:      302 K, 101.33 kPa, CH4:0.6,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_a03 (Active): Laminar flame speed:      301 K, 101.33 kPa, CH4:0.7,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_a04 (Active): Laminar flame speed:      300 K, 101.33 kPa, CH4:0.8,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_a05 (Active): Laminar flame speed:      300 K, 101.33 kPa, CH4:0.9,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_a06 (Active): Laminar flame speed:      301 K, 101.33 kPa, CH4:1.0,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_a07 (Active): Laminar flame speed:      301 K, 101.33 kPa, CH4:1.0,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_a08 (Active): Laminar flame speed:      300 K, 101.33 kPa, CH4:1.1,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_a09 (Active): Laminar flame speed:      300 K, 101.33 kPa, CH4:1.2,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_a10 (Active): Laminar flame speed:      302 K, 101.33 kPa, CH4:1.2,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-
-(1.0, &#39;(305, 365]&#39;)
-ghlw00_b
-5 measurements
-fls_ghlw00_b01 (Active): Laminar flame speed:      358 K, 101.33 kPa, CH4:0.8,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_b02 (Active): Laminar flame speed:      360 K, 101.33 kPa, CH4:1.0,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_b03 (Active): Laminar flame speed:      360 K, 101.33 kPa, CH4:1.0,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_b04 (Active): Laminar flame speed:      360 K, 101.33 kPa, CH4:1.2,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_b05 (Active): Laminar flame speed:      361 K, 101.33 kPa, CH4:1.2,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-
-(1.0, &#39;(365, 415]&#39;)
-ghlw00_c
-5 measurements
-fls_ghlw00_c01 (Active): Laminar flame speed:      402 K, 101.33 kPa, CH4:0.8,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_c02 (Active): Laminar flame speed:      404 K, 101.33 kPa, CH4:1.0,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_c03 (Active): Laminar flame speed:      404 K, 101.33 kPa, CH4:1.0,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_c04 (Active): Laminar flame speed:      399 K, 101.33 kPa, CH4:1.2,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_c05 (Active): Laminar flame speed:      403 K, 101.33 kPa, CH4:1.2,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-
-(2.0, &#39;(0, 305]&#39;)
-(3.0, &#39;(0, 305]&#39;)
-(4.0, &#39;(0, 305]&#39;)
-(5.0, &#39;(0, 305]&#39;)
-ghlw00_d
-5 measurements
-fls_ghlw00_d01 (Active): Laminar flame speed:      302 K, 506.62 kPa, CH4:0.8,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_d03 (Active): Laminar flame speed:      301 K, 506.62 kPa, CH4:1.0,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_d04 (Active): Laminar flame speed:      301 K, 506.62 kPa, CH4:1.0,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_d05 (Active): Laminar flame speed:      297 K, 506.62 kPa, CH4:1.2,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_d06 (Active): Laminar flame speed:      300 K, 506.62 kPa, CH4:1.2,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-
-(5.0, &#39;(305, 365]&#39;)
-ghlw00_d
-5 measurements
-fls_ghlw00_d01 (Active): Laminar flame speed:      302 K, 506.62 kPa, CH4:0.8,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_d03 (Active): Laminar flame speed:      301 K, 506.62 kPa, CH4:1.0,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_d04 (Active): Laminar flame speed:      301 K, 506.62 kPa, CH4:1.0,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_d05 (Active): Laminar flame speed:      297 K, 506.62 kPa, CH4:1.2,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_d06 (Active): Laminar flame speed:      300 K, 506.62 kPa, CH4:1.2,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-
-ghlw00_e
-6 measurements
-fls_ghlw00_e01 (Active): Laminar flame speed:      358 K, 506.62 kPa, CH4:0.8,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_e02 (Active): Laminar flame speed:      360 K, 506.62 kPa, CH4:0.8,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_e03 (Active): Laminar flame speed:      350 K, 506.62 kPa, CH4:1.0,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_e04 (Active): Laminar flame speed:      359 K, 506.62 kPa, CH4:1.0,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_e05 (Active): Laminar flame speed:      355 K, 506.62 kPa, CH4:1.2,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_e06 (Active): Laminar flame speed:      358 K, 506.62 kPa, CH4:1.2,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-
-(5.0, &#39;(365, 415]&#39;)
-ghlw00_f
-6 measurements
-fls_ghlw00_f01 (Active): Laminar flame speed:      401 K, 506.62 kPa, CH4:0.8,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_f02 (Active): Laminar flame speed:      401 K, 506.62 kPa, CH4:0.8,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_f03 (Active): Laminar flame speed:      397 K, 506.62 kPa, CH4:1.0,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_f04 (Active): Laminar flame speed:      404 K, 506.62 kPa, CH4:1.0,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_f05 (Active): Laminar flame speed:      404 K, 506.62 kPa, CH4:1.2,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_f06 (Active): Laminar flame speed:      404 K, 506.62 kPa, CH4:1.2,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-
-(10.0, &#39;(0, 305]&#39;)
-ghlw00_g
-4 measurements
-fls_ghlw00_g03 (Active): Laminar flame speed:      297 K, 1013.25 kPa, CH4:1.0,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_g04 (Active): Laminar flame speed:      302 K, 1013.25 kPa, CH4:1.0,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_g05 (Active): Laminar flame speed:      300 K, 1013.25 kPa, CH4:1.2,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-fls_ghlw00_g06 (Active): Laminar flame speed:      305 K, 1013.25 kPa, CH4:1.2,O2:2,N2:7.52
-     X. J. Gu, M. Z. Haq, M. Lawes, R. Woolley, Combust. Flame 121 (2000), 41-58.
-
+(1, &#39;(0, 315]&#39;)
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -3199,6 +1892,7 @@ fls_ghlw00_g06 (Active): Laminar flame speed:      305 K, 1013.25 kPa, CH4:1.2,O
 <li class="toctree-l1"><a class="reference internal" href="ign.html">Ignition Delay Times</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fls.html">Laminar Flame Speeds</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_parser_docs.html">The data parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpc_parallel_docs.html">MUM-PCE parallel implementation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Laminar flame speed documentation creator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ignition_plotter.html">Ignition delay time documentation creator</a></li>
 </ul>
@@ -3221,7 +1915,7 @@ fls_ghlw00_g06 (Active): Laminar flame speed:      305 K, 1013.25 kPa, CH4:1.2,O
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
-            <a href="data_parser_docs.html" title="The data parser"
+            <a href="mpc_parallel_docs.html" title="MUM-PCE parallel implementation"
               >previous</a> |
             <a href="ignition_plotter.html" title="Ignition delay time documentation creator"
               >next</a> |
@@ -3238,7 +1932,6 @@ fls_ghlw00_g06 (Active): Laminar flame speed:      305 K, 1013.25 kPa, CH4:1.2,O
         <div class="right">
           
     <div class="footer" role="contentinfo">
-        &#169; Copyright .
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
     </div>
         </div>

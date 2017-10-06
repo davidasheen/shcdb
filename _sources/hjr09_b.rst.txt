@@ -19,6 +19,11 @@ O2         20.6 %
 N2         77.3 %
 =========  ====== 
 
+Plot
+----
+
+.. image:: hjr09_b_plot.png
+
 Data Table
 ----------
 
@@ -52,10 +57,4 @@ Temp (K)  Pres (kPa)
   971       3039.8  
   962       3039.8  
 ========  ========== 
-
-Plot
-----
-
-.. image:: hjr09_b_plot.png
-
     

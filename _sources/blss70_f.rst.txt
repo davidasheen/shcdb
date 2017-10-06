@@ -19,6 +19,11 @@ O2          2.1 %
 AR         97.1 %
 =========  ====== 
 
+Plot
+----
+
+.. image:: blss70_f_plot.png
+
 Data Table
 ----------
 
@@ -45,10 +50,4 @@ Temp (K)  Pres (kPa)
   1394      700.5   
   1387      694.1   
 ========  ========== 
-
-Plot
-----
-
-.. image:: blss70_f_plot.png
-
     

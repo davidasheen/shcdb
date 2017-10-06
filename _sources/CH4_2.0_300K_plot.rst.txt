@@ -4,6 +4,12 @@
 ******************************************* 
 
 
+Plot
+----
+
+.. image:: CH4_2.0_300K_plot.png
+
+
 Composition
 ===========
 .. composition tables
@@ -45,9 +51,5 @@ M. I. Hassan, K. T. Aung, G. M. Faeth, Combust. Flame 115 (1998), 539-550.
  
  
 
-Plot
-----
-
-.. image:: CH4_2.0_300K_plot.png
 
     

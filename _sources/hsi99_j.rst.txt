@@ -20,6 +20,11 @@ O2          1.0 %
 AR         97.6 %
 =========  ====== 
 
+Plot
+----
+
+.. image:: hsi99_j_plot.png
+
 Data Table
 ----------
 
@@ -35,10 +40,4 @@ Temp (K)  Pres (kPa)
   1786      268.4   
   1869      286.2   
 ========  ========== 
-
-Plot
-----
-
-.. image:: hsi99_j_plot.png
-
     

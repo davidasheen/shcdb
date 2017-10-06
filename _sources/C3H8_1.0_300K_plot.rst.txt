@@ -4,6 +4,12 @@
 ******************************************* 
 
 
+Plot
+----
+
+.. image:: C3H8_1.0_300K_plot.png
+
+
 Composition
 ===========
 .. composition tables
@@ -223,9 +229,5 @@ C. M. Vagelopoulos, F. N. Egolfopoulos, C. K. Law, Proc. Combust. Inst. 25 (1994
  
  
 
-Plot
-----
-
-.. image:: C3H8_1.0_300K_plot.png
 
     
