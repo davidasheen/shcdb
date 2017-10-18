@@ -4,6 +4,18 @@
 ******************************************* 
 
 
+Data sources
+============
+
+==========  ============================================================
+Short name  Reference Source                                            
+==========  ============================================================
+ezl90_d     \ F. N. Egolfopoulos, D. L. Zhu, C. K. Law, Proc. Combust. Inst. 23 (1991), 471-478.
+hakf98_l    \ Hassan, M. I., Aung, K. T., Kwon, K. C., and Faeth, G. M. J. Propul. Power 1998, 14, 479.
+jom05_d     \ G. Jomaas, X. L. Zheng, D. L. Zhu, C. K. Law, Proc. Combust. Inst. 30 (2005), 193-200.
+kmsl08_a    \ K. Kumar, G. Mittal, C.-J. Sung, C. K. Law, Combust. Flame 153 (2008), 343-354.
+==========  ============================================================
+
 Plot
 ----
 

@@ -4,6 +4,19 @@
 ******************************************* 
 
 
+Data sources
+============
+
+==========  ============================================================
+Short name  Reference Source                                            
+==========  ============================================================
+bdg04_b     \ K. J. Bosschaart, L. P. H. de Goey, Combust. Flame 136 (2004), 261-269.
+ezl90_b     \ F. N. Egolfopoulos, D. L. Zhu, C. K. Law, Proc. Combust. Inst. 23 (1991), 471-478.
+hakf98_g    \ Hassan, M. I., Aung, K. T., Kwon, K. C., and Faeth, G. M. J. Propul. Power 1998, 14, 479.
+jom05_a     \ G. Jomaas, X. L. Zheng, D. L. Zhu, C. K. Law, Proc. Combust. Inst. 30 (2005), 193-200.
+ve98_b      \ C. M. Vagelopoulos, F. N. Egolfopoulos, Proc. Combust. Inst. 27 (1998), 513-519.
+==========  ============================================================
+
 Plot
 ----
 
