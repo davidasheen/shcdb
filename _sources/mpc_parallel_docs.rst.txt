@@ -1,0 +1,9 @@
+MUM-PCE parallel implementation
+*******************************
+
+.. currentmodule:: mpc_parallel
+
+The `mpc_parallel` module provides a means of running the mumpce_py codes on large parallel workstations. The Conda-installable version of Cantera uses a parallelized SUNDIALS, but the efficiency of the parallelization depends on the Cantera reactor being solved. For instance, a zero-dimensional reactor can be easily distributed across 12 processors, whereas a free laminar flame is best distributed over somewhere between 1 and 5 processors, depending on the transport model used (the multicomponent model, for instance, does not run in parallel on my system). This parallel implementation allows the user to run multiple calculations at once on a single system, thereby making the most efficient use of systme resources.
+
+.. autofunction:: evaluate_parallel
+.. autofunction:: sensitivity_parallel
